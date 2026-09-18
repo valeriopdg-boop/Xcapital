@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowDown, ArrowRight, ChartLineUp, CheckCircle, Compass, Handshake, Leaf, ShareNetwork, Target, UsersThree } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
-import { editorialCards, processes, serviceHubs } from "./siteRoutes.js";
+import { awards, companyDetails, editorialCards, processes, publications, serviceHubs, teamMembers, transactions, values } from "./siteRoutes.js";
 
 const fallbackNavigation = { cta: { label: "Parla con il team", href: "/prenota/" } };
 const fallbackProofs = [
@@ -99,6 +99,16 @@ export function HomePage() {
         </div>
       </section>
 
+      <section className="evidence-section light-section" aria-labelledby="awards-title">
+        <div className="section-heading"><div><p className="eyebrow">Riconoscimenti</p><h2 id="awards-title">Ambizione. Crescita. Riconoscimento.</h2><p>Tre riconoscimenti consecutivi nel settore Corporate Finance.</p></div></div>
+        <div className="award-grid">{awards.map((award) => <article className="award-card" key={award.year}><img src={award.image} alt={`${award.title} ${award.year}`} /><p className="eyebrow">{award.year}</p><h3>{award.title}</h3><p>{award.description}</p></article>)}</div>
+      </section>
+
+      <section className="operations-preview light-section" aria-labelledby="operations-title">
+        <div className="section-heading"><div><p className="eyebrow">Track Record</p><h2 id="operations-title">Operazioni recenti.</h2><p>Una selezione delle operazioni seguite dal team XCapital.</p></div><Link className="button button-primary" href="/track-record/">Vedi tutte le operazioni <ArrowRight aria-hidden="true" /></Link></div>
+        <div className="transaction-grid">{transactions.slice(0, 3).map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div>
+      </section>
+
       <section className="team-section" id="chi-siamo">
         <div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Persone che fanno la differenza.</h2><p>Senior advisor, imprenditori e professionisti con competenze complementari, uniti dalla stessa ambizione: contribuire al successo dei nostri clienti.</p><Link className="button button-primary" href="/chi-siamo/">Conosci il team <ArrowRight aria-hidden="true" /></Link></div>
         <img src="/assets/team-collaboration.png" alt="Il team XCapital durante una sessione di lavoro" />
@@ -142,28 +152,34 @@ export function DetailPage({ page }) {
 export function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="Chi siamo" title="Competenze diverse, responsabilità condivisa." description="XCapital è una società di consulenza indipendente che affianca imprenditori, manager e investitori nelle fasi decisive della crescita." image="/assets/team-collaboration.png" />
+      <PageHero eyebrow="Chi siamo" title="Competenze diverse, responsabilità condivisa." description="XCapital è il brand di Delex Capital S.r.l., società indipendente che affianca imprenditori, manager e investitori nelle fasi decisive della crescita." image="/assets/team-collaboration.png" />
       <section className="team-section" id="page-content"><div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Esperienza che entra nel merito.</h2><p>Advisory board, senior advisor e specialisti lavorano insieme, combinando visione strategica ed esperienza operativa.</p><Link className="button button-primary" href="/prenota/">Parla con noi <ArrowRight aria-hidden="true" /></Link></div><img src="/assets/hero-team.png" alt="Professionisti XCapital riuniti al tavolo" /><p className="team-values">Indipendenza<br />Rigore<br />Ascolto<br />Impatto</p></section>
-      <ProcessSection />
+      <section className="people-section light-section" aria-labelledby="team-title"><div className="section-heading"><div><p className="eyebrow">Persone</p><h2 id="team-title">Il team XCapital.</h2><p>Competenze complementari per seguire strategia, finanza, compliance e sviluppo delle opportunità.</p></div></div><div className="people-grid">{teamMembers.map((member) => <article className="person-card" key={member.name}><img src={member.image} alt={member.name} /><div><p className="eyebrow">{member.role}</p><h3>{member.name}</h3><p>{member.description}</p></div></article>)}</div></section>
+      <section className="values-section light-section" aria-labelledby="values-title"><div className="section-heading"><div><p className="eyebrow">Principi cardine</p><h2 id="values-title">I valori che guidano il lavoro.</h2><p>Trasparenza, competenza e responsabilità nelle relazioni con clienti e partner.</p></div></div><div className="values-grid">{values.map(([title, description], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{description}</p></article>)}</div></section>
       <ClosingCta />
     </>
   );
 }
 
+function TransactionCard({ transaction }) {
+  return <Link className="transaction-card" href={`/track-record/${transaction.slug}/`}><div className="transaction-logo"><img src={transaction.image} alt={transaction.client} /></div><p className="eyebrow">{transaction.type}</p><h3>{transaction.client}</h3>{transaction.detail && <p>{transaction.detail}</p>}<strong>{transaction.amount}</strong><span>Approfondisci <ArrowRight aria-hidden="true" /></span></Link>;
+}
+
 export function TrackRecordPage({ slug }) {
   if (slug) {
-    const title = slug.split("-").map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(" ");
-    return <><PageHero eyebrow="Track Record" title={title} description="Scheda dimostrativa dell’operazione. I dati definitivi saranno pubblicati soltanto dopo approvazione e verifica." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Operazione rappresentativa</p><h2>Contesto, percorso, risultato.</h2><p>Per ragioni di riservatezza questa demo non espone informazioni reali su clienti, controparti o condizioni economiche.</p></div></div></section><ClosingCta /></>;
+    const transaction = transactions.find((item) => item.slug === slug);
+    if (!transaction) return <NotFoundPage />;
+    return <><PageHero eyebrow="Track Record" title={transaction.client} description={`${transaction.type}${transaction.detail ? ` · ${transaction.detail}` : ""}.`} cta={false} /><section className="transaction-detail light-section" id="page-content"><div className="transaction-detail-logo"><img src={transaction.image} alt={transaction.client} /></div><div><p className="eyebrow">Valore dell’operazione</p><h2>{transaction.amount}</h2><p>Un incarico seguito con presidio specialistico nelle fasi decisive dell’operazione.</p><Link className="text-link dark-link" href="/track-record/">Torna al Track Record <ArrowRight aria-hidden="true" /></Link></div></section><ClosingCta /></>;
   }
 
-  return <><PageHero eyebrow="Track Record" title="Esperienza nelle decisioni che contano." description="Questa area raccoglierà le operazioni che XCapital potrà pubblicare dopo la verifica dei dati e delle autorizzazioni." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Operazioni</p><h2>La riservatezza viene prima dell’esposizione.</h2><p>Non mostriamo clienti, importi o risultati non verificati. Le schede saranno aggiunte quando i relativi contenuti saranno approvati per la pubblicazione.</p></div><aside><strong>Contenuti verificati</strong><span>Nessun dato dimostrativo viene presentato come reale.</span></aside></div><div className="empty-state"><ChartLineUp size={38} weight="light" aria-hidden="true" /><h3>Archivio in preparazione</h3><p>Le operazioni pubblicabili saranno disponibili in questa sezione.</p></div></section><ClosingCta /></>;
+  return <><PageHero eyebrow="Track Record" title="Esperienza nelle decisioni che contano." description="Operazioni di equity, IPO e minibond seguite da XCapital." /><section className="operations-archive light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Operazioni</p><h2>Risultati costruiti insieme.</h2><p>Una selezione di operazioni perfezionate con il supporto del team.</p></div></div><div className="transaction-grid">{transactions.map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div></section><ClosingCta /></>;
 }
 
 export function InsightPage({ active }) {
   const titleByActive = { education: "Pubblicazioni", press: "Blog & News", webinar: "Webinar" };
   const title = titleByActive[active] || "Insight e Risorse";
-  const cards = active ? [["Un nuovo punto di vista", `Contenuto dimostrativo per la sezione ${title}.`, "/insight/"] , ["Decisioni in contesti complessi", "Strumenti e prospettive per imprenditori e manager.", "/insight/"]] : editorialCards;
-  return <><PageHero eyebrow="Risorse" title={title} description="Analisi, incontri e strumenti per affrontare con maggiore consapevolezza le decisioni che contano." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">In evidenza</p><h2>Conoscenza che prepara l’azione.</h2></div></div><div className="competency-list grid-three">{cards.map(([cardTitle, description, href]) => <Link className="competency" href={href} key={cardTitle}><Compass size={32} weight="light" aria-hidden="true" /><h3>{cardTitle}</h3><p>{description}</p></Link>)}</div></section><ClosingCta title="Vuoi approfondire un tema?" /></>;
+  const cards = active ? [] : editorialCards;
+  return <><PageHero eyebrow="Risorse" title={title} description="Analisi, incontri e strumenti per affrontare con maggiore consapevolezza le decisioni che contano." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">In evidenza</p><h2>Conoscenza che prepara l’azione.</h2><p>Contenuti pubblicati da XCapital per accompagnare valutazioni e decisioni.</p></div></div>{cards.length > 0 && <div className="competency-list grid-three">{cards.map(([cardTitle, description, href]) => <Link className="competency" href={href} key={cardTitle}><Compass size={32} weight="light" aria-hidden="true" /><h3>{cardTitle}</h3><p>{description}</p></Link>)}</div>}<div className="publication-list">{publications.map((publication) => <a className="publication-card" href={publication.href} target="_blank" rel="noreferrer" key={publication.title}><p className="eyebrow">{publication.date}</p><h3>{publication.title}</h3><p>{publication.description}</p><span>Leggi la pubblicazione <ArrowRight aria-hidden="true" /></span></a>)}</div></section><ClosingCta title="Vuoi approfondire un tema?" /></>;
 }
 
 export function ContactPage({ booking = false }) {
@@ -173,6 +189,7 @@ export function ContactPage({ booking = false }) {
       <PageHero eyebrow={booking ? "Prenota una call" : "Contatti"} title={booking ? "Iniziamo da una conversazione." : "Parliamo del tuo progetto."} description="Il modulo è una demo frontend: mostra il flusso e gli stati dell’esperienza, ma non invia dati a un backend." cta={false} />
       <section className="competencies-section light-section" id="page-content">
         <div className="section-heading"><div><p className="eyebrow">Demo senza invio esterno</p><h2>{sent ? "Richiesta simulata." : "Raccontaci il tuo obiettivo."}</h2><p>{sent ? "Nessun dato è stato trasmesso o archiviato." : "Nel sito definitivo il form dovrà essere collegato a un endpoint approvato, con gestione privacy, sicurezza e consenso."}</p></div></div>
+        <address className="contact-details"><div><span>Sede</span><strong>{companyDetails.address}</strong></div><a href={companyDetails.phoneHref}><span>Telefono</span><strong>{companyDetails.phone}</strong></a><a href={companyDetails.emailHref}><span>Email</span><strong>{companyDetails.email}</strong></a></address>
         {sent ? <div className="dialog-success" role="status"><CheckCircle size={48} weight="light" aria-hidden="true" /><h2>Grazie.</h2><p>La simulazione si è conclusa correttamente.</p><button className="button button-primary" type="button" onClick={() => setSent(false)}>Nuova richiesta</button></div> : <form className="contact-dialog" style={{ display: "block", position: "static", margin: 0, maxHeight: "none", boxShadow: "none", border: "1px solid var(--line)" }} onSubmit={(event) => { event.preventDefault(); setSent(true); }}><label>Nome e cognome<input name="name" autoComplete="name" required /></label><label>Email professionale<input name="email" type="email" autoComplete="email" required /></label><label>Azienda<input name="company" autoComplete="organization" /></label><label>Messaggio<textarea name="message" rows="5" required /></label><label className="consent"><input type="checkbox" required /><span>Confermo di aver compreso che questo form è una demo e non invia dati.</span></label><button className="button button-primary" type="submit">Simula invio <ArrowRight aria-hidden="true" /></button></form>}
       </section>
     </>

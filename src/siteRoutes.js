@@ -90,8 +90,95 @@ export const processes = [
   ["04", "Misurazione", "Verifichiamo risultati e prossime scelte."],
 ];
 
+// Contenuti pubblici recuperati dalla demo xcapital.dev-test.it.
+// Sono esclusi i campi chiaramente provvisori (Lorem ipsum, nomi/email placeholder e KPI fittizi).
+export const companyDetails = {
+  legalName: "Delex Capital S.r.l.",
+  address: "via Creta, 26 – 25124 Brescia",
+  phone: "+39 030 2423238",
+  phoneHref: "tel:+390302423238",
+  email: "segreteria@delex.legal",
+  emailHref: "mailto:segreteria@delex.legal",
+  communityHref: "https://capitalcommunity.it/",
+};
+
+export const values = [
+  ["Trasparenza", "Operiamo con chiarezza in ogni fase, costruendo relazioni basate sulla fiducia e sull’integrità."],
+  ["Innovazione", "Utilizziamo tecnologia e idee nuove per affrontare le sfide del settore finanziario."],
+  ["Eccellenza", "Manteniamo standard qualitativi elevati in ogni progetto e servizio."],
+  ["Orientamento al cliente", "Ascoltiamo le esigenze e costruiamo strategie coerenti con gli obiettivi specifici dell’impresa."],
+  ["Integrità", "Ogni decisione riflette responsabilità, correttezza e principi etici."],
+  ["Sostenibilità", "Promuoviamo soluzioni attente all’impatto di lungo periodo."],
+  ["Collaborazione", "Lavoriamo in sinergia con clienti e partner per ottenere risultati migliori."],
+];
+
+export const teamMembers = [
+  {
+    name: "Fabio Carretta",
+    role: "Managing Partner",
+    description: "Guida la strategia complessiva di XCapital, con esperienza nell’investment banking e nella gestione di operazioni finanziarie complesse.",
+    image: "/assets/team/fabio-carretta.jpg",
+  },
+  {
+    name: "Barbara Di Giovanni",
+    role: "Compliance and Investor Relations",
+    description: "Segue la compliance aziendale e le relazioni con gli investitori, presidiando l’allineamento agli standard normativi e alle aspettative degli stakeholder.",
+    image: "/assets/team/barbara-di-giovanni.jpg",
+  },
+  {
+    name: "Francesco Consoli",
+    role: "Partner",
+    description: "Contribuisce allo sviluppo strategico e alla supervisione delle principali operazioni, portando una profonda conoscenza del settore finanziario.",
+    image: "/assets/team/francesco-consoli.jpg",
+  },
+  {
+    name: "Daniele Sani",
+    role: "Analyst",
+    description: "Supporta il team con analisi, studi di mercato e valutazioni finanziarie a supporto delle decisioni strategiche.",
+    image: "/assets/team/daniele-sani.jpg",
+  },
+  {
+    name: "Marco Tomasoni",
+    role: "Origination",
+    description: "Identifica nuove opportunità di business e relazioni strategiche, contribuendo allo sviluppo di XCapital.",
+    image: "/assets/team/marco-tomasoni.jpg",
+  },
+];
+
+export const awards = [
+  { year: "2023", title: "Finance Monthly M&A Awards", description: "DELEX Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2023.jpg" },
+  { year: "2022", title: "Finance Monthly M&A Awards", description: "DELEX Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2022.jpg" },
+  { year: "2021", title: "Finance Monthly M&A Awards", description: "DELEX Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2021.jpg" },
+];
+
+export const transactions = [
+  { slug: "iride-acque-secondo-round", client: "Iride Acque S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 700.000,00", image: "/assets/clients/iride-acque.png" },
+  { slug: "socopet-terzo-round", client: "Socopet S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Terzo round", amount: "€ 500.000,00", image: "/assets/clients/socopet.png" },
+  { slug: "amicorp-ipo", client: "Amicorp Limited", type: "Advisor nella IPO in collaborazione con Bowsprit Partners Ltd", detail: "", amount: "€ 16.000.000,00", image: "/assets/clients/amicorp.png" },
+  { slug: "ellemme-minibond-uno", client: "Ellemme S.p.A.", type: "Advisory nell’emissione di minibond", detail: "", amount: "€ 1.000.000,00", image: "/assets/clients/ellemme.png" },
+  { slug: "wearena-secondo-round", client: "WeArena S.p.A.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 500.000,00", image: "/assets/clients/wearena.png" },
+  { slug: "ellemme-minibond-cinque", client: "Ellemme S.p.A.", type: "Advisory nell’emissione di minibond", detail: "", amount: "€ 5.000.000,00", image: "/assets/clients/ellemme.png" },
+  { slug: "iride-acque-primo-round", client: "Iride Acque S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Primo round", amount: "€ 700.000,00", image: "/assets/clients/iride-acque.png" },
+  { slug: "royal-primo-round", client: "Royal S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Primo round", amount: "€ 300.000,00", image: "/assets/clients/royal.png" },
+  { slug: "socopet-secondo-round", client: "Socopet S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 1.000.000,00", image: "/assets/clients/socopet.png" },
+];
+
+export const publications = [
+  {
+    date: "15 novembre 2024",
+    title: "Adattamento dell’analisi per startup early-stage e late-stage",
+    description: "Come valutare e investire nelle diverse fasi di sviluppo di una startup.",
+    href: "https://xcapital.dev-test.it/adattamento-dellanalisi-per-startup-early-stage-e-late-stage-come-valutare-e-investire-in-ogni-fase-di-sviluppo/",
+  },
+  {
+    date: "25 settembre 2024",
+    title: "SAFE per PMI innovative",
+    description: "Funzionamento, fiscalità e vantaggi rispetto agli strumenti finanziari partecipativi.",
+    href: "https://xcapital.dev-test.it/safe-per-pmi-innovative-funzionamento-fiscalita-e-vantaggi-rispetto-agli-strumenti-finanziari-partecipativi-sfp/",
+  },
+];
+
 export function normalizePath(pathname) {
   if (pathname === "/") return pathname;
   return `${pathname.replace(/\/+$/, "")}/`;
 }
-

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
-import { serviceHubs } from "./siteRoutes.js";
+import { companyDetails, serviceHubs } from "./siteRoutes.js";
 
 function useMobileNavigation() {
   const [mobile, setMobile] = useState(false);
@@ -79,6 +79,7 @@ function DesktopNavigation({ onContact }) {
       <Link href="/#metodo">Metodo</Link>
       <Link href="/track-record/">Track Record</Link>
       <Link href="/insight/">Risorse</Link>
+      <a href={companyDetails.communityHref} target="_blank" rel="noreferrer">Community</a>
       <Link className="button button-primary nav-cta" href="/prenota/">Parla con il team <ArrowRight aria-hidden="true" /></Link>
 
       {megaOpen && (
@@ -129,6 +130,7 @@ function MobileNavigation({ open, onNavigate }) {
           <Link href="/webinar/" onClick={onNavigate}>Webinar</Link>
         </div>
       </details>
+      <a href={companyDetails.communityHref} target="_blank" rel="noreferrer" onClick={onNavigate}>Community</a>
       <Link className="button button-primary nav-cta" href="/prenota/" onClick={onNavigate}>Parla con il team <ArrowRight aria-hidden="true" /></Link>
     </nav>
   );
@@ -161,11 +163,13 @@ export function SiteLayout({ children }) {
           <Link href="/track-record/">Track Record</Link>
         </nav>
         <div className="footer-meta">
+          <a href={companyDetails.phoneHref}>{companyDetails.phone}</a>
+          <a href={companyDetails.emailHref}>{companyDetails.email}</a>
           <Link href="/privacy-policy/">Privacy Policy</Link>
           <Link href="/cookie-policy/">Cookie Policy</Link>
           <Link href="/contatti/">Contatti</Link>
           <span>IT&nbsp;&nbsp;|&nbsp;&nbsp;EN</span>
-          <span>{footer.copyright || "© 2026 XCapital. Tutti i diritti riservati."}</span>
+          <span>© 2026 {companyDetails.legalName}</span>
         </div>
       </footer>
 
@@ -173,4 +177,3 @@ export function SiteLayout({ children }) {
     </>
   );
 }
-
