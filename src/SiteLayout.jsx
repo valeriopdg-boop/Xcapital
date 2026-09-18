@@ -132,7 +132,9 @@ export function SiteLayout({ children }) {
     <>
       <a className="skip-link" href="#main">Vai al contenuto</a>
       <header className="site-header">
-        <Link className="brand" href="/" aria-label="XCapital homepage">XCAPITAL</Link>
+        <Link className="brand" href="/" aria-label="XCapital homepage">
+          <img className="brand-logo" src="/assets/xcapital-logo.png" alt="XCapital" />
+        </Link>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? "Chiudi menu" : "Apri menu"} aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen((value) => !value)}>
           {menuOpen ? <X size={25} /> : <List size={25} />}
         </button>
@@ -142,7 +144,9 @@ export function SiteLayout({ children }) {
       <main id="main">{children}</main>
 
       <footer className="site-footer">
-        <Link className="brand" href="/">{footer.brand || "XCAPITAL"}</Link>
+        <Link className="brand" href="/" aria-label="XCapital homepage">
+          <img className="brand-logo brand-logo-footer" src="/assets/xcapital-logo.png" alt="XCapital" />
+        </Link>
         <nav aria-label="Navigazione a piè di pagina">
           <Link href="/chi-siamo/">Chi siamo</Link>
           <Link href="/services/">Services</Link>
