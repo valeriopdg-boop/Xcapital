@@ -3,7 +3,7 @@ export const serviceHubs = [
     path: "/growth/",
     label: "Growth Capital",
     eyebrow: "Crescita e operazioni straordinarie",
-    title: "Capitale e competenze per accelerare la crescita.",
+    title: "Capitale e advisory per accelerare la crescita.",
     description: "Affianchiamo imprenditori e investitori nelle decisioni che trasformano struttura, valore e traiettoria dell’impresa.",
     services: [
       ["M&A Advisory", "Acquisizioni, cessioni e operazioni straordinarie con un presidio senior."],
@@ -25,7 +25,7 @@ export const serviceHubs = [
       ["Trasformazione aziendale", "Modelli operativi, governance e processi pronti a evolvere."],
       ["Internazionalizzazione", "Selezione dei mercati e costruzione del percorso di ingresso."],
       ["Advisory pre-deal", "Analisi strategica prima di un investimento o di un’operazione."],
-      ["Fractional management", "Competenze executive attivate sul bisogno e sugli obiettivi."],
+      ["Fractional management", "Professionalità executive attivate sul bisogno e sugli obiettivi."],
       ["Legal advisory", "Coordinamento specialistico a supporto delle decisioni strategiche."],
     ],
   },
@@ -64,9 +64,48 @@ export const serviceHubs = [
     services: [
       ["Executive Coaching", "Percorsi individuali per decisioni, leadership e impatto."],
       ["Benessere organizzativo", "Programmi dedicati a energia, qualità del lavoro e cultura.", "/coaching-benessere/benessere/"],
-      ["HR Strategy", "Persone, competenze e organizzazione allineate alla strategia."],
+      ["HR Strategy", "Persone, ruoli e organizzazione allineati alla strategia."],
       ["Passaggio generazionale", "Accompagnamento delle persone e della governance nel cambiamento."],
     ],
+  },
+];
+
+export const coreServices = [
+  {
+    id: "investment-banking-services",
+    number: "01",
+    title: "Investment Banking Services",
+    tagline: "Realizza operazioni straordinarie senza confini",
+    description: "Che si tratti della progettazione strategica del deal o dello scouting delle target d’interesse, Delex Capital assiste le aziende interessate a operazioni straordinarie con particolare focus su crescita per acquisizione, diversificazione, integrazione di filiera e internazionalizzazione. L’assistenza copre tutte le fasi dell’operazione, dall’ideazione al closing, anche con riferimento alla consulenza nella raccolta di equity e alla formazione e gestione di club deal.",
+  },
+  {
+    id: "supporto-alla-finanza-di-capitali",
+    number: "02",
+    title: "Supporto alla Finanza di Capitali",
+    tagline: "Guida strategica per il successo in borsa",
+    description: "Delex Capital opera in qualità di advisor finanziario nei progetti di listing sui principali mercati regolamentati europei e statunitensi. Il supporto nelle operazioni si estende a ogni fase, dalla selezione e coordinamento dei consulenti al private placement.",
+  },
+  {
+    id: "ma-private-equity",
+    number: "03",
+    title: "M&A – Private Equity",
+    tagline: "Potenzia la crescita con strategie mirate",
+    description: "La consulenza strategica di Corporate Finance è alla base dell’ideazione e della successiva realizzazione di operazioni finalizzate all’ingresso di capitali, sia di rischio sia di debito. In qualità di advisor specializzato e supportato da una rete di referenziatori qualificati, Delex Capital assiste le aziende nelle emissioni obbligazionarie e di minibond, nel bond private placement, nella strutturazione e gestione di strumenti ibridi e mezzanini e nella raccolta di equity.",
+  },
+  {
+    id: "enterprise-valuation",
+    number: "04",
+    title: "Enterprise Valuation",
+    tagline: "Precisione e solidità per il tuo valore",
+    description: "Un’operazione di finanza straordinaria deve partire da una enterprise valuation corretta, affidabile e tecnicamente rigorosa. Delex Capital eroga servizi di valutazione d’impresa sia in relazione alle operazioni nelle quali interviene come advisor, sia a supporto di altri operatori quali studi professionali, fondi d’investimento e banche d’affari.",
+  },
+  {
+    id: "capital-community",
+    number: "05",
+    title: "Capital Community",
+    tagline: "Connessioni strategiche per opportunità globali",
+    description: "Delex Capital è tra i promotori della Capital Community, un’aggregazione di advisor e club deal che condividono principi, visione e valori. La rete moltiplica le possibilità di perfezionamento delle operazioni e aumenta le opportunità di accesso ai migliori deal sul mercato.",
+    href: "https://capitalcommunity.it/",
   },
 ];
 

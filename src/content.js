@@ -42,7 +42,7 @@
 export const navigation = {
   items: [
     { id: 'about', label: 'Chi siamo', href: '/chi-siamo/' },
-    { id: 'competencies', label: 'Competenze', href: '#competenze' },
+    { id: 'competencies', label: 'Services', href: '/services/' },
     { id: 'method', label: 'Metodo', href: '#metodo' },
     { id: 'track-record', label: 'Track Record', href: '/track-record/' },
     { id: 'resources', label: 'Risorse', href: '/insight/' },
@@ -70,8 +70,8 @@ export const proofPoints = [
 ];
 
 export const competenciesSection = {
-  eyebrow: 'Le nostre competenze',
-  title: 'Competenze diverse. Una sola direzione.',
+  eyebrow: 'Services',
+  title: 'Services integrati. Una sola direzione.',
   description:
     'Un approccio multidisciplinare per supportare la crescita delle imprese in ogni fase del percorso.',
   note: {
@@ -223,7 +223,7 @@ export const homePage = {
   seo: {
     title: 'XCapital | Strategia, capitale e persone',
     description:
-      'Competenze integrate per affiancare imprenditori e manager dalla visione all\u2019esecuzione.',
+      'Services integrati per affiancare imprenditori e manager dalla visione all\u2019esecuzione.',
   },
   hero: {
     eyebrow: 'Strategia. Capitale. Persone.',
@@ -246,7 +246,7 @@ export const homePage = {
     eyebrow: 'Il nostro team',
     title: 'Persone che fanno la differenza.',
     description:
-      'Senior advisor, imprenditori e professionisti con competenze complementari, uniti dalla stessa ambizione: contribuire al successo dei nostri clienti.',
+      'Senior advisor, imprenditori e professionisti con esperienze complementari, uniti dalla stessa ambizione: contribuire al successo dei nostri clienti.',
     action: { label: 'Conosci il team', href: '/chi-siamo/' },
   },
   closingCallToAction: {
@@ -273,11 +273,11 @@ export const aboutPage = {
   status: 'content-pending',
   seo: {
     title: 'Chi siamo | XCapital',
-    description: 'Competenze e approccio di XCapital al servizio della crescita aziendale.',
+    description: 'Esperienza e approccio di XCapital al servizio della crescita aziendale.',
   },
   hero: {
     eyebrow: 'Chi siamo',
-    title: 'Competenze diverse. Una sola direzione.',
+    title: 'Esperienze diverse. Una sola direzione.',
     description:
       'Un approccio integrato che mette in relazione strategia, capitale, sviluppo e persone.',
     primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
@@ -368,10 +368,10 @@ export const serviceHubPages = [
     status: 'content-pending',
     seo: {
       title: 'Growth Capital | XCapital',
-      description: 'Competenze dedicate a crescita, capitale e operazioni straordinarie.',
+      description: 'Services dedicati a crescita, capitale e operazioni straordinarie.',
     },
     hero: {
-      eyebrow: 'Competenze',
+      eyebrow: 'Services',
       title: 'Growth Capital',
       description:
         'Supporto strategico nelle fasi in cui capitale, struttura e operazioni straordinarie incidono sul percorso di crescita.',
@@ -400,7 +400,7 @@ export const serviceHubPages = [
       description: 'Percorsi di advisory per scelte, trasformazione e sviluppo aziendale.',
     },
     hero: {
-      eyebrow: 'Competenze',
+      eyebrow: 'Services',
       title: 'Advisory strategico',
       description:
         'Analisi e affiancamento per tradurre priorità aziendali in decisioni e percorsi operativi.',
@@ -425,10 +425,10 @@ export const serviceHubPages = [
     status: 'content-pending',
     seo: {
       title: 'Finanza e Fundraising | XCapital',
-      description: 'Competenze dedicate alla struttura finanziaria e ai percorsi di raccolta.',
+      description: 'Services dedicati alla struttura finanziaria e ai percorsi di raccolta.',
     },
     hero: {
-      eyebrow: 'Competenze',
+      eyebrow: 'Services',
       title: 'Finanza e Fundraising',
       description:
         'Affiancamento nella valutazione delle opzioni finanziarie coerenti con obiettivi, fase e struttura dell\u2019impresa.',
@@ -455,7 +455,7 @@ export const serviceHubPages = [
       description: 'Percorsi per sviluppo commerciale, nuovi mercati e posizionamento.',
     },
     hero: {
-      eyebrow: 'Competenze',
+      eyebrow: 'Services',
       title: 'Business Development',
       description:
         'Supporto alla definizione e all\u2019esecuzione di percorsi di sviluppo commerciale e di mercato.',
@@ -481,7 +481,7 @@ export const serviceHubPages = [
       description: 'Percorsi dedicati a leadership, organizzazione e sviluppo delle persone.',
     },
     hero: {
-      eyebrow: 'Competenze',
+      eyebrow: 'Services',
       title: 'Coaching e Benessere',
       description:
         'Percorsi rivolti alla leadership, all\u2019organizzazione e alla crescita delle persone nel contesto aziendale.',

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
-import { companyDetails, serviceHubs } from "./siteRoutes.js";
+import { companyDetails, coreServices, serviceHubs } from "./siteRoutes.js";
 
 function useMobileNavigation() {
   const [mobile, setMobile] = useState(false);
@@ -74,7 +74,7 @@ function DesktopNavigation({ onContact }) {
         onClick={() => setMegaOpen((value) => !value)}
         style={{ color: "#e7edf2", border: 0, background: "transparent", minHeight: 44, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 7, fontSize: 14 }}
       >
-        Competenze <CaretDown size={14} aria-hidden="true" />
+        Services <CaretDown size={14} aria-hidden="true" />
       </button>
       <Link href="/#metodo">Metodo</Link>
       <Link href="/track-record/">Track Record</Link>
@@ -87,14 +87,7 @@ function DesktopNavigation({ onContact }) {
           id="services-mega-menu"
           style={{ position: "absolute", zIndex: 60, top: "100%", right: 0, left: 0, display: "grid", gridTemplateColumns: "repeat(5, minmax(0, 1fr))", gap: 28, padding: "34px clamp(24px, 4vw, 68px)", borderTop: "1px solid rgba(255,255,255,.13)", background: "#061b2a", boxShadow: "0 24px 45px rgba(0,0,0,.25)" }}
         >
-          {serviceHubs.map((hub) => (
-            <div key={hub.path}>
-              <Link href={hub.path} onClick={() => setMegaOpen(false)} style={{ display: "block", marginBottom: 15, color: "white", fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: 21, fontWeight: 700, textDecoration: "none" }}>{hub.label}</Link>
-              {hub.services.map(([label, , href]) => (
-                <Link key={label} href={href || hub.path} onClick={() => setMegaOpen(false)} style={{ display: "block", padding: "6px 0", color: "#afc1ce", fontSize: 12, lineHeight: 1.35, textDecoration: "none" }}>{label}</Link>
-              ))}
-            </div>
-          ))}
+          {coreServices.map((service) => <div key={service.id}><Link href={`/services/#${service.id}`} onClick={() => setMegaOpen(false)} style={{ display: "block", marginBottom: 11, color: "white", fontFamily: '"Cormorant Garamond", Georgia, serif', fontSize: 21, fontWeight: 700, textDecoration: "none" }}>{service.title}</Link><span style={{ display: "block", color: "#afc1ce", fontSize: 12, lineHeight: 1.45 }}>{service.tagline}</span></div>)}
         </div>
       )}
     </nav>
@@ -106,17 +99,10 @@ function MobileNavigation({ open, onNavigate }) {
     <nav id="primary-navigation" className={open ? "primary-nav is-open" : "primary-nav"} aria-label="Navigazione principale">
       <Link href="/chi-siamo/" onClick={onNavigate}>Chi siamo</Link>
       <details style={{ borderBottom: "1px solid rgba(255,255,255,.12)" }}>
-        <summary style={{ padding: "17px 4px", color: "#e7edf2", cursor: "pointer", fontSize: 16 }}>Competenze</summary>
+        <summary style={{ padding: "17px 4px", color: "#e7edf2", cursor: "pointer", fontSize: 16 }}>Services</summary>
         <div style={{ padding: "0 0 14px 15px" }}>
-          {serviceHubs.map((hub) => (
-            <details key={hub.path}>
-              <summary style={{ padding: "10px 0", color: "white", cursor: "pointer", fontWeight: 600 }}>{hub.label}</summary>
-              <div style={{ padding: "0 0 8px 14px" }}>
-                <Link href={hub.path} onClick={onNavigate} style={{ display: "block", padding: "8px 0", color: "#62b7ef", textDecoration: "none" }}>Panoramica</Link>
-                {hub.services.map(([label, , href]) => <Link key={label} href={href || hub.path} onClick={onNavigate} style={{ display: "block", padding: "8px 0", color: "#b8c8d3", fontSize: 13, textDecoration: "none" }}>{label}</Link>)}
-              </div>
-            </details>
-          ))}
+          <Link href="/services/" onClick={onNavigate} style={{ display: "block", padding: "10px 0", color: "#62b7ef", textDecoration: "none" }}>Tutti i services</Link>
+          {coreServices.map((service) => <Link key={service.id} href={`/services/#${service.id}`} onClick={onNavigate} style={{ display: "block", padding: "9px 0", color: "#b8c8d3", fontSize: 13, textDecoration: "none" }}>{service.title}</Link>)}
         </div>
       </details>
       <Link href="/#metodo" onClick={onNavigate}>Metodo</Link>
@@ -159,6 +145,7 @@ export function SiteLayout({ children }) {
         <Link className="brand" href="/">{footer.brand || "XCAPITAL"}</Link>
         <nav aria-label="Navigazione a piè di pagina">
           <Link href="/chi-siamo/">Chi siamo</Link>
+          <Link href="/services/">Services</Link>
           {serviceHubs.map((hub) => <Link key={hub.path} href={hub.path}>{hub.label}</Link>)}
           <Link href="/track-record/">Track Record</Link>
         </nav>

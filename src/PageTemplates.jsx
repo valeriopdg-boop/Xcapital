@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ArrowDown, ArrowRight, ChartLineUp, CheckCircle, Compass, Handshake, Leaf, ShareNetwork, Target, UsersThree } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
-import { awards, companyDetails, editorialCards, processes, publications, serviceHubs, teamMembers, transactions, values } from "./siteRoutes.js";
+import { awards, companyDetails, coreServices, editorialCards, processes, publications, serviceHubs, teamMembers, transactions, values } from "./siteRoutes.js";
 
 const fallbackNavigation = { cta: { label: "Parla con il team", href: "/prenota/" } };
 const fallbackProofs = [
@@ -55,7 +55,7 @@ function ClosingCta({ title = "Parliamo del tuo progetto.", description = "Un pr
 export function HomePage() {
   const navigation = approvedContent.navigation ?? fallbackNavigation;
   const proofPoints = approvedContent.proofPoints ?? fallbackProofs;
-  const competenciesSection = approvedContent.competenciesSection ?? { eyebrow: "Le nostre competenze", title: "Competenze diverse. Una sola direzione.", description: "Un approccio multidisciplinare per supportare la crescita delle imprese.", note: { title: "Un obiettivo comune", description: "Valore duraturo per l’imprenditore" } };
+  const competenciesSection = approvedContent.competenciesSection ?? { eyebrow: "Services", title: "Services integrati. Una sola direzione.", description: "Un approccio multidisciplinare per supportare la crescita delle imprese.", note: { title: "Un obiettivo comune", description: "Valore duraturo per l’imprenditore" } };
   const competencies = approvedContent.competencies ?? serviceHubs.map((hub, index) => ({ id: ["growth-capital", "strategic-advisory", "finance-fundraising", "business-development", "coaching-wellbeing"][index], title: hub.label, description: hub.description, href: hub.path }));
   const methodSection = approvedContent.methodSection ?? { eyebrow: "Il nostro metodo", title: "Dall’ascolto ai risultati.", description: "Un percorso chiaro, concreto e condiviso.", overline: "Dalla visione all’impatto" };
   const methodSteps = approvedContent.methodSteps ?? processes.map(([number, title, description]) => ({ number, title, description }));
@@ -89,7 +89,7 @@ export function HomePage() {
 
       <section className="challenge-section light-section" aria-labelledby="challenge-title">
         <div className="section-heading">
-          <div><p className="eyebrow">La tua sfida</p><h2 id="challenge-title">Da dove vuoi iniziare?</h2><p>Quattro percorsi per raggiungere subito le competenze più vicine al tuo obiettivo.</p></div>
+          <div><p className="eyebrow">La tua sfida</p><h2 id="challenge-title">Da dove vuoi iniziare?</h2><p>Quattro percorsi per raggiungere subito i services più vicini al tuo obiettivo.</p></div>
         </div>
         <div className="challenge-grid">
           <Link href="/growth/" className="challenge-card"><span>01</span><h3>Acquisire o cedere un’impresa</h3><ArrowRight aria-hidden="true" /></Link>
@@ -110,7 +110,7 @@ export function HomePage() {
       </section>
 
       <section className="team-section" id="chi-siamo">
-        <div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Persone che fanno la differenza.</h2><p>Senior advisor, imprenditori e professionisti con competenze complementari, uniti dalla stessa ambizione: contribuire al successo dei nostri clienti.</p><Link className="button button-primary" href="/chi-siamo/">Conosci il team <ArrowRight aria-hidden="true" /></Link></div>
+        <div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Persone che fanno la differenza.</h2><p>Senior advisor, imprenditori e professionisti con esperienze complementari, uniti dalla stessa ambizione: contribuire al successo dei nostri clienti.</p><Link className="button button-primary" href="/chi-siamo/">Conosci il team <ArrowRight aria-hidden="true" /></Link></div>
         <img src="/assets/team-collaboration.png" alt="Il team XCapital durante una sessione di lavoro" />
         <p className="team-values">Esperienza<br />Relazioni<br />Prospettiva<br />Risultati</p>
       </section>
@@ -124,7 +124,7 @@ export function HubPage({ hub }) {
     <>
       <PageHero eyebrow={hub.eyebrow} title={hub.title} description={hub.description} />
       <section className="competencies-section light-section" id="page-content">
-        <div className="section-heading"><div><p className="eyebrow">Le aree di intervento</p><h2>{hub.label}</h2><p>Competenze coordinate in un unico percorso, con responsabilità chiare e presidio senior.</p></div><aside><strong>Approccio XCapital</strong><span>Indipendente, concreto, multidisciplinare.</span></aside></div>
+        <div className="section-heading"><div><p className="eyebrow">Le aree di intervento</p><h2>{hub.label}</h2><p>Services coordinati in un unico percorso, con responsabilità chiare e presidio senior.</p></div><aside><strong>Approccio XCapital</strong><span>Indipendente, concreto, multidisciplinare.</span></aside></div>
         <div className="competency-list grid-three">
           {hub.services.map(([title, description, href]) => <Link className="competency" href={href || "/prenota/"} key={title}><Compass size={32} weight="light" aria-hidden="true" /><h3>{title}</h3><p>{description}</p></Link>)}
         </div>
@@ -133,6 +133,17 @@ export function HubPage({ hub }) {
       <ClosingCta title={`Confrontiamoci su ${hub.label}.`} />
     </>
   );
+}
+
+export function ServicesPage() {
+  return <>
+    <PageHero eyebrow="Services" title="Soluzioni finanziarie strategiche per crescite ambiziose." description="Advisory specializzato per operazioni straordinarie, finanza di capitali, M&A, valutazione d’impresa e accesso a un network qualificato." />
+    <section className="services-intro light-section" id="page-content">
+      <div className="section-heading"><div><p className="eyebrow">Come lavoriamo</p><h2>Strategia e execution in ogni fase.</h2><p>La divisione Advisory supporta la crescita delle aziende con soluzioni su misura. XCapital affianca i clienti nelle operazioni di finanza straordinaria, dall’apertura del capitale alle fusioni e acquisizioni, fino alla gestione del rischio e all’ottimizzazione dei modelli di business.</p><p>Un team di esperti e una rete di collaborazioni strategiche combinano conoscenza dei mercati, metodo e tecnologia per costruire risultati concreti e duraturi.</p></div></div>
+      <div className="service-detail-list">{coreServices.map((service) => <article className="service-detail" id={service.id} key={service.id}><span className="service-number">{service.number}</span><div><p className="eyebrow">{service.title}</p><h2>{service.tagline}</h2><p>{service.description}</p>{service.href && <a className="text-link dark-link" href={service.href} target="_blank" rel="noreferrer">Scopri Capital Community <ArrowRight aria-hidden="true" /></a>}</div></article>)}</div>
+    </section>
+    <ClosingCta title="Quale operazione vuoi realizzare?" description="Condividi obiettivi, tempi e contesto: individueremo il service e il team più adatti." />
+  </>;
 }
 
 export function DetailPage({ page }) {
@@ -152,10 +163,10 @@ export function DetailPage({ page }) {
 export function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="Chi siamo" title="Competenze diverse, responsabilità condivisa." description="XCapital è il brand di Delex Capital S.r.l., società indipendente che affianca imprenditori, manager e investitori nelle fasi decisive della crescita." image="/assets/team-collaboration.png" />
+      <PageHero eyebrow="Chi siamo" title="Esperienze diverse, responsabilità condivisa." description="XCapital è il brand di Delex Capital S.r.l., società indipendente che affianca imprenditori, manager e investitori nelle fasi decisive della crescita." image="/assets/team-collaboration.png" />
       <section className="team-section" id="page-content"><div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Esperienza che entra nel merito.</h2><p>Advisory board, senior advisor e specialisti lavorano insieme, combinando visione strategica ed esperienza operativa.</p><Link className="button button-primary" href="/prenota/">Parla con noi <ArrowRight aria-hidden="true" /></Link></div><img src="/assets/hero-team.png" alt="Professionisti XCapital riuniti al tavolo" /><p className="team-values">Indipendenza<br />Rigore<br />Ascolto<br />Impatto</p></section>
-      <section className="people-section light-section" aria-labelledby="team-title"><div className="section-heading"><div><p className="eyebrow">Persone</p><h2 id="team-title">Il team XCapital.</h2><p>Competenze complementari per seguire strategia, finanza, compliance e sviluppo delle opportunità.</p></div></div><div className="people-grid">{teamMembers.map((member) => <article className="person-card" key={member.name}><img src={member.image} alt={member.name} /><div><p className="eyebrow">{member.role}</p><h3>{member.name}</h3><p>{member.description}</p></div></article>)}</div></section>
-      <section className="values-section light-section" aria-labelledby="values-title"><div className="section-heading"><div><p className="eyebrow">Principi cardine</p><h2 id="values-title">I valori che guidano il lavoro.</h2><p>Trasparenza, competenza e responsabilità nelle relazioni con clienti e partner.</p></div></div><div className="values-grid">{values.map(([title, description], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{description}</p></article>)}</div></section>
+      <section className="people-section light-section" aria-labelledby="team-title"><div className="section-heading"><div><p className="eyebrow">Persone</p><h2 id="team-title">Il team XCapital.</h2><p>Professionalità complementari per seguire strategia, finanza, compliance e sviluppo delle opportunità.</p></div></div><div className="people-grid">{teamMembers.map((member) => <article className="person-card" key={member.name}><img src={member.image} alt={member.name} /><div><p className="eyebrow">{member.role}</p><h3>{member.name}</h3><p>{member.description}</p></div></article>)}</div></section>
+      <section className="values-section light-section" aria-labelledby="values-title"><div className="section-heading"><div><p className="eyebrow">Principi cardine</p><h2 id="values-title">I valori che guidano il lavoro.</h2><p>Trasparenza, professionalità e responsabilità nelle relazioni con clienti e partner.</p></div></div><div className="values-grid">{values.map(([title, description], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{description}</p></article>)}</div></section>
       <ClosingCta />
     </>
   );
@@ -207,9 +218,9 @@ export function LegalPage({ type }) {
 }
 
 export function XCapitalPointPage() {
-  return <><PageHero eyebrow="XCapital Point" title="Competenze vicine alle imprese." description="Landing dimostrativa dedicata al programma territoriale e di affiliazione XCapital." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Il programma</p><h2>Una rete con una direzione comune.</h2><p>Modello, requisiti e condizioni devono essere definiti prima della pubblicazione.</p></div></div></section><ClosingCta /></>;
+  return <><PageHero eyebrow="XCapital Point" title="Esperienza vicina alle imprese." description="Landing dimostrativa dedicata al programma territoriale e di affiliazione XCapital." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Il programma</p><h2>Una rete con una direzione comune.</h2><p>Modello, requisiti e condizioni devono essere definiti prima della pubblicazione.</p></div></div></section><ClosingCta /></>;
 }
 
 export function NotFoundPage() {
-  return <><PageHero eyebrow="Errore 404" title="Questa pagina non esiste." description="L’indirizzo potrebbe essere cambiato oppure la risorsa non è più disponibile." cta={false} /><section className="closing-cta" id="page-content"><div><h2>Riparti dalla homepage.</h2><p>Troverai una panoramica delle competenze, del metodo e del team XCapital.</p><Link className="button button-primary" href="/">Torna alla homepage <ArrowRight aria-hidden="true" /></Link></div></section></>;
+  return <><PageHero eyebrow="Errore 404" title="Questa pagina non esiste." description="L’indirizzo potrebbe essere cambiato oppure la risorsa non è più disponibile." cta={false} /><section className="closing-cta" id="page-content"><div><h2>Riparti dalla homepage.</h2><p>Troverai una panoramica dei services, del metodo e del team XCapital.</p><Link className="button button-primary" href="/">Torna alla homepage <ArrowRight aria-hidden="true" /></Link></div></section></>;
 }

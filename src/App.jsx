@@ -8,6 +8,7 @@ import {
   InsightPage,
   LegalPage,
   NotFoundPage,
+  ServicesPage,
   TrackRecordPage,
   XCapitalPointPage,
 } from "./PageTemplates.jsx";
@@ -18,6 +19,7 @@ import { detailPages, normalizePath, serviceHubs } from "./siteRoutes.js";
 const titles = {
   "/": "XCapital | Strategia, capitale, persone",
   "/chi-siamo/": "Chi siamo | XCapital",
+  "/services/": "Services | XCapital",
   "/track-record/": "Track Record | XCapital",
   "/insight/": "Insight e Risorse | XCapital",
   "/education/": "Pubblicazioni | XCapital",
@@ -31,8 +33,9 @@ const titles = {
 };
 
 const descriptions = {
-  "/": "XCapital affianca imprenditori e manager con competenze strategiche, finanziarie e operative.",
-  "/chi-siamo/": "Approccio, competenze e metodo del team XCapital.",
+  "/": "XCapital affianca imprenditori e manager con advisory strategico, finanziario e operativo.",
+  "/chi-siamo/": "Approccio, esperienza e metodo del team XCapital.",
+  "/services/": "I services XCapital per operazioni straordinarie, capitale, M&A, private equity e valutazione d’impresa.",
   "/track-record/": "L'archivio delle operazioni XCapital pubblicabili dopo verifica e autorizzazione.",
   "/insight/": "Analisi, risorse e approfondimenti di XCapital.",
   "/contatti/": "Contatta XCapital per un primo confronto sul tuo progetto.",
@@ -45,6 +48,7 @@ function resolvePage(pathname) {
   const path = normalizePath(pathname);
   if (path === "/") return { key: "home", element: <HomePage /> };
   if (path === "/chi-siamo/") return { key: "about", element: <AboutPage /> };
+  if (path === "/services/") return { key: "services", element: <ServicesPage /> };
 
   const hub = serviceHubs.find((item) => item.path === path);
   if (hub) return { key: hub.path, element: <HubPage hub={hub} /> };
@@ -81,7 +85,7 @@ export function App() {
     const detail = detailPages.find((item) => item.path === path);
     document.title = titles[path] || (hub ? `${hub.label} | XCapital` : detail ? `${detail.title} | XCapital` : path.startsWith("/track-record/") ? "Operazione | XCapital" : "Pagina non trovata | XCapital");
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute("content", descriptions[path] || hub?.description || detail?.description || "Competenze integrate per le decisioni strategiche dell'impresa.");
+    if (metaDescription) metaDescription.setAttribute("content", descriptions[path] || hub?.description || detail?.description || "Services integrati per le decisioni strategiche dell'impresa.");
     document.documentElement.dataset.routeStatus = page.notFound ? "404" : "200";
   }, [page.notFound, pathname]);
 
