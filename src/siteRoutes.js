@@ -131,18 +131,6 @@ export const teamMembers = [
     description: "Contribuisce allo sviluppo strategico e alla supervisione delle principali operazioni, portando una profonda conoscenza del settore finanziario.",
     image: "/assets/team/francesco-consoli.jpg",
   },
-  {
-    name: "Daniele Sani",
-    role: "Analyst",
-    description: "Supporta il team con analisi, studi di mercato e valutazioni finanziarie a supporto delle decisioni strategiche.",
-    image: "/assets/team/daniele-sani.jpg",
-  },
-  {
-    name: "Marco Tomasoni",
-    role: "Origination",
-    description: "Identifica nuove opportunità di business e relazioni strategiche, contribuendo allo sviluppo di XCapital.",
-    image: "/assets/team/marco-tomasoni.jpg",
-  },
 ];
 
 export const awards = [
