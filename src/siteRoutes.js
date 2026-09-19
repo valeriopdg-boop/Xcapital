@@ -313,21 +313,6 @@ export const transactions = [
   { slug: "socopet-secondo-round", client: "Socopet S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 1.000.000,00", image: "/assets/clients/socopet.png" },
 ];
 
-export const publications = [
-  {
-    date: "15 novembre 2024",
-    title: "Adattamento dell’analisi per startup early-stage e late-stage",
-    description: "Come valutare e investire nelle diverse fasi di sviluppo di una startup.",
-    href: "https://xcapital.dev-test.it/adattamento-dellanalisi-per-startup-early-stage-e-late-stage-come-valutare-e-investire-in-ogni-fase-di-sviluppo/",
-  },
-  {
-    date: "25 settembre 2024",
-    title: "SAFE per PMI innovative",
-    description: "Funzionamento, fiscalità e vantaggi rispetto agli strumenti finanziari partecipativi.",
-    href: "https://xcapital.dev-test.it/safe-per-pmi-innovative-funzionamento-fiscalita-e-vantaggi-rispetto-agli-strumenti-finanziari-partecipativi-sfp/",
-  },
-];
-
 export function normalizePath(pathname) {
   if (pathname === "/") return pathname;
   return `${pathname.replace(/\/+$/, "")}/`;

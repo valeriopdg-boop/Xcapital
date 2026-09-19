@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ArrowDown, ArrowRight, Buildings, ChartLineUp, CheckCircle, Compass, Database, Handshake, Leaf, MagnifyingGlass, Rocket, ShareNetwork, ShieldCheck, Target, UsersThree } from "@phosphor-icons/react";
+import { ArrowDown, ArrowRight, Buildings, ChartLineUp, CheckCircle, Compass, Database, Handshake, Leaf, LinkedinLogo, MagnifyingGlass, Rocket, ShareNetwork, ShieldCheck, Target, UsersThree } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
-import { awards, capitalCommunity, companyDetails, coreServices, dealIntelligence, editorialCards, pillars, processes, publications, sectors, serviceHubs, stats, teamMembers, transactions, clientTypes, values } from "./siteRoutes.js";
+import articles from "./generated/articles.json";
+import { awards, capitalCommunity, companyDetails, coreServices, dealIntelligence, editorialCards, pillars, processes, sectors, serviceHubs, stats, teamMembers, transactions, clientTypes, values } from "./siteRoutes.js";
 
 const fallbackNavigation = { cta: { label: "Parla con il team", href: "/prenota/" } };
 const fallbackProofs = [
@@ -216,7 +217,32 @@ export function InsightPage({ active }) {
   const titleByActive = { education: "Pubblicazioni", press: "Blog & News", webinar: "Webinar" };
   const title = titleByActive[active] || "Insight e Risorse";
   const cards = active ? [] : editorialCards;
-  return <><PageHero eyebrow="Risorse" title={title} description="Analisi, incontri e strumenti per affrontare con maggiore consapevolezza le decisioni che contano." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">In evidenza</p><h2>Dall’esperienza di mercato a una voce pubblica.</h2><p>Contenuti pubblicati da Delex Capital per accompagnare valutazioni e decisioni.</p></div></div>{cards.length > 0 && <div className="competency-list grid-three">{cards.map(([cardTitle, description, href]) => <Link className="competency" href={href} key={cardTitle}><Compass size={32} weight="light" aria-hidden="true" /><h3>{cardTitle}</h3><p>{description}</p></Link>)}</div>}<div className="publication-list">{publications.map((publication) => <a className="publication-card" href={publication.href} target="_blank" rel="noreferrer" key={publication.title}><p className="eyebrow">{publication.date}</p><h3>{publication.title}</h3><p>{publication.description}</p><span>Leggi la pubblicazione <ArrowRight aria-hidden="true" /></span></a>)}</div></section><ClosingCta title="Vuoi approfondire un tema?" /></>;
+  return <><PageHero eyebrow="Risorse" title={title} description="Analisi, incontri e strumenti per affrontare con maggiore consapevolezza le decisioni che contano." /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">In evidenza</p><h2>Dall’esperienza di mercato a una voce pubblica.</h2><p>Contenuti pubblicati da Delex Capital per accompagnare valutazioni e decisioni.</p></div></div>{cards.length > 0 && <div className="competency-list grid-three">{cards.map(([cardTitle, description, href]) => <Link className="competency" href={href} key={cardTitle}><Compass size={32} weight="light" aria-hidden="true" /><h3>{cardTitle}</h3><p>{description}</p></Link>)}</div>}{articles.length > 0 ? <div className="publication-list">{articles.map((article) => <Link className="publication-card" href={`/insight/${article.slug}/`} key={article.slug}><p className="eyebrow">{article.date}</p><h3>{article.title}</h3><p>{article.excerpt}</p><span>Leggi l’articolo <ArrowRight aria-hidden="true" /></span></Link>)}</div> : <div className="empty-state"><Compass size={40} weight="light" aria-hidden="true" /><h3>Articoli in preparazione.</h3><p>Il primo contenuto editoriale sarà pubblicato a breve.</p></div>}</section><ClosingCta title="Vuoi approfondire un tema?" /></>;
+}
+
+export function ArticlePage({ slug }) {
+  const article = articles.find((item) => item.slug === slug);
+  if (!article) return <NotFoundPage />;
+  const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${window.location.origin}/insight/${article.slug}/`)}`;
+  return (
+    <>
+      <section className="article-hero" aria-labelledby="article-title">
+        <div className="article-hero-inner">
+          <p className="eyebrow">{article.date || "Insight"}</p>
+          <h1 id="article-title">{article.title}</h1>
+          {article.excerpt && <p className="hero-lead">{article.excerpt}</p>}
+        </div>
+      </section>
+      <section className="article-section light-section" id="page-content">
+        <article className="article-body" dangerouslySetInnerHTML={{ __html: article.html }} />
+        <div className="article-actions">
+          <a className="button button-primary" href={shareUrl} target="_blank" rel="noreferrer"><LinkedinLogo aria-hidden="true" /> Pubblica su LinkedIn</a>
+          <Link className="text-link dark-link" href="/insight/">Tutti gli insight <ArrowRight aria-hidden="true" /></Link>
+        </div>
+      </section>
+      <ClosingCta title="Vuoi approfondire un tema?" />
+    </>
+  );
 }
 
 export function ContactPage({ booking = false }) {

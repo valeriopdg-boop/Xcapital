@@ -249,6 +249,23 @@ h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; }
 .clients-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .clients-grid .competency { min-height: 240px; }
 
+/* Articoli (Insight) */
+.article-hero { padding: clamp(80px, 9vw, 140px) clamp(28px, 5vw, 80px) clamp(55px, 6vw, 90px); background: var(--navy); color: white; }
+.article-hero-inner { max-width: 920px; margin: 0 auto; }
+.article-hero h1 { margin: 14px 0 20px; font-size: clamp(40px, 4.6vw, 68px); line-height: 1.02; letter-spacing: -.03em; }
+.article-hero .hero-lead { margin-bottom: 0; }
+.article-section { padding-top: clamp(55px, 6vw, 85px); padding-bottom: clamp(70px, 8vw, 110px); }
+.article-body { max-width: 780px; margin: 0 auto; color: var(--ink); font-size: 17.5px; line-height: 1.8; }
+.article-body h2 { margin: 48px 0 16px; font-size: clamp(30px, 3vw, 40px); line-height: 1.1; }
+.article-body h3 { margin: 38px 0 12px; font-size: clamp(24px, 2.2vw, 30px); }
+.article-body p { margin-bottom: 22px; }
+.article-body ul, .article-body ol { margin: 0 0 22px; padding-left: 24px; }
+.article-body li { margin-bottom: 8px; }
+.article-body img { margin: 34px auto; border: 1px solid var(--line); }
+.article-body a { color: var(--blue); }
+.article-body blockquote { margin: 34px 0; padding: 6px 0 6px 26px; border-left: 3px solid var(--gold); color: var(--muted); font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; line-height: 1.4; }
+.article-actions { max-width: 780px; margin: 48px auto 0; padding-top: 34px; border-top: 1px solid var(--line); display: flex; align-items: center; flex-wrap: wrap; gap: 26px; }
+
 @media (max-width: 1050px) {
   .site-header { min-height: 76px; }
   .menu-toggle { display: grid; place-items: center; }

@@ -1,0 +1,56 @@
+# Decap CMS — redazione articoli Delex Capital
+#
+# Sviluppo locale: `npm run cms` (proxy git locale) + `npm run dev`,
+# poi aprire http://localhost:5173/admin/
+#
+# Produzione: impostare base_url sull'origine pubblica del sito (dove girano
+# le funzioni /api/auth e /api/callback) e configurare GITHUB_CLIENT_ID /
+# GITHUB_CLIENT_SECRET come variabili ambiente su Vercel.
+
+backend:
+  name: github
+  repo: valeriopdg-boop/Xcapital
+  branch: delex-brand-realignment
+  base_url: https://www.delexcapital.com
+  auth_endpoint: /api/auth
+
+local_backend: true
+locale: it
+media_folder: public/assets/articles
+public_folder: /assets/articles
+
+collections:
+  - name: articles
+    label: Articoli
+    label_singular: Articolo
+    description: Articoli pubblicati nella sezione Insight del sito
+    folder: content/articles
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: Titolo
+        name: title
+        widget: string
+      - label: Data di pubblicazione
+        name: date
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+      - label: Abstract
+        name: excerpt
+        widget: text
+        hint: Breve riassunto mostrato nella lista Insight e nelle anteprime di condivisione.
+      - label: Immagine di copertina
+        name: image
+        widget: image
+        required: false
+      - label: Bozza
+        name: draft
+        widget: boolean
+        default: false
+        hint: Le bozze non vengono pubblicate sul sito.
+      - label: Testo dell'articolo
+        name: body
+        widget: markdown

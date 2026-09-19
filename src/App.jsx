@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import {
   AboutPage,
+  ArticlePage,
   ContactPage,
   DetailPage,
   HomePage,
@@ -13,6 +14,7 @@ import {
 } from "./PageTemplates.jsx";
 import { SiteLayout } from "./SiteLayout.jsx";
 import { useClientLocation } from "./router.jsx";
+import articles from "./generated/articles.json";
 import { detailPages, normalizePath, serviceHubs } from "./siteRoutes.js";
 
 const titles = {
@@ -60,6 +62,9 @@ function resolvePage(pathname) {
   }
 
   if (path === "/insight/") return { key: path, element: <InsightPage /> };
+  if (path.startsWith("/insight/") && path.split("/").filter(Boolean).length === 2) {
+    return { key: path, element: <ArticlePage slug={path.split("/").filter(Boolean)[1]} /> };
+  }
   if (path === "/education/") return { key: path, element: <InsightPage active="education" /> };
   if (path === "/category/press/") return { key: path, element: <InsightPage active="press" /> };
   if (path === "/webinar/") return { key: path, element: <InsightPage active="webinar" /> };
@@ -80,9 +85,10 @@ export function App() {
     const path = normalizePath(pathname);
     const hub = serviceHubs.find((item) => item.path === path);
     const detail = detailPages.find((item) => item.path === path);
-    document.title = titles[path] || (hub ? `${hub.label} | Delex Capital` : detail ? `${detail.title} | Delex Capital` : path.startsWith("/track-record/") ? "Operazione | Delex Capital" : "Pagina non trovata | Delex Capital");
+    const article = path.startsWith("/insight/") ? articles.find((item) => item.slug === path.split("/").filter(Boolean)[1]) : undefined;
+    document.title = titles[path] || (article ? `${article.title} | Delex Capital` : hub ? `${hub.label} | Delex Capital` : detail ? `${detail.title} | Delex Capital` : path.startsWith("/track-record/") ? "Operazione | Delex Capital" : "Pagina non trovata | Delex Capital");
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute("content", descriptions[path] || hub?.description || detail?.description || "Boutique indipendente di advisory per operazioni straordinarie, capitale ed esecuzione strategica.");
+    if (metaDescription) metaDescription.setAttribute("content", descriptions[path] || article?.excerpt || hub?.description || detail?.description || "Boutique indipendente di advisory per operazioni straordinarie, capitale ed esecuzione strategica.");
     document.documentElement.dataset.routeStatus = page.notFound ? "404" : "200";
   }, [page.notFound, pathname]);
 
