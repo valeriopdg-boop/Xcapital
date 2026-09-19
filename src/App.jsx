@@ -10,38 +10,36 @@ import {
   NotFoundPage,
   ServicesPage,
   TrackRecordPage,
-  XCapitalPointPage,
 } from "./PageTemplates.jsx";
 import { SiteLayout } from "./SiteLayout.jsx";
 import { useClientLocation } from "./router.jsx";
 import { detailPages, normalizePath, serviceHubs } from "./siteRoutes.js";
 
 const titles = {
-  "/": "XCapital | Strategia, capitale, persone",
-  "/chi-siamo/": "Chi siamo | XCapital",
-  "/services/": "Services | XCapital",
-  "/track-record/": "Track Record | XCapital",
-  "/insight/": "Insight e Risorse | XCapital",
-  "/education/": "Pubblicazioni | XCapital",
-  "/category/press/": "Blog e News | XCapital",
-  "/webinar/": "Webinar | XCapital",
-  "/contatti/": "Contatti | XCapital",
-  "/prenota/": "Prenota una call | XCapital",
-  "/privacy-policy/": "Privacy Policy | XCapital",
-  "/cookie-policy/": "Cookie Policy | XCapital",
-  "/xcapital-point/": "XCapital Point",
+  "/": "Delex Capital | Independent Advisory. Proprietary Intelligence. Execution.",
+  "/chi-siamo/": "Chi siamo | Delex Capital",
+  "/services/": "Le practice | Delex Capital",
+  "/track-record/": "Track Record | Delex Capital",
+  "/insight/": "Insight e Risorse | Delex Capital",
+  "/education/": "Pubblicazioni | Delex Capital",
+  "/category/press/": "Blog e News | Delex Capital",
+  "/webinar/": "Webinar | Delex Capital",
+  "/contatti/": "Contatti | Delex Capital",
+  "/prenota/": "Prenota una call | Delex Capital",
+  "/privacy-policy/": "Privacy Policy | Delex Capital",
+  "/cookie-policy/": "Cookie Policy | Delex Capital",
 };
 
 const descriptions = {
-  "/": "XCapital affianca imprenditori e manager con advisory strategico, finanziario e operativo.",
-  "/chi-siamo/": "Approccio, esperienza e metodo del team XCapital.",
-  "/services/": "I services XCapital per operazioni straordinarie, capitale, M&A, private equity e valutazione d’impresa.",
-  "/track-record/": "L'archivio delle operazioni XCapital pubblicabili dopo verifica e autorizzazione.",
-  "/insight/": "Analisi, risorse e approfondimenti di XCapital.",
-  "/contatti/": "Contatta XCapital per un primo confronto sul tuo progetto.",
-  "/prenota/": "Richiedi un primo confronto con il team XCapital.",
-  "/privacy-policy/": "Informazioni sul trattamento dei dati personali nel sito XCapital.",
-  "/cookie-policy/": "Informazioni sull'uso di cookie e tecnologie analoghe nel sito XCapital.",
+  "/": "Delex Capital è una boutique indipendente di advisory: M&A, corporate finance, real estate, energy & infrastructure e strategic advisory per il mid-market italiano.",
+  "/chi-siamo/": "Competenze senior, execution integrata e intelligence proprietaria: chi è Delex Capital.",
+  "/services/": "Le practice Delex Capital: M&A advisory, corporate finance, real estate, energy & infrastructure, strategic e growth advisory.",
+  "/track-record/": "Una selezione delle operazioni seguite dal team Delex Capital.",
+  "/insight/": "Analisi, risorse e approfondimenti di Delex Capital.",
+  "/contatti/": "Contatta Delex Capital per un primo confronto sul tuo progetto.",
+  "/prenota/": "Richiedi un primo confronto con il team Delex Capital.",
+  "/privacy-policy/": "Informazioni sul trattamento dei dati personali nel sito Delex Capital.",
+  "/cookie-policy/": "Informazioni sull'uso di cookie e tecnologie analoghe nel sito Delex Capital.",
 };
 
 function resolvePage(pathname) {
@@ -69,7 +67,6 @@ function resolvePage(pathname) {
   if (path === "/prenota/") return { key: path, element: <ContactPage booking /> };
   if (path === "/privacy-policy/") return { key: path, element: <LegalPage type="privacy" /> };
   if (path === "/cookie-policy/") return { key: path, element: <LegalPage type="cookie" /> };
-  if (path === "/xcapital-point/") return { key: path, element: <XCapitalPointPage /> };
 
   return { key: "404", element: <NotFoundPage />, notFound: true };
 }
@@ -83,9 +80,9 @@ export function App() {
     const path = normalizePath(pathname);
     const hub = serviceHubs.find((item) => item.path === path);
     const detail = detailPages.find((item) => item.path === path);
-    document.title = titles[path] || (hub ? `${hub.label} | XCapital` : detail ? `${detail.title} | XCapital` : path.startsWith("/track-record/") ? "Operazione | XCapital" : "Pagina non trovata | XCapital");
+    document.title = titles[path] || (hub ? `${hub.label} | Delex Capital` : detail ? `${detail.title} | Delex Capital` : path.startsWith("/track-record/") ? "Operazione | Delex Capital" : "Pagina non trovata | Delex Capital");
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute("content", descriptions[path] || hub?.description || detail?.description || "Services integrati per le decisioni strategiche dell'impresa.");
+    if (metaDescription) metaDescription.setAttribute("content", descriptions[path] || hub?.description || detail?.description || "Boutique indipendente di advisory per operazioni straordinarie, capitale ed esecuzione strategica.");
     document.documentElement.dataset.routeStatus = page.notFound ? "404" : "200";
   }, [page.notFound, pathname]);
 

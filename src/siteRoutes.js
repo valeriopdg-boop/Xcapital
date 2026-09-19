@@ -1,161 +1,284 @@
 export const serviceHubs = [
   {
-    path: "/growth/",
-    label: "Growth Capital",
-    eyebrow: "Crescita e operazioni straordinarie",
-    title: "Capitale e advisory per accelerare la crescita.",
-    description: "Affianchiamo imprenditori e investitori nelle decisioni che trasformano struttura, valore e traiettoria dell’impresa.",
+    path: "/ma-advisory/",
+    label: "M&A Advisory",
+    eyebrow: "Practice 01",
+    title: "Operazioni di successo, dalla strategia al closing.",
+    description: "Supportiamo imprenditori e investitori in operazioni sell-side e buy-side con un approccio integrato e senior-led, per massimizzare il valore e raggiungere risultati concreti.",
     services: [
-      ["M&A Advisory", "Acquisizioni, cessioni e operazioni straordinarie con un presidio senior."],
-      ["Investment Banking Services", "Strutturazione finanziaria e accesso qualificato al mercato dei capitali."],
-      ["Green Energy", "Finanza e advisory per progetti legati alla transizione energetica.", "/growth/green-energy/"],
-      ["Real Estate", "Valutazione e sviluppo di opportunità immobiliari.", "/growth/real-estate/"],
-      ["Finanza di capitali", "Soluzioni di capitale coerenti con obiettivi e fase aziendale."],
-      ["Enterprise Evaluation", "Valutazioni indipendenti a supporto di scelte e negoziazioni."],
+      ["Sell-side advisory", "Preparazione dell’azienda, equity story, identificazione dei buyer e processo competitivo fino al closing e post-closing."],
+      ["Buy-side advisory", "Strategia di acquisizione, screening di mercato, origination proprietaria e gestione del processo di esecuzione."],
+      ["Negoziazione e strutturazione", "LOI, termini e struttura dell’operazione, con supporto alla negoziazione in ogni fase."],
+      ["Coordinamento due diligence", "Coordinamento della due diligence e dei workstream specialistici verso il closing."],
     ],
   },
   {
-    path: "/advisory/",
-    label: "Advisory strategico",
-    eyebrow: "Scelte informate",
-    title: "Strategia che diventa direzione operativa.",
-    description: "Costruiamo percorsi strategici misurabili, collegando scenario competitivo, organizzazione e capacità di esecuzione.",
+    path: "/corporate-finance/",
+    label: "Corporate Finance",
+    eyebrow: "Practice 02",
+    title: "Soluzioni di capitale su misura per crescere.",
+    description: "Strutturiamo soluzioni di capitale su misura per sostenere crescita, acquisizioni e sviluppo strategico, ottimizzando la struttura finanziaria e accelerando i piani di crescita.",
     services: [
-      ["Strategia competitiva e marketing", "Posizionamento, priorità e piani di crescita sostenibili."],
-      ["Trasformazione aziendale", "Modelli operativi, governance e processi pronti a evolvere."],
-      ["Internazionalizzazione", "Selezione dei mercati e costruzione del percorso di ingresso."],
-      ["Advisory pre-deal", "Analisi strategica prima di un investimento o di un’operazione."],
-      ["Fractional management", "Professionalità executive attivate sul bisogno e sugli obiettivi."],
-      ["Legal advisory", "Coordinamento specialistico a supporto delle decisioni strategiche."],
+      ["Equity Raising", "Ricerca di investitori e strutturazione di operazioni di equity per crescita, sviluppo e rafforzamento patrimoniale."],
+      ["Debt Advisory", "Assistenza nei rapporti con banche e finanziatori per linee di debito, rifinanziamenti e ottimizzazione della struttura finanziaria."],
+      ["Growth Capital", "Soluzioni di funding dedicate a piani di espansione, investimenti industriali, sviluppo commerciale e consolidamento competitivo."],
+      ["Acquisition Finance", "Strutturazione di soluzioni finanziarie a supporto di acquisizioni strategiche, MBO, LBO e operazioni di crescita per linee esterne."],
+      ["Structured Finance", "Approccio tailor-made per operazioni complesse, strumenti partecipativi, bond, green bond e situazioni speciali."],
+      ["Business Planning & Modelling", "Elaborazione di business plan, analisi finanziarie e modelli previsionali a supporto di decisioni, investitori e processi di funding."],
     ],
   },
   {
-    path: "/finanza/",
-    label: "Finanza e Fundraising",
-    eyebrow: "Capitale su misura",
-    title: "La struttura finanziaria giusta per ogni ambizione.",
-    description: "Prepariamo l’impresa all’incontro con il capitale e accompagniamo ogni fase del percorso finanziario.",
+    path: "/real-estate/",
+    label: "Real Estate",
+    eyebrow: "Practice 03",
+    title: "Valorizzare gli asset, attrarre gli investitori giusti.",
+    description: "Affianchiamo proprietari, investitori e operatori nella valorizzazione, strutturazione e vendita di asset immobiliari e hospitality, con un approccio selettivo e riservato fino al closing.",
     services: [
-      ["Fundraising Equity & Debt", "Strategia, materiali e processo per raccogliere capitale."],
-      ["Private Equity", "Preparazione e gestione del dialogo con investitori istituzionali."],
-      ["Debt Advisory", "Analisi e negoziazione di soluzioni di debito coerenti."],
-      ["Finanza agevolata", "Individuazione e gestione delle opportunità disponibili."],
+      ["Hospitality & Hotels", "Mandati relativi a hotel, resort, boutique hotel e asset hospitality con componente immobiliare e gestionale."],
+      ["Trophy & Prime Assets", "Valorizzazione e posizionamento di asset iconici, prime properties e opportunità ad alto standing."],
+      ["Commercial Real Estate", "Supporto su asset commerciali, mixed-use, direzionali e immobili a reddito."],
+      ["Investor Targeting", "Individuazione mirata di investitori, operatori e controparti attraverso attività off-market e network qualificato."],
+      ["Transaction Strategy", "Definizione della strategia di vendita, teaser, materiale informativo, gestione dei contatti e negoziazione."],
+      ["Development & Special Situations", "Supporto su development opportunities, asset da riposizionare, asset + operating company e situazioni complesse."],
     ],
   },
   {
-    path: "/business-development/",
-    label: "Business Development",
-    eyebrow: "Nuove opportunità",
-    title: "Dalla strategia commerciale alla presenza sul mercato.",
-    description: "Trasformiamo il potenziale in pipeline, partnership e sistemi di sviluppo replicabili.",
+    path: "/energy-infrastructure/",
+    label: "Energy & Infrastructure",
+    eyebrow: "Practice 04",
+    title: "Investiamo nel futuro sostenibile.",
+    description: "Affianchiamo operatori, sviluppatori e investitori nella realizzazione di progetti energetici e infrastrutturali che creano valore, sicurezza energetica e impatto positivo per le comunità e il territorio.",
     services: [
-      ["Sviluppo commerciale", "Architettura dell’offerta, pipeline e presidio delle opportunità."],
-      ["Go to market", "Scelte di canale, mercato e priorità commerciali."],
-      ["Start-up studio", "Validazione, lancio e accelerazione di nuove iniziative."],
-      ["Comunicazione e Brand", "Posizionamento, identità e contenuti per sostenere il business.", "/business-development/comunicazione/"],
+      ["BESS & Storage", "Sistemi di accumulo elettrochimico per la stabilità della rete, l’integrazione delle rinnovabili e l’ottimizzazione dei flussi di energia."],
+      ["Biogas & Biometano", "Impianti di produzione di biogas e biometano per la transizione energetica e la valorizzazione delle risorse locali."],
+      ["Agrivoltaico & Rinnovabili", "Sviluppo di progetti agrivoltaici e di impianti rinnovabili integrati per una produzione efficiente e sostenibile."],
+      ["Water & Environmental Infrastructure", "Soluzioni infrastrutturali per il ciclo idrico e la gestione ambientale a supporto dei territori e delle comunità."],
+      ["M&A & Transactions", "Acquisizione, cessione e valorizzazione di progetti, aziende e asset strategici nel settore."],
+      ["Project & Structured Finance", "Supporto alla bancabilità dei progetti e alla definizione della struttura finanziaria ottimale."],
     ],
   },
   {
-    path: "/coaching-benessere/",
-    label: "Coaching e Benessere",
-    eyebrow: "Persone e organizzazioni",
-    title: "Leadership e benessere per risultati sostenibili.",
-    description: "Aiutiamo leader e team a crescere, attraversare il cambiamento e lavorare con maggiore efficacia.",
+    path: "/strategic-advisory/",
+    label: "Strategic & Fractional Advisory",
+    eyebrow: "Practice 05",
+    title: "Preparare le imprese alla crescita, al capitale e alle operazioni straordinarie.",
+    description: "Affianchiamo imprenditori e management con competenze strategiche e operative per rafforzare il posizionamento competitivo, migliorare la performance e creare valore nel tempo.",
     services: [
-      ["Executive Coaching", "Percorsi individuali per decisioni, leadership e impatto."],
-      ["Benessere organizzativo", "Programmi dedicati a energia, qualità del lavoro e cultura.", "/coaching-benessere/benessere/"],
-      ["HR Strategy", "Persone, ruoli e organizzazione allineati alla strategia."],
-      ["Passaggio generazionale", "Accompagnamento delle persone e della governance nel cambiamento."],
+      ["Strategic Assessment", "Analisi approfondita del business, del mercato e del posizionamento competitivo."],
+      ["Business Planning", "Piani industriali e finanziari solidi e realistici per guidare la crescita e attrarre capitali."],
+      ["Growth Strategy", "Definizione di strategie di sviluppo organico e per linee esterne e creazione di valore."],
+      ["Financial & Organizational Readiness", "Rafforzamento della struttura finanziaria, dei processi e della governance in ottica di scalabilità e operazioni."],
+      ["Fractional Executive Support", "Manager esperti on-demand per guidare funzioni chiave e progetti strategici."],
+      ["M&A / Capital Raising Preparation", "Prepariamo l’azienda a operazioni di M&A o a raccogliere capitali nelle migliori condizioni."],
+    ],
+  },
+  {
+    path: "/growth-venture/",
+    label: "Growth & Venture Advisory",
+    eyebrow: "Practice 06",
+    title: "Imprese pronte a crescere, raccogliere capitale e scalare.",
+    description: "Affianchiamo startup innovative, scale-up e imprenditori nella definizione del percorso di crescita, nella raccolta di capitale e nella creazione di strutture solide e sostenibili.",
+    services: [
+      ["Business Plan & Financial Modelling", "Piani industriali solidi e modelli finanziari robusti per guidare decisioni e attrarre investitori."],
+      ["Fundraising Strategy", "Strategia di raccolta capitale e identificazione dei partner finanziari più adatti allo stadio di crescita."],
+      ["Equity Structure & Governance", "Definizione di strutture azionarie e meccanismi di governance per allineare interessi e crescita."],
+      ["Investor Readiness", "Posizionamento, pitch deck, reporting e processi per aumentare l’appeal verso gli investitori."],
+      ["Capital Raising", "Supporto in round di equity e strumenti alternativi di capitale per finanziare la crescita."],
+      ["Public Incentives & Funding", "Individuazione e gestione di bandi e agevolazioni per massimizzare le risorse disponibili."],
+      ["Work for Equity & Strategic Support", "Piani di work for equity e affiancamento continuo a team e founder."],
     ],
   },
 ];
 
 export const coreServices = [
   {
-    id: "investment-banking-services",
+    id: "ma-advisory",
     number: "01",
-    title: "Investment Banking Services",
-    tagline: "Realizza operazioni straordinarie senza confini",
-    description: "Che si tratti della progettazione strategica del deal o dello scouting delle target d’interesse, Delex Capital assiste le aziende interessate a operazioni straordinarie con particolare focus su crescita per acquisizione, diversificazione, integrazione di filiera e internazionalizzazione. L’assistenza copre tutte le fasi dell’operazione, dall’ideazione al closing, anche con riferimento alla consulenza nella raccolta di equity e alla formazione e gestione di club deal.",
+    title: "M&A Advisory",
+    tagline: "Dalla strategia al closing",
+    description: "Supportiamo imprenditori e investitori in operazioni sell-side e buy-side: preparazione dell’azienda, equity story, identificazione delle controparti, negoziazione, coordinamento della due diligence e supporto fino al closing. Un approccio integrato e senior-led per massimizzare il valore e raggiungere risultati concreti.",
+    href: "/ma-advisory/",
   },
   {
-    id: "supporto-alla-finanza-di-capitali",
+    id: "corporate-finance",
     number: "02",
-    title: "Supporto alla Finanza di Capitali",
-    tagline: "Guida strategica per il successo in borsa",
-    description: "Delex Capital opera in qualità di advisor finanziario nei progetti di listing sui principali mercati regolamentati europei e statunitensi. Il supporto nelle operazioni si estende a ogni fase, dalla selezione e coordinamento dei consulenti al private placement.",
+    title: "Corporate Finance & Capital Solutions",
+    tagline: "Soluzioni di capitale su misura",
+    description: "Strutturiamo soluzioni di capitale su misura per sostenere crescita, acquisizioni e sviluppo strategico: equity raising, debt advisory, growth capital, acquisition finance, structured finance e business planning. Un approccio integrato alla finanza straordinaria per ottimizzare la struttura finanziaria e accelerare i piani di crescita.",
+    href: "/corporate-finance/",
   },
   {
-    id: "ma-private-equity",
+    id: "real-estate",
     number: "03",
-    title: "M&A – Private Equity",
-    tagline: "Potenzia la crescita con strategie mirate",
-    description: "La consulenza strategica di Corporate Finance è alla base dell’ideazione e della successiva realizzazione di operazioni finalizzate all’ingresso di capitali, sia di rischio sia di debito. In qualità di advisor specializzato e supportato da una rete di referenziatori qualificati, Delex Capital assiste le aziende nelle emissioni obbligazionarie e di minibond, nel bond private placement, nella strutturazione e gestione di strumenti ibridi e mezzanini e nella raccolta di equity.",
+    title: "Real Estate Advisory",
+    tagline: "Valorizzazione e vendita di asset immobiliari e hospitality",
+    description: "Affianchiamo proprietari, investitori e operatori nella valorizzazione, strutturazione e vendita di asset immobiliari e hospitality: dagli hotel ai trophy asset, dal commercial real estate ai progetti di sviluppo e alle situazioni speciali. Un approccio selettivo e riservato per attrarre investitori qualificati e accompagnare l’operazione fino al closing.",
+    href: "/real-estate/",
   },
   {
-    id: "enterprise-valuation",
+    id: "energy-infrastructure",
     number: "04",
-    title: "Enterprise Valuation",
-    tagline: "Precisione e solidità per il tuo valore",
-    description: "Un’operazione di finanza straordinaria deve partire da una enterprise valuation corretta, affidabile e tecnicamente rigorosa. Delex Capital eroga servizi di valutazione d’impresa sia in relazione alle operazioni nelle quali interviene come advisor, sia a supporto di altri operatori quali studi professionali, fondi d’investimento e banche d’affari.",
+    title: "Energy & Infrastructure",
+    tagline: "Investiamo nel futuro sostenibile",
+    description: "Affianchiamo operatori, sviluppatori e investitori nella realizzazione di progetti energetici e infrastrutturali: BESS e storage, biogas e biometano, agrivoltaico e rinnovabili, infrastrutture idriche e ambientali. M&A, capital raising, project finance e advisory strategica per progetti che creano valore e impatto positivo per le comunità e il territorio.",
+    href: "/energy-infrastructure/",
   },
   {
-    id: "capital-community",
+    id: "strategic-advisory",
     number: "05",
-    title: "Capital Community",
-    tagline: "Connessioni strategiche per opportunità globali",
-    description: "Delex Capital è tra i promotori della Capital Community, un’aggregazione di advisor e club deal che condividono principi, visione e valori. La rete moltiplica le possibilità di perfezionamento delle operazioni e aumenta le opportunità di accesso ai migliori deal sul mercato.",
-    href: "https://capitalcommunity.it/",
+    title: "Strategic & Fractional Advisory",
+    tagline: "Preparare le imprese alla crescita e alle operazioni",
+    description: "Affianchiamo imprenditori e management con competenze strategiche e operative: strategic assessment, business planning, growth strategy, financial & organizational readiness, fractional executive support e preparazione a operazioni di M&A e capital raising. Creiamo le condizioni per l’operazione, prima ancora di eseguirla.",
+    href: "/strategic-advisory/",
+  },
+  {
+    id: "growth-venture",
+    number: "06",
+    title: "Growth & Venture Advisory",
+    tagline: "Imprese pronte a crescere, raccogliere capitale e scalare",
+    description: "Affianchiamo startup innovative, scale-up e imprenditori nella definizione del percorso di crescita, nella raccolta di capitale e nella creazione di strutture solide e sostenibili: business plan e financial modelling, fundraising strategy, equity structure, investor readiness, incentivi pubblici e work for equity.",
+    href: "/growth-venture/",
   },
 ];
 
-export const detailPages = [
-  { path: "/growth/green-energy/", eyebrow: "Growth Capital", title: "Green Energy", description: "Advisory e finanza per iniziative nella transizione energetica, dall’analisi del progetto alla strutturazione del capitale.", capabilities: ["Valutazione del progetto", "Strutturazione finanziaria", "Ricerca di investitori", "Supporto alla negoziazione"] },
-  { path: "/growth/real-estate/", eyebrow: "Growth Capital", title: "Real Estate", description: "Supporto strategico e finanziario per operazioni e progetti immobiliari ad alto potenziale.", capabilities: ["Analisi dell’opportunità", "Business planning", "Capital structure", "Partner search"] },
-  { path: "/business-development/comunicazione/", eyebrow: "Business Development", title: "Comunicazione e Brand", description: "Identità, reputazione e contenuti collegati agli obiettivi di crescita dell’impresa.", capabilities: ["Brand identity e positioning", "PR e media relations", "Content marketing", "Social media strategy", "Comunicazione interna"] },
-  { path: "/coaching-benessere/benessere/", eyebrow: "Coaching e Benessere", title: "Benessere organizzativo", description: "Programmi concreti per migliorare energia, relazioni e qualità del lavoro nelle organizzazioni.", capabilities: ["Assessment", "Programmi per i team", "Workshop e formazione", "Misurazione dei risultati"] },
+export const detailPages = [];
+
+export const pillars = [
+  {
+    id: "advisory",
+    title: "Advisory",
+    description: "Competenze finanziarie e strategiche per guidare decisioni complesse e operazioni di successo.",
+  },
+  {
+    id: "origination",
+    title: "Origination",
+    description: "Ricerca attiva e strutturata di target, investitori e opportunità off-market.",
+  },
+  {
+    id: "intelligence",
+    title: "Intelligence",
+    description: "Database proprietario in continua evoluzione che accumula conoscenza e alimenta il nostro vantaggio competitivo.",
+  },
+  {
+    id: "distribution",
+    title: "Distribution",
+    description: "Network qualificato e piattaforma Capital Community per la diffusione mirata delle opportunità.",
+  },
 ];
+
+export const operatingModel = [
+  ["01", "Comprendere", "Ascoltiamo l’imprenditore o l’investor per comprendere obiettivi, priorità e fattori critici di successo."],
+  ["02", "Analizzare", "Analizziamo il business, i numeri, il mercato, gli asset e il posizionamento competitivo."],
+  ["03", "Posizionare", "Definiamo la value story, i driver di valore, la strategia e la struttura dell’operazione."],
+  ["04", "Identificare", "Identifichiamo e selezioniamo i buyer, i target, gli investitori, i lender e le controparti più adatte."],
+  ["05", "Attivare", "Attiviamo contatti diretti, proprietari e qualificati per generare opportunità concrete."],
+  ["06", "Negoziare", "Gestiamo NDA, manifestazioni di interesse, LOI e le principali condizioni per creare valore e allineamento."],
+  ["07", "Eseguire", "Coordiniamo due diligence, finanziamenti, documentazione e workstream verso il closing."],
+  ["08", "Chiudere", "Affianchiamo il cliente fino al completamento dell’operazione."],
+];
+
+export const stats = [
+  { value: "33", label: "Mandati attivi", note: "Dati al 30 giugno 2026" },
+  { value: "50+", label: "Operazioni gestite" },
+  { value: "100+", label: "Mandati e operazioni" },
+  { value: "13+", label: "Aree di settore" },
+  { value: "20+", label: "Anni di esperienza combinata" },
+  { value: "80+", label: "Contatti qualificati al mese" },
+];
+
+export const dealIntelligence = {
+  domains: [
+    "Aziende & target",
+    "Investitori & fondi",
+    "Decision maker",
+    "Operazioni & comparables",
+    "Advisor & operatori di mercato",
+    "Storico contatti & risultati",
+  ],
+  benefits: [
+    ["Maggiore precisione", "Identifichiamo i target e gli investitori più rilevanti in modo mirato e veloce."],
+    ["Time to market ridotto", "Riduciamo i tempi di ricerca e aumentiamo l’efficacia delle attività di outreach."],
+    ["Insight e contesto", "Trasformiamo i dati in insight e contesto per decisioni più consapevoli."],
+    ["Vantaggio competitivo", "Un’intelligence proprietaria che ci rende più efficaci oggi e domani."],
+  ],
+};
+
+export const capitalCommunity = {
+  categories: [
+    "Opportunità M&A",
+    "Real Estate & Hospitality",
+    "Energy & Infrastructure",
+    "Opportunità di crescita e investimento",
+  ],
+  qualities: [
+    "Rete internazionale",
+    "Investitori qualificati",
+    "Massima riservatezza",
+    "Matching su misura",
+    "Processo rapido ed efficiente",
+  ],
+};
+
+export const sectors = [
+  "Industrial & Manufacturing",
+  "Business Services",
+  "Technology & Software",
+  "Healthcare",
+  "Consumer & Retail",
+  "Home & Professional Care",
+  "Water & Environmental Services",
+  "Logistics",
+  "Hospitality",
+  "Real Estate",
+  "Renewable Energy",
+  "BESS & Biometano",
+  "Marine & Premium Assets",
+];
+
+export const clientTypes = [
+  ["Imprenditori & family business", "PMI e aziende private che affrontano vendita, crescita, passaggio generazionale o apertura del capitale."],
+  ["Aziende industriali", "Società alla ricerca di acquisizioni, consolidamento o crescita per linee esterne."],
+  ["Private Equity, VC & investitori", "Fondi, holding e investitori alla ricerca di opportunità di investimento o supporto nell’origination."],
+  ["Real estate owners & investors", "Proprietari, investitori e operatori di asset immobiliari, hospitality e progetti di sviluppo."],
+  ["Developers & infrastructure sponsors", "Operatori di energia rinnovabile, infrastrutture, BESS, biometano, agrivoltaico e utilities."],
+];
+
+export const processes = operatingModel;
 
 export const editorialCards = [
   ["Pubblicazioni", "Analisi e strumenti per leggere scenari, capitale e trasformazione.", "/education/"],
-  ["Blog & News", "Aggiornamenti, punti di vista e novità dal team XCapital.", "/category/press/"],
+  ["Blog & News", "Aggiornamenti, punti di vista e novità dal team Delex Capital.", "/category/press/"],
   ["Webinar", "Conversazioni con esperti su temi che incidono sulle decisioni.", "/webinar/"],
 ];
 
-export const processes = [
-  ["01", "Ascolto", "Mettiamo a fuoco contesto, ambizione e vincoli."],
-  ["02", "Diagnosi", "Costruiamo una lettura condivisa e le priorità."],
-  ["03", "Esecuzione", "Lavoriamo al fianco del team sulle azioni decisive."],
-  ["04", "Misurazione", "Verifichiamo risultati e prossime scelte."],
-];
-
-// Contenuti pubblici recuperati dalla demo xcapital.dev-test.it.
-// Sono esclusi i campi chiaramente provvisori (Lorem ipsum, nomi/email placeholder e KPI fittizi).
 export const companyDetails = {
+  brandName: "Delex Capital",
   legalName: "Delex Capital S.r.l.",
-  address: "via Creta, 26 – 25124 Brescia",
+  address: "Via Creta, 26 – 25124 Brescia",
+  offices: "Brescia · Fidenza",
   phone: "+39 030 2423238",
   phoneHref: "tel:+390302423238",
-  email: "segreteria@delex.legal",
-  emailHref: "mailto:segreteria@delex.legal",
+  email: "info@delexcapital.com",
+  emailHref: "mailto:info@delexcapital.com",
+  website: "www.delexcapital.com",
+  websiteHref: "https://www.delexcapital.com/",
   communityHref: "https://capitalcommunity.it/",
 };
 
 export const values = [
-  ["Trasparenza", "Operiamo con chiarezza in ogni fase, costruendo relazioni basate sulla fiducia e sull’integrità."],
-  ["Innovazione", "Utilizziamo tecnologia e idee nuove per affrontare le sfide del settore finanziario."],
-  ["Eccellenza", "Manteniamo standard qualitativi elevati in ogni progetto e servizio."],
-  ["Orientamento al cliente", "Ascoltiamo le esigenze e costruiamo strategie coerenti con gli obiettivi specifici dell’impresa."],
-  ["Integrità", "Ogni decisione riflette responsabilità, correttezza e principi etici."],
-  ["Sostenibilità", "Promuoviamo soluzioni attente all’impatto di lungo periodo."],
-  ["Collaborazione", "Lavoriamo in sinergia con clienti e partner per ottenere risultati migliori."],
+  ["Indipendenza", "Siamo una boutique indipendente, senza vincoli di prodotto o logiche bancarie. Il nostro unico obiettivo è il successo del cliente."],
+  ["Senior-led", "I professionisti senior sono direttamente coinvolti in ogni mandato, garantendo esperienza, giudizio e responsabilità."],
+  ["Execution driven", "Il nostro valore non è un report, ma portare l’operazione a buon fine, creando valore concreto e duraturo."],
+  ["Integrità e riservatezza", "Ogni decisione riflette responsabilità, correttezza e la massima riservatezza in ogni fase dell’incarico."],
+  ["Focus sulla creazione di valore", "Non ci limitiamo a trovare opportunità: costruiamo le condizioni per trasformarle in risultati."],
+  ["Visione globale, esecuzione locale", "Esperienza cross-border tra Italia e mercati internazionali, con radicamento nel territorio."],
 ];
 
 export const teamMembers = [
   {
     name: "Fabio Carretta",
     role: "Managing Partner",
-    description: "Guida la strategia complessiva di XCapital, con esperienza nell’investment banking e nella gestione di operazioni finanziarie complesse.",
+    description: "Guida la strategia complessiva di Delex Capital, con esperienza nell’investment banking e nella gestione di operazioni finanziarie complesse.",
     image: "/assets/team/fabio-carretta.jpg",
   },
   {
@@ -173,9 +296,9 @@ export const teamMembers = [
 ];
 
 export const awards = [
-  { year: "2023", title: "Finance Monthly M&A Awards", description: "DELEX Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2023.jpg" },
-  { year: "2022", title: "Finance Monthly M&A Awards", description: "DELEX Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2022.jpg" },
-  { year: "2021", title: "Finance Monthly M&A Awards", description: "DELEX Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2021.jpg" },
+  { year: "2023", title: "Finance Monthly M&A Awards", description: "Delex Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2023.jpg" },
+  { year: "2022", title: "Finance Monthly M&A Awards", description: "Delex Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2022.jpg" },
+  { year: "2021", title: "Finance Monthly M&A Awards", description: "Delex Capital Adviser of the Year per il settore Corporate Finance.", image: "/assets/awards/finance-monthly-2021.jpg" },
 ];
 
 export const transactions = [

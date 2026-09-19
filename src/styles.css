@@ -188,6 +188,67 @@ h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; }
 .dialog-success { min-height: 340px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
 .dialog-success > svg { color: var(--blue); margin-bottom: 22px; }
 
+/* Micro-interactions */
+.button, .text-link, .competency, .challenge-card, .transaction-card, .publication-card, .pillar-card { transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .25s ease; }
+.competency:hover svg, .pillar-card:hover svg { transform: translateY(-2px); }
+.competency svg, .pillar-card svg { transition: transform .25s ease; }
+
+/* Pillars (Beyond Traditional Advisory) */
+.pillars-section { padding-top: clamp(80px, 9vw, 135px); padding-bottom: clamp(70px, 8vw, 120px); }
+.pillars-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pillar-card { min-height: 260px; margin-left: -1px; padding: 38px 28px 32px; border: 1px solid var(--line); background: white; display: flex; flex-direction: column; align-items: flex-start; }
+.pillar-card:first-child { margin-left: 0; }
+.pillar-card svg { color: var(--blue); margin-bottom: 22px; }
+.pillar-card h3 { margin-bottom: 12px; font-size: 26px; }
+.pillar-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.pillar-card:hover { background: var(--blue-light); border-color: var(--blue); position: relative; z-index: 1; }
+
+/* Stats band */
+.stats-band { padding: clamp(55px, 6vw, 85px) clamp(28px, 5vw, 80px); background: var(--navy); color: white; }
+.stats-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 34px; }
+.stats-grid article { padding-left: 22px; border-left: 2px solid var(--gold); }
+.stats-grid strong { display: block; margin-bottom: 8px; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(44px, 4.4vw, 66px); line-height: 1; letter-spacing: -.02em; }
+.stats-grid span { color: #b6c7d5; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; line-height: 1.5; }
+.stats-note { max-width: 1320px; margin: 30px auto 0; color: #7e93a5; font-size: 11px; text-transform: uppercase; letter-spacing: .14em; }
+
+/* Operating model: 8 steps */
+.method-steps.model-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 52px; }
+.method-steps.model-grid li::before { display: none; }
+.method-steps.model-grid p { max-width: 240px; }
+
+/* Deal Intelligence (navy) */
+.di-section { padding: clamp(80px, 9vw, 135px) clamp(28px, 5vw, 80px); background: var(--navy); color: white; }
+.di-section .section-heading h2 { color: white; }
+.di-section .section-heading > div > p:last-child { color: #c4d0d9; }
+.di-section .eyebrow { color: #62b7ef; }
+.di-section .section-heading aside { color: #afc1ce; }
+.di-domains { max-width: 1320px; margin: 0 auto 48px; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; list-style: none; }
+.di-domains li { padding: 10px 18px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; color: #dceeff; font-size: 13px; }
+.di-benefits { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+.di-benefits article { padding: 28px 26px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.04); }
+.di-benefits h3 { margin-bottom: 10px; color: white; font-size: 23px; }
+.di-benefits p { margin: 0; color: #b6c7d5; font-size: 13.5px; line-height: 1.6; }
+
+/* Capital Community */
+.cc-section { padding-top: clamp(80px, 9vw, 135px); padding-bottom: clamp(70px, 8vw, 120px); }
+.cc-grid { max-width: 1320px; margin: 0 auto 34px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 44px; align-items: start; }
+.cc-categories { margin: 0; padding: 0; display: grid; gap: 14px; list-style: none; }
+.cc-categories li { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border: 1px solid var(--line); background: white; font-family: "Cormorant Garamond", Georgia, serif; font-size: 22px; font-weight: 700; }
+.cc-categories svg { color: var(--blue); flex: 0 0 auto; }
+.cc-qualities { margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; list-style: none; align-content: flex-start; }
+.cc-qualities li { padding: 9px 16px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--muted); font-size: 12.5px; }
+.cc-section > .text-link { max-width: 1320px; margin: 0 auto; display: flex; }
+
+/* Sectors */
+.sectors-section { padding-top: clamp(75px, 8vw, 120px); padding-bottom: clamp(75px, 8vw, 120px); }
+.sectors-cloud { max-width: 1320px; margin: 0 auto; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; list-style: none; }
+.sectors-cloud li { padding: 12px 20px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--ink); font-size: 14px; transition: border-color .25s ease, background-color .25s ease; }
+.sectors-cloud li:hover { border-color: var(--blue); background: var(--blue-light); }
+
+/* Client types (Chi siamo) */
+.clients-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.clients-grid .competency { min-height: 240px; }
+
 @media (max-width: 1050px) {
   .site-header { min-height: 76px; }
   .menu-toggle { display: grid; place-items: center; }
@@ -205,6 +266,15 @@ h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; }
   .competency:nth-child(n+4) { margin-top: -1px; }
   .team-section { grid-template-columns: 1fr 1.15fr; }
   .team-values { display: none; }
+  .pillars-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pillar-card:nth-child(n+3) { margin-top: -1px; }
+  .pillar-card:nth-child(odd) { margin-left: 0; }
+  .stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .method-steps.model-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .di-benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cc-grid { grid-template-columns: 1fr; }
+  .clients-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .clients-grid .competency:nth-child(n+4) { margin-top: -1px; }
   .site-footer { grid-template-columns: 1fr auto; }
   .site-footer nav { display: none; }
   .footer-meta { flex-wrap: wrap; justify-content: flex-end; }
@@ -246,6 +316,13 @@ h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; }
   .challenge-card, .challenge-card:nth-child(even), .challenge-card:nth-child(n+3) { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .challenge-card:last-child { border-bottom: 0; }
   .award-grid, .transaction-grid, .people-grid, .values-grid, .publication-list, .contact-details, .transaction-detail { grid-template-columns: 1fr; }
+  .pillars-grid, .di-benefits { grid-template-columns: 1fr; }
+  .pillar-card { min-height: 0; margin: -1px 0 0; }
+  .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
+  .method-steps.model-grid { grid-template-columns: 1fr; }
+  .method-steps.model-grid li { min-height: 0; padding: 0 0 26px 74px; }
+  .clients-grid { grid-template-columns: 1fr; }
+  .clients-grid .competency:nth-child(n+4) { margin-top: -1px; }
   .values-grid article:nth-child(odd), .contact-details > * { border-right: 0; }
   .contact-details > * { border-bottom: 1px solid var(--line); }
   .contact-details > *:last-child { border-bottom: 0; }

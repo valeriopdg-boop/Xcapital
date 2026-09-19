@@ -1,8 +1,9 @@
 /**
- * Contenuti approvati della homepage XCapital.
+ * Contenuti approvati del sito Delex Capital.
  *
  * Il modulo mantiene copy e destinazioni separati dai componenti React, così
  * App.jsx può renderizzare le sezioni senza duplicare contenuti o slug.
+ * Fonte primaria: Company Profile Delex Capital, settembre 2026.
  */
 
 /** @typedef {{ label: string, href: string }} Link */
@@ -15,7 +16,7 @@
 
 /**
  * @typedef {{
- *   id: 'senior-expertise' | 'integrated-vision' | 'direct-commitment',
+ *   id: 'independent' | 'senior-led' | 'execution-driven',
  *   title: string,
  *   description: string
  * }} ProofPoint
@@ -23,7 +24,7 @@
 
 /**
  * @typedef {{
- *   id: 'growth-capital' | 'strategic-advisory' | 'finance-fundraising' | 'business-development' | 'coaching-wellbeing',
+ *   id: 'ma-advisory' | 'corporate-finance' | 'real-estate' | 'energy-infrastructure' | 'strategic-advisory' | 'growth-venture',
  *   title: string,
  *   description: string,
  *   href: string
@@ -32,7 +33,7 @@
 
 /**
  * @typedef {{
- *   number: '01' | '02' | '03' | '04',
+ *   number: string,
  *   title: string,
  *   description: string
  * }} MethodStep
@@ -42,7 +43,7 @@
 export const navigation = {
   items: [
     { id: 'about', label: 'Chi siamo', href: '/chi-siamo/' },
-    { id: 'competencies', label: 'Services', href: '/services/' },
+    { id: 'competencies', label: 'Practice', href: '/services/' },
     { id: 'method', label: 'Metodo', href: '#metodo' },
     { id: 'track-record', label: 'Track Record', href: '/track-record/' },
     { id: 'resources', label: 'Risorse', href: '/insight/' },
@@ -53,102 +54,96 @@ export const navigation = {
 /** @type {ProofPoint[]} */
 export const proofPoints = [
   {
-    id: 'senior-expertise',
-    title: 'Senior expertise',
-    description: 'Un team con esperienza operativa e visione strategica.',
+    id: 'independent',
+    title: 'Indipendenti',
+    description: 'Una boutique indipendente, senza vincoli di prodotto o logiche bancarie.',
   },
   {
-    id: 'integrated-vision',
-    title: 'Visione integrata',
-    description: 'Strategia, capitale, sviluppo e persone in un\u2019unica prospettiva.',
+    id: 'senior-led',
+    title: 'Senior-led',
+    description: 'Professionisti senior direttamente coinvolti in ogni mandato.',
   },
   {
-    id: 'direct-commitment',
-    title: 'Impegno diretto',
-    description: 'Al fianco di imprenditori e manager in modo concreto e continuativo.',
+    id: 'execution-driven',
+    title: 'Execution driven',
+    description: 'Il nostro valore non è un report, ma portare l’operazione a buon fine.',
   },
 ];
 
 export const competenciesSection = {
-  eyebrow: 'Services',
-  title: 'Services integrati. Una sola direzione.',
+  eyebrow: 'Le practice',
+  title: 'Competenze profonde. Prospettiva ampia.',
   description:
-    'Un approccio multidisciplinare per supportare la crescita delle imprese in ogni fase del percorso.',
+    'Quattro practice principali — M&A, corporate finance, real estate ed energy & infrastructure — integrate da advisory strategica e supporto alla crescita.',
   note: {
-    title: 'Un obiettivo comune',
-    description: 'Valore duraturo per l\u2019imprenditore',
+    title: 'Un unico obiettivo',
+    description: 'Il successo dei nostri clienti',
   },
 };
 
 /** @type {Competency[]} */
 export const competencies = [
   {
-    id: 'growth-capital',
-    title: 'Growth Capital',
-    description: 'Crescita, acquisizioni e operazioni straordinarie.',
-    href: '/growth/',
+    id: 'ma-advisory',
+    title: 'M&A Advisory',
+    description: 'Operazioni sell-side e buy-side, dalla strategia al closing.',
+    href: '/ma-advisory/',
+  },
+  {
+    id: 'corporate-finance',
+    title: 'Corporate Finance & Capital Solutions',
+    description: 'Soluzioni di capitale su misura per crescita e acquisizioni.',
+    href: '/corporate-finance/',
+  },
+  {
+    id: 'real-estate',
+    title: 'Real Estate Advisory',
+    description: 'Valorizzazione e vendita di asset immobiliari e hospitality.',
+    href: '/real-estate/',
+  },
+  {
+    id: 'energy-infrastructure',
+    title: 'Energy & Infrastructure',
+    description: 'Progetti energetici e infrastrutturali che creano valore.',
+    href: '/energy-infrastructure/',
   },
   {
     id: 'strategic-advisory',
-    title: 'Advisory strategico',
-    description: 'Scelte informate per un vantaggio competitivo duraturo.',
-    href: '/advisory/',
+    title: 'Strategic & Fractional Advisory',
+    description: 'Preparare le imprese alla crescita e alle operazioni straordinarie.',
+    href: '/strategic-advisory/',
   },
   {
-    id: 'finance-fundraising',
-    title: 'Finanza e Fundraising',
-    description: 'Accesso al capitale e strutture finanziarie su misura.',
-    href: '/finanza/',
-  },
-  {
-    id: 'business-development',
-    title: 'Business Development',
-    description: 'Nuovi mercati, partnership e sviluppo internazionale.',
-    href: '/business-development/',
-  },
-  {
-    id: 'coaching-wellbeing',
-    title: 'Coaching e Benessere',
-    description: 'Leadership, team e crescita personale per risultati sostenibili.',
-    href: '/coaching-benessere/',
+    id: 'growth-venture',
+    title: 'Growth & Venture Advisory',
+    description: 'Imprese pronte a crescere, raccogliere capitale e scalare.',
+    href: '/growth-venture/',
   },
 ];
 
 export const methodSection = {
-  eyebrow: 'Il nostro metodo',
-  overline: 'Dalla visione all\u2019impatto',
-  title: 'Dall\u2019ascolto ai risultati.',
+  eyebrow: 'Il modello operativo',
+  overline: 'Dalla strategia al closing',
+  title: 'Un approccio strutturato.',
   description:
-    'Un percorso chiaro, concreto e condiviso, per trasformare le ambizioni in risultati.',
+    'Combiniamo competenze settoriali, intelligence proprietaria e un processo rigoroso per generare risultati concreti.',
 };
 
 /** @type {MethodStep[]} */
 export const methodSteps = [
-  {
-    number: '01',
-    title: 'Ascolto',
-    description: 'Comprendiamo obiettivi, contesto e sfide.',
-  },
-  {
-    number: '02',
-    title: 'Diagnosi',
-    description: 'Analizziamo opzioni e priorità.',
-  },
-  {
-    number: '03',
-    title: 'Affiancamento',
-    description: 'Lavoriamo insieme all\u2019esecuzione.',
-  },
-  {
-    number: '04',
-    title: 'Risultati',
-    description: 'Costruiamo valore duraturo nel tempo.',
-  },
+  { number: '01', title: 'Comprendere', description: 'Ascoltiamo obiettivi, priorità e fattori critici di successo.' },
+  { number: '02', title: 'Analizzare', description: 'Analizziamo business, numeri, mercato e posizionamento.' },
+  { number: '03', title: 'Posizionare', description: 'Definiamo value story, driver di valore e struttura dell’operazione.' },
+  { number: '04', title: 'Identificare', description: 'Selezioniamo buyer, target, investitori e controparti più adatte.' },
+  { number: '05', title: 'Attivare', description: 'Attiviamo contatti diretti, proprietari e qualificati.' },
+  { number: '06', title: 'Negoziare', description: 'Gestiamo NDA, LOI e condizioni per creare valore e allineamento.' },
+  { number: '07', title: 'Eseguire', description: 'Coordiniamo due diligence, finanziamenti e documentazione.' },
+  { number: '08', title: 'Chiudere', description: 'Affianchiamo il cliente fino al completamento dell’operazione.' },
 ];
 
 /** @type {{ brand: string, links: Link[], legalLinks: Link[], locales: Link[], copyright: string }} */
 export const footer = {
-  brand: 'XCAPITAL',
+  brand: 'DELEX CAPITAL',
   links: navigation.items.map(({ label, href }) => ({ label, href })),
   legalLinks: [
     { label: 'Privacy Policy', href: '/privacy-policy/' },
@@ -159,7 +154,7 @@ export const footer = {
     { label: 'IT', href: '/' },
     { label: 'EN', href: '/en/' },
   ],
-  copyright: '\u00a9 2026 XCapital. Tutti i diritti riservati.',
+  copyright: '© 2026 Delex Capital S.r.l. Tutti i diritti riservati.',
 };
 
 /**
@@ -221,17 +216,17 @@ export const homePage = {
   title: 'Homepage',
   status: 'ready',
   seo: {
-    title: 'XCapital | Strategia, capitale e persone',
+    title: 'Delex Capital | Independent Advisory. Proprietary Intelligence. Execution.',
     description:
-      'Services integrati per affiancare imprenditori e manager dalla visione all\u2019esecuzione.',
+      'Boutique indipendente di advisory per imprenditori, aziende, investitori e sviluppatori: operazioni straordinarie, capitale ed esecuzione strategica.',
   },
   hero: {
-    eyebrow: 'Strategia. Capitale. Persone.',
-    title: 'Le decisioni importanti non si prendono da soli.',
+    eyebrow: 'Independent Advisory. Proprietary Intelligence. Execution.',
+    title: 'Beyond Traditional Advisory.',
     description:
-      'Un team indipendente affianca imprenditori e manager dalla visione all\u2019esecuzione.',
+      'Una boutique indipendente di advisory che affianca imprenditori, aziende, investitori e sviluppatori in operazioni straordinarie, capitale ed esecuzione strategica.',
     primaryAction: { label: 'Parla con il team', href: '/prenota/' },
-    secondaryAction: { label: 'Scopri come lavoriamo', href: '#metodo' },
+    secondaryAction: { label: 'Scopri le practice', href: '/services/' },
   },
   proofPoints,
   competencies: {
@@ -244,9 +239,9 @@ export const homePage = {
   },
   teamIntroduction: {
     eyebrow: 'Il nostro team',
-    title: 'Persone che fanno la differenza.',
+    title: 'Senior expertise. Esecuzione integrata.',
     description:
-      'Senior advisor, imprenditori e professionisti con esperienze complementari, uniti dalla stessa ambizione: contribuire al successo dei nostri clienti.',
+      'Senior advisor, analisti finanziari, relationship manager e specialisti di settore, uniti in un unico team con un unico standard.',
     action: { label: 'Conosci il team', href: '/chi-siamo/' },
   },
   closingCallToAction: {
@@ -265,28 +260,28 @@ export const homePage = {
   },
 };
 
-/** Pagina Chi siamo: nessun nominativo, partner o dato societario è precompilato. */
+/** Pagina Chi siamo: profili e dati societari ulteriori richiedono approvazione. */
 export const aboutPage = {
   id: 'about',
   route: '/chi-siamo/',
   title: 'Chi siamo',
-  status: 'content-pending',
+  status: 'ready',
   seo: {
-    title: 'Chi siamo | XCapital',
-    description: 'Esperienza e approccio di XCapital al servizio della crescita aziendale.',
+    title: 'Chi siamo | Delex Capital',
+    description: 'Una boutique indipendente di advisory al servizio di imprenditori, investitori e sviluppatori.',
   },
   hero: {
     eyebrow: 'Chi siamo',
-    title: 'Esperienze diverse. Una sola direzione.',
+    title: 'Competenze senior. Esecuzione integrata.',
     description:
-      'Un approccio integrato che mette in relazione strategia, capitale, sviluppo e persone.',
+      'Combiniamo competenze di alto profilo con una rete integrata di professionisti e partner per creare valore sostenibile.',
     primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
   },
   sections: [
     {
       id: 'mission-vision',
       title: 'Missione e visione',
-      status: 'content-pending',
+      status: 'ready',
       items: [],
       emptyState: editorialMessages.contentPending,
     },
@@ -300,14 +295,14 @@ export const aboutPage = {
     {
       id: 'team',
       title: 'La nostra squadra',
-      status: 'data-pending',
+      status: 'ready',
       items: [],
       emptyState: 'I profili del team saranno pubblicati dopo la raccolta dei materiali approvati.',
     },
     {
       id: 'values',
       title: 'Valori',
-      status: 'content-pending',
+      status: 'ready',
       items: [],
       emptyState: editorialMessages.contentPending,
     },
@@ -325,27 +320,17 @@ export const aboutPage = {
       items: [],
       emptyState: editorialMessages.dataPending,
     },
-    {
-      id: 'xcapital-point',
-      title: 'XCapital Point',
-      status: 'content-pending',
-      items: [],
-      emptyState: 'Programma in attesa dei contenuti e dei materiali di progetto.',
-    },
   ],
   pendingFields: [
-    'missione e visione approvate',
-    'valori',
     'responsabilità sociale',
-    'profili e fotografie',
+    'profili e fotografie aggiuntivi',
     'partnership autorizzate',
-    'materiali XCapital Point',
   ],
 };
 
 const sharedHubProcess = {
   title: 'Come lavoriamo',
-  description: 'Un percorso strutturato, adattato al contesto e agli obiettivi del progetto.',
+  description: 'Un processo rigoroso, adattato al contesto e agli obiettivi del progetto.',
   steps: methodSteps,
 };
 
@@ -356,142 +341,162 @@ const sharedHubCallToAction = {
 };
 
 /**
- * Le cinque aree previste dalla sitemap. Le note `content-pending` e
- * `legal-review` impediscono di scambiare una voce di menu per un'offerta già
- * descritta o per un claim professionale approvato.
+ * Le sei practice previste dalla sitemap, allineate al Company Profile
+ * Delex Capital di settembre 2026.
  */
 export const serviceHubPages = [
   {
-    id: 'growth-capital',
-    route: '/growth/',
-    title: 'Growth Capital',
-    status: 'content-pending',
+    id: 'ma-advisory',
+    route: '/ma-advisory/',
+    title: 'M&A Advisory',
+    status: 'ready',
     seo: {
-      title: 'Growth Capital | XCapital',
-      description: 'Services dedicati a crescita, capitale e operazioni straordinarie.',
+      title: 'M&A Advisory | Delex Capital',
+      description: 'Operazioni sell-side e buy-side, dalla strategia al closing.',
     },
     hero: {
-      eyebrow: 'Services',
-      title: 'Growth Capital',
+      eyebrow: 'Practice',
+      title: 'M&A Advisory',
       description:
-        'Supporto strategico nelle fasi in cui capitale, struttura e operazioni straordinarie incidono sul percorso di crescita.',
+        'Supportiamo imprenditori e investitori in operazioni di successo, dalla strategia al closing.',
       primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
     },
     services: [
-      { id: 'ma-advisory', title: 'M&A Advisory', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'investment-banking', title: 'Investment Banking Services', description: editorialMessages.contentPending, status: 'legal-review' },
-      { id: 'green-energy', title: 'Green Energy', description: editorialMessages.contentPending, href: '/growth/green-energy/', status: 'content-pending' },
-      { id: 'real-estate', title: 'Real Estate', description: editorialMessages.contentPending, href: '/growth/real-estate/', status: 'content-pending' },
-      { id: 'capital-finance', title: 'Finanza di capitali', description: editorialMessages.contentPending, status: 'content-pending', note: 'Collocazione nella sitemap da confermare.' },
-      { id: 'enterprise-evaluation', title: 'Enterprise Evaluation', description: editorialMessages.contentPending, status: 'content-pending' },
+      { id: 'sell-side', title: 'Sell-side advisory', description: 'Preparazione, equity story, buyer identification e processo competitivo.', status: 'ready' },
+      { id: 'buy-side', title: 'Buy-side advisory', description: 'Strategia di acquisizione, screening, origination proprietaria ed esecuzione.', status: 'ready' },
     ],
     process: sharedHubProcess,
     trackRecord: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
     testimonial: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
+    callToAction: sharedHubCallToAction,
+  },
+  {
+    id: 'corporate-finance',
+    route: '/corporate-finance/',
+    title: 'Corporate Finance & Capital Solutions',
+    status: 'ready',
+    seo: {
+      title: 'Corporate Finance & Capital Solutions | Delex Capital',
+      description: 'Soluzioni di capitale su misura per crescita, acquisizioni e sviluppo strategico.',
+    },
+    hero: {
+      eyebrow: 'Practice',
+      title: 'Corporate Finance & Capital Solutions',
+      description:
+        'Strutturiamo soluzioni di capitale su misura per sostenere crescita, acquisizioni e sviluppo strategico.',
+      primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
+    },
+    services: [
+      { id: 'equity-raising', title: 'Equity Raising', description: 'Ricerca di investitori e strutturazione di operazioni di equity.', status: 'ready' },
+      { id: 'debt-advisory', title: 'Debt Advisory', description: 'Rapporti con banche e finanziatori, rifinanziamenti e ottimizzazione.', status: 'ready' },
+      { id: 'growth-capital', title: 'Growth Capital', description: 'Funding per piani di espansione e consolidamento competitivo.', status: 'ready' },
+      { id: 'acquisition-finance', title: 'Acquisition Finance', description: 'Soluzioni finanziarie per acquisizioni strategiche, MBO e LBO.', status: 'ready' },
+      { id: 'structured-finance', title: 'Structured Finance', description: 'Operazioni complesse, strumenti partecipativi, bond e green bond.', status: 'ready' },
+      { id: 'business-planning', title: 'Business Planning & Modelling', description: 'Business plan, analisi finanziarie e modelli previsionali.', status: 'ready' },
+    ],
+    process: sharedHubProcess,
+    trackRecord: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
+    testimonial: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
+    callToAction: sharedHubCallToAction,
+  },
+  {
+    id: 'real-estate',
+    route: '/real-estate/',
+    title: 'Real Estate Advisory',
+    status: 'ready',
+    seo: {
+      title: 'Real Estate Advisory | Delex Capital',
+      description: 'Valorizzazione, strutturazione e vendita di asset immobiliari e hospitality.',
+    },
+    hero: {
+      eyebrow: 'Practice',
+      title: 'Real Estate Advisory',
+      description:
+        'Affianchiamo proprietari, investitori e operatori nella valorizzazione, strutturazione e vendita di asset immobiliari e hospitality.',
+      primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
+    },
+    services: [
+      { id: 'hospitality', title: 'Hospitality & Hotels', description: 'Hotel, resort, boutique hotel e asset hospitality.', status: 'ready' },
+      { id: 'trophy-assets', title: 'Trophy & Prime Assets', description: 'Asset iconici, prime properties e opportunità ad alto standing.', status: 'ready' },
+      { id: 'commercial', title: 'Commercial Real Estate', description: 'Asset commerciali, mixed-use, direzionali e immobili a reddito.', status: 'ready' },
+      { id: 'special-situations', title: 'Development & Special Situations', description: 'Development opportunity, riposizionamenti e situazioni complesse.', status: 'ready' },
+    ],
+    process: sharedHubProcess,
+    trackRecord: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
+    callToAction: sharedHubCallToAction,
+  },
+  {
+    id: 'energy-infrastructure',
+    route: '/energy-infrastructure/',
+    title: 'Energy & Infrastructure',
+    status: 'ready',
+    seo: {
+      title: 'Energy & Infrastructure | Delex Capital',
+      description: 'Progetti energetici e infrastrutturali che creano valore e impatto positivo.',
+    },
+    hero: {
+      eyebrow: 'Focus sector',
+      title: 'Energy & Infrastructure',
+      description:
+        'Affianchiamo operatori, sviluppatori e investitori nella realizzazione di progetti energetici e infrastrutturali.',
+      primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
+    },
+    services: [
+      { id: 'bess-storage', title: 'BESS & Storage', description: 'Sistemi di accumulo elettrochimico per la stabilità della rete.', status: 'ready' },
+      { id: 'biogas-biometano', title: 'Biogas & Biometano', description: 'Impianti per la transizione energetica e le risorse locali.', status: 'ready' },
+      { id: 'agrivoltaico', title: 'Agrivoltaico & Rinnovabili', description: 'Progetti agrivoltaici e impianti rinnovabili integrati.', status: 'ready' },
+      { id: 'water-environmental', title: 'Water & Environmental', description: 'Infrastrutture per il ciclo idrico e la gestione ambientale.', status: 'ready' },
+    ],
+    process: sharedHubProcess,
+    trackRecord: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
     callToAction: sharedHubCallToAction,
   },
   {
     id: 'strategic-advisory',
-    route: '/advisory/',
-    title: 'Advisory strategico',
-    status: 'content-pending',
+    route: '/strategic-advisory/',
+    title: 'Strategic & Fractional Advisory',
+    status: 'ready',
     seo: {
-      title: 'Advisory strategico | XCapital',
-      description: 'Percorsi di advisory per scelte, trasformazione e sviluppo aziendale.',
+      title: 'Strategic & Fractional Advisory | Delex Capital',
+      description: 'Preparare le imprese alla crescita, al capitale e alle operazioni straordinarie.',
     },
     hero: {
-      eyebrow: 'Services',
-      title: 'Advisory strategico',
+      eyebrow: 'Practice',
+      title: 'Strategic & Fractional Advisory',
       description:
-        'Analisi e affiancamento per tradurre priorità aziendali in decisioni e percorsi operativi.',
+        'Competenze strategiche e operative per rafforzare il posizionamento competitivo e creare valore nel tempo.',
       primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
     },
     services: [
-      { id: 'competitive-strategy', title: 'Strategia competitiva', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'business-transformation', title: 'Trasformazione aziendale', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'internationalisation', title: 'Internazionalizzazione', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'pre-deal', title: 'Advisory Pre-deal', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'fractional-management', title: 'Fractional Management', description: editorialMessages.contentPending, status: 'content-pending', note: 'Collocazione nella sitemap da confermare.' },
-      { id: 'legal', title: 'Legale', description: editorialMessages.legalReview, status: 'legal-review', note: 'Perimetro del servizio e responsabilità professionali da confermare.' },
-    ],
-    process: sharedHubProcess,
-    testimonial: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
-    callToAction: sharedHubCallToAction,
-  },
-  {
-    id: 'finance-fundraising',
-    route: '/finanza/',
-    title: 'Finanza e Fundraising',
-    status: 'content-pending',
-    seo: {
-      title: 'Finanza e Fundraising | XCapital',
-      description: 'Services dedicati alla struttura finanziaria e ai percorsi di raccolta.',
-    },
-    hero: {
-      eyebrow: 'Services',
-      title: 'Finanza e Fundraising',
-      description:
-        'Affiancamento nella valutazione delle opzioni finanziarie coerenti con obiettivi, fase e struttura dell\u2019impresa.',
-      primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
-    },
-    services: [
-      { id: 'equity-debt-fundraising', title: 'Fundraising Equity & Debt', description: editorialMessages.contentPending, status: 'legal-review' },
-      { id: 'private-equity', title: 'Private Equity', description: editorialMessages.contentPending, status: 'legal-review' },
-      { id: 'debt-advisory', title: 'Debt Advisory', description: editorialMessages.contentPending, status: 'legal-review' },
-      { id: 'subsidised-finance', title: 'Finanza Agevolata', description: editorialMessages.contentPending, status: 'content-pending' },
-    ],
-    process: sharedHubProcess,
-    trackRecord: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
-    testimonial: { items: [], emptyState: editorialMessages.dataPending, status: 'data-pending' },
-    callToAction: sharedHubCallToAction,
-  },
-  {
-    id: 'business-development',
-    route: '/business-development/',
-    title: 'Business Development',
-    status: 'content-pending',
-    seo: {
-      title: 'Business Development | XCapital',
-      description: 'Percorsi per sviluppo commerciale, nuovi mercati e posizionamento.',
-    },
-    hero: {
-      eyebrow: 'Services',
-      title: 'Business Development',
-      description:
-        'Supporto alla definizione e all\u2019esecuzione di percorsi di sviluppo commerciale e di mercato.',
-      primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
-    },
-    services: [
-      { id: 'sales-development', title: 'Sviluppo commerciale', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'go-to-market', title: 'Go to Market', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'strategic-marketing', title: 'Marketing strategico', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'startup-studio', title: 'Start-up Studio', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'communication-brand', title: 'Comunicazione e Brand', description: editorialMessages.contentPending, href: '/business-development/comunicazione/', status: 'content-pending' },
+      { id: 'strategic-assessment', title: 'Strategic Assessment', description: 'Analisi di business, mercato e posizionamento competitivo.', status: 'ready' },
+      { id: 'business-planning', title: 'Business Planning', description: 'Piani industriali e finanziari solidi e realistici.', status: 'ready' },
+      { id: 'growth-strategy', title: 'Growth Strategy', description: 'Strategie di sviluppo organico e per linee esterne.', status: 'ready' },
+      { id: 'fractional-executive', title: 'Fractional Executive Support', description: 'Manager esperti on-demand per funzioni chiave.', status: 'ready' },
     ],
     process: sharedHubProcess,
     callToAction: sharedHubCallToAction,
   },
   {
-    id: 'coaching-wellbeing',
-    route: '/coaching-benessere/',
-    title: 'Coaching e Benessere',
-    status: 'content-pending',
+    id: 'growth-venture',
+    route: '/growth-venture/',
+    title: 'Growth & Venture Advisory',
+    status: 'ready',
     seo: {
-      title: 'Coaching e Benessere | XCapital',
-      description: 'Percorsi dedicati a leadership, organizzazione e sviluppo delle persone.',
+      title: 'Growth & Venture Advisory | Delex Capital',
+      description: 'Imprese pronte a crescere, raccogliere capitale e scalare.',
     },
     hero: {
-      eyebrow: 'Services',
-      title: 'Coaching e Benessere',
+      eyebrow: 'Practice',
+      title: 'Growth & Venture Advisory',
       description:
-        'Percorsi rivolti alla leadership, all\u2019organizzazione e alla crescita delle persone nel contesto aziendale.',
+        'Affianchiamo startup innovative, scale-up e imprenditori nella crescita, nella raccolta di capitale e nella creazione di strutture solide.',
       primaryAction: { label: 'Parla con un esperto', href: '/prenota/' },
     },
     services: [
-      { id: 'executive-coaching', title: 'Executive Coaching', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'organisational-wellbeing', title: 'Benessere organizzativo', description: editorialMessages.contentPending, href: '/coaching-benessere/benessere/', status: 'content-pending' },
-      { id: 'hr-strategy', title: 'HR Strategy', description: editorialMessages.contentPending, status: 'content-pending' },
-      { id: 'generational-transition', title: 'Cambio e passaggio generazionale', description: editorialMessages.contentPending, status: 'content-pending' },
+      { id: 'fundraising-strategy', title: 'Fundraising Strategy', description: 'Strategia di raccolta e partner finanziari più adatti.', status: 'ready' },
+      { id: 'investor-readiness', title: 'Investor Readiness', description: 'Posizionamento, pitch deck e processi per gli investitori.', status: 'ready' },
+      { id: 'public-incentives', title: 'Public Incentives & Funding', description: 'Bandi e agevolazioni per massimizzare le risorse.', status: 'ready' },
+      { id: 'work-for-equity', title: 'Work for Equity', description: 'Piani di work for equity e supporto strategico continuativo.', status: 'ready' },
     ],
     process: sharedHubProcess,
     callToAction: sharedHubCallToAction,
@@ -505,8 +510,8 @@ export const trackRecordPage = {
   title: 'Track Record',
   status: 'data-pending',
   seo: {
-    title: 'Track Record | XCapital',
-    description: 'Archivio delle operazioni pubblicabili di XCapital.',
+    title: 'Track Record | Delex Capital',
+    description: 'Archivio delle operazioni pubblicabili di Delex Capital.',
   },
   hero: {
     eyebrow: 'Esperienza',
@@ -533,13 +538,13 @@ export const insightPage = {
   title: 'Insight e Risorse',
   status: 'content-pending',
   seo: {
-    title: 'Insight e Risorse | XCapital',
-    description: 'Approfondimenti, notizie, pubblicazioni e webinar di XCapital.',
+    title: 'Insight e Risorse | Delex Capital',
+    description: 'Approfondimenti, notizie, pubblicazioni e webinar di Delex Capital.',
   },
   hero: {
     eyebrow: 'Risorse',
     title: 'Idee e strumenti per leggere il cambiamento.',
-    description: 'Approfondimenti dedicati a strategia, capitale, mercati, organizzazione e persone.',
+    description: 'Approfondimenti dedicati a strategia, capitale, mercati e operazioni.',
   },
   collections: [
     { id: 'publications', title: 'Pubblicazioni', route: '/education/', items: [], emptyState: editorialMessages.contentPending },
@@ -549,7 +554,7 @@ export const insightPage = {
   newsletter: {
     status: 'integration-pending',
     title: 'Rimani aggiornato',
-    description: 'L\u2019iscrizione sarà disponibile dopo la configurazione del servizio e del consenso.',
+    description: 'L’iscrizione sarà disponibile dopo la configurazione del servizio e del consenso.',
     pendingFields: ['provider', 'double opt-in', 'informativa', 'retention'],
   },
 };
@@ -560,13 +565,13 @@ export const contactPage = {
   title: 'Contatti',
   status: 'integration-pending',
   seo: {
-    title: 'Contatti | XCapital',
-    description: 'Contatta XCapital per un primo confronto.',
+    title: 'Contatti | Delex Capital',
+    description: 'Contatta Delex Capital per un primo confronto.',
   },
   hero: {
     eyebrow: 'Contatti',
     title: 'Iniziamo da una conversazione.',
-    description: 'Raccontaci il contesto e l\u2019obiettivo su cui desideri confrontarti.',
+    description: 'Raccontaci il contesto e l’obiettivo su cui desideri confrontarti.',
   },
   contactDetails: [],
   form: {
@@ -584,8 +589,8 @@ export const bookingPage = {
   title: 'Prenota una call',
   status: 'integration-pending',
   seo: {
-    title: 'Prenota una call | XCapital',
-    description: 'Richiedi un primo confronto con il team XCapital.',
+    title: 'Prenota una call | Delex Capital',
+    description: 'Richiedi un primo confronto con il team Delex Capital.',
   },
   hero: {
     eyebrow: 'Un primo confronto',
@@ -608,7 +613,7 @@ export const privacyPage = {
   status: 'legal-review',
   publishable: false,
   seo: {
-    title: 'Privacy Policy | XCapital',
+    title: 'Privacy Policy | Delex Capital',
     description: 'Informazioni sul trattamento dei dati personali.',
   },
   hero: {
@@ -634,8 +639,8 @@ export const cookiePage = {
   status: 'legal-review',
   publishable: false,
   seo: {
-    title: 'Cookie Policy | XCapital',
-    description: 'Informazioni sull\u2019uso di cookie e tecnologie analoghe.',
+    title: 'Cookie Policy | Delex Capital',
+    description: 'Informazioni sull’uso di cookie e tecnologie analoghe.',
   },
   hero: {
     title: 'Cookie Policy',
