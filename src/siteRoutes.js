@@ -1,6 +1,7 @@
 export const serviceHubs = [
   {
     path: "/ma-advisory/",
+    image: "/assets/heroes/ma-advisory.webp",
     label: "M&A Advisory",
     eyebrow: "Practice 01",
     title: "Operazioni di successo, dalla strategia al closing.",
@@ -14,6 +15,7 @@ export const serviceHubs = [
   },
   {
     path: "/corporate-finance/",
+    image: "/assets/heroes/corporate-finance.webp",
     label: "Corporate Finance",
     eyebrow: "Practice 02",
     title: "Soluzioni di capitale su misura per crescere.",
@@ -29,6 +31,7 @@ export const serviceHubs = [
   },
   {
     path: "/real-estate/",
+    image: "/assets/heroes/real-estate.webp",
     label: "Real Estate",
     eyebrow: "Practice 03",
     title: "Valorizzare gli asset, attrarre gli investitori giusti.",
@@ -44,6 +47,7 @@ export const serviceHubs = [
   },
   {
     path: "/energy-infrastructure/",
+    image: "/assets/heroes/energy-infrastructure.webp",
     label: "Energy & Infrastructure",
     eyebrow: "Practice 04",
     title: "Investiamo nel futuro sostenibile.",
@@ -59,6 +63,7 @@ export const serviceHubs = [
   },
   {
     path: "/strategic-advisory/",
+    image: "/assets/heroes/strategic-advisory.webp",
     label: "Strategic & Fractional Advisory",
     eyebrow: "Practice 05",
     title: "Preparare le imprese alla crescita, al capitale e alle operazioni straordinarie.",
@@ -74,6 +79,7 @@ export const serviceHubs = [
   },
   {
     path: "/growth-venture/",
+    image: "/assets/heroes/growth-venture.webp",
     label: "Growth & Venture Advisory",
     eyebrow: "Practice 06",
     title: "Imprese pronte a crescere, raccogliere capitale e scalare.",

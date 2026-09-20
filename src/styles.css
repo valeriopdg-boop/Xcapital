@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap');
-
+/* Font self-hosted via @fontsource (importati in main.jsx): nessuna richiesta a Google Fonts. */
 :root { color: #0b2033; background: #f7f5f0; font-family: "Inter", Arial, sans-serif; font-synthesis: none; --navy: #061b2a; --brand-navy: #0f233c; --blue: #0587e5; --blue-light: #dceffc; --paper: #f7f5f0; --ink: #0b2033; --muted: #617080; --line: #cbd6df; --gold: #bc8f3f; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
@@ -135,6 +134,9 @@ h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; }
 .contact-details span { color: var(--blue); font-size: 11px; text-transform: uppercase; letter-spacing: .14em; }
 .contact-details strong { font-size: 14px; line-height: 1.5; }
 .contact-details small { color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-error { color: #b3282d; font-size: 14px; line-height: 1.5; margin: 14px 0; }
+.form-error a { color: inherit; }
 
 .services-intro { padding-top: clamp(80px, 9vw, 130px); padding-bottom: clamp(80px, 9vw, 130px); }
 .services-intro .section-heading > div { max-width: 900px; }
@@ -250,6 +252,36 @@ h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; }
 .clients-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .clients-grid .competency { min-height: 240px; }
 
+/* Motion: reveal on-scroll */
+main section.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+main section.reveal.is-visible { opacity: 1; transform: none; }
+
+/* Header shrink on scroll */
+.site-header { transition: min-height .3s ease, background-color .3s ease; }
+.site-header.is-scrolled { min-height: 62px; background: rgba(15, 35, 60, .96); }
+.site-header.is-scrolled .brand-logo { width: 54px; height: 52px; }
+
+/* Mega menu entrance */
+#services-mega-menu { animation: mega-in .28s ease; }
+@keyframes mega-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+
+/* Eyebrow contrast su fondi navy */
+.hero .eyebrow, .closing-cta .eyebrow, .article-hero .eyebrow { color: #7cc4f5; }
+
+/* Awards strip compatta */
+.awards-strip { max-width: 1320px; margin: 0 auto; padding: 30px clamp(24px, 3vw, 40px); display: flex; align-items: center; gap: clamp(24px, 3vw, 44px); border: 1px solid var(--line); background: var(--paper); }
+.awards-strip img { width: clamp(180px, 22vw, 300px); object-fit: contain; }
+.awards-strip h3 { margin-bottom: 8px; font-size: clamp(24px, 2.4vw, 32px); }
+.awards-strip p { margin: 0; color: var(--muted); line-height: 1.55; }
+.awards-strip ul { margin: 0 0 0 auto; padding: 0; display: flex; gap: 10px; list-style: none; }
+.awards-strip li { padding: 9px 16px; border: 1px solid var(--gold); border-radius: 999px; color: var(--ink); font-size: 13px; font-weight: 600; }
+
+/* Filtri track record */
+.filter-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.filter-chip { min-height: 40px; padding: 8px 18px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--muted); font-size: 13px; font-weight: 600; cursor: pointer; transition: border-color .25s ease, background-color .25s ease, color .25s ease; }
+.filter-chip:hover { border-color: var(--blue); color: var(--ink); }
+.filter-chip.is-active { background: var(--navy); border-color: var(--navy); color: white; }
+
 /* Articoli (Insight) */
 .article-hero { padding: clamp(80px, 9vw, 140px) clamp(28px, 5vw, 80px) clamp(55px, 6vw, 90px); background: var(--navy); color: white; }
 .article-hero-inner { max-width: 920px; margin: 0 auto; }
@@ -335,6 +367,8 @@ h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; }
   .challenge-card:last-child { border-bottom: 0; }
   .award-grid, .transaction-grid, .people-grid, .values-grid, .publication-list, .contact-details, .transaction-detail { grid-template-columns: 1fr; }
   .pillars-grid, .di-benefits { grid-template-columns: 1fr; }
+  .awards-strip { flex-direction: column; align-items: flex-start; }
+  .awards-strip ul { margin-left: 0; }
   .pillar-card { min-height: 0; margin: -1px 0 0; }
   .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px; }
   .method-steps.model-grid { grid-template-columns: 1fr; }

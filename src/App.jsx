@@ -14,35 +14,8 @@ import {
 } from "./PageTemplates.jsx";
 import { SiteLayout } from "./SiteLayout.jsx";
 import { useClientLocation } from "./router.jsx";
-import articles from "./generated/articles.json";
+import { pageMeta } from "./pageMeta.js";
 import { detailPages, normalizePath, serviceHubs } from "./siteRoutes.js";
-
-const titles = {
-  "/": "Delex Capital | Independent Advisory. Proprietary Intelligence. Execution.",
-  "/chi-siamo/": "Chi siamo | Delex Capital",
-  "/services/": "Le practice | Delex Capital",
-  "/track-record/": "Track Record | Delex Capital",
-  "/insight/": "Insight e Risorse | Delex Capital",
-  "/education/": "Pubblicazioni | Delex Capital",
-  "/category/press/": "Blog e News | Delex Capital",
-  "/webinar/": "Webinar | Delex Capital",
-  "/contatti/": "Contatti | Delex Capital",
-  "/prenota/": "Prenota una call | Delex Capital",
-  "/privacy-policy/": "Privacy Policy | Delex Capital",
-  "/cookie-policy/": "Cookie Policy | Delex Capital",
-};
-
-const descriptions = {
-  "/": "Delex Capital è una boutique indipendente di advisory: M&A, corporate finance, real estate, energy & infrastructure e strategic advisory per il mid-market italiano.",
-  "/chi-siamo/": "Competenze senior, execution integrata e intelligence proprietaria: chi è Delex Capital.",
-  "/services/": "Le practice Delex Capital: M&A advisory, corporate finance, real estate, energy & infrastructure, strategic e growth advisory.",
-  "/track-record/": "Una selezione delle operazioni seguite dal team Delex Capital.",
-  "/insight/": "Analisi, risorse e approfondimenti di Delex Capital.",
-  "/contatti/": "Contatta Delex Capital per un primo confronto sul tuo progetto.",
-  "/prenota/": "Richiedi un primo confronto con il team Delex Capital.",
-  "/privacy-policy/": "Informazioni sul trattamento dei dati personali nel sito Delex Capital.",
-  "/cookie-policy/": "Informazioni sull'uso di cookie e tecnologie analoghe nel sito Delex Capital.",
-};
 
 function resolvePage(pathname) {
   const path = normalizePath(pathname);
@@ -76,21 +49,34 @@ function resolvePage(pathname) {
   return { key: "404", element: <NotFoundPage />, notFound: true };
 }
 
-export function App() {
-  const location = useClientLocation();
+export function App({ initialPath }) {
+  const location = useClientLocation(initialPath);
   const pathname = location.split(/[?#]/)[0];
   const page = resolvePage(pathname);
 
   useEffect(() => {
-    const path = normalizePath(pathname);
-    const hub = serviceHubs.find((item) => item.path === path);
-    const detail = detailPages.find((item) => item.path === path);
-    const article = path.startsWith("/insight/") ? articles.find((item) => item.slug === path.split("/").filter(Boolean)[1]) : undefined;
-    document.title = titles[path] || (article ? `${article.title} | Delex Capital` : hub ? `${hub.label} | Delex Capital` : detail ? `${detail.title} | Delex Capital` : path.startsWith("/track-record/") ? "Operazione | Delex Capital" : "Pagina non trovata | Delex Capital");
+    const meta = pageMeta(pathname);
+    document.title = meta.title;
     const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) metaDescription.setAttribute("content", descriptions[path] || article?.excerpt || hub?.description || detail?.description || "Boutique indipendente di advisory per operazioni straordinarie, capitale ed esecuzione strategica.");
+    if (metaDescription) metaDescription.setAttribute("content", meta.description);
     document.documentElement.dataset.routeStatus = page.notFound ? "404" : "200";
   }, [page.notFound, pathname]);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const sections = document.querySelectorAll("main section");
+    sections.forEach((section, index) => { if (index > 0) section.classList.add("reveal"); });
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      }
+    }, { rootMargin: "0px 0px -12% 0px" });
+    sections.forEach((section) => { if (section.classList.contains("reveal")) observer.observe(section); });
+    return () => observer.disconnect();
+  }, [pathname]);
 
   return <SiteLayout><div key={page.key}>{page.element}</div></SiteLayout>;
 }

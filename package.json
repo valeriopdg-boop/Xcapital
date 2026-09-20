@@ -6,13 +6,15 @@
   "scripts": {
     "predev": "node scripts/build-articles.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/build-articles.mjs",
-    "build": "vite build && node scripts/prepare-sites-build.mjs",
+    "prebuild": "node scripts/build-articles.mjs && node scripts/build-sitemap.mjs",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist/ssr && node scripts/prerender.mjs && node scripts/prepare-sites-build.mjs",
     "preview": "vite preview",
     "cms": "decap-server",
     "test:sites": "node --test tests/sites-worker.test.mjs"
   },
   "dependencies": {
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "@fontsource/inter": "^5.3.0",
     "@phosphor-icons/react": "^2.1.10",
     "@vitejs/plugin-react": "5.0.4",
     "marked": "^18.0.13",
@@ -21,6 +23,7 @@
     "vite": "6.4.2"
   },
   "devDependencies": {
-    "decap-server": "^3.11.2"
+    "decap-server": "^3.11.2",
+    "sharp": "^0.35.4"
   }
 }

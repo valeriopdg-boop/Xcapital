@@ -4,8 +4,8 @@ function currentLocation() {
   return `${window.location.pathname}${window.location.search}${window.location.hash}`;
 }
 
-export function useClientLocation() {
-  const [location, setLocation] = useState(currentLocation);
+export function useClientLocation(initialPath) {
+  const [location, setLocation] = useState(() => initialPath ?? currentLocation());
 
   useEffect(() => {
     const sync = () => setLocation(currentLocation());

@@ -94,6 +94,15 @@ function MobileNavigation({ open, onNavigate }) {
 export function SiteLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const mobile = useMobileNavigation();
+
+  useEffect(() => {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const footer = approvedContent.footer ?? { brand: "DELEX CAPITAL", links: [], legalLinks: [], locales: [], copyright: "© 2026 Delex Capital S.r.l." };
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowDown, ArrowRight, Buildings, ChartLineUp, CheckCircle, Compass, Database, Handshake, Leaf, LinkedinLogo, MagnifyingGlass, Rocket, ShareNetwork, ShieldCheck, Target, UsersThree } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
@@ -15,7 +15,40 @@ const proofIcons = { independent: ShieldCheck, "senior-led": UsersThree, "execut
 const competencyIcons = { "ma-advisory": Handshake, "corporate-finance": ChartLineUp, "real-estate": Buildings, "energy-infrastructure": Leaf, "strategic-advisory": Compass, "growth-venture": Rocket };
 const pillarIcons = { advisory: Handshake, origination: MagnifyingGlass, intelligence: Database, distribution: ShareNetwork };
 
-function PageHero({ eyebrow, title, description, image = "/assets/hero-team.png", imageAlt = "Professionisti Delex Capital al lavoro", cta = true }) {
+function StatNumber({ value }) {
+  const ref = useRef(null);
+  const [display, setDisplay] = useState(value);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const match = String(value).match(/^(\d+)(.*)$/);
+    if (!match) return;
+    const target = Number(match[1]);
+    const suffix = match[2];
+    let frame;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      const start = performance.now();
+      const duration = 1100;
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(`${Math.round(target * eased)}${suffix}`);
+        if (progress < 1) frame = requestAnimationFrame(tick);
+      };
+      setDisplay(`0${suffix}`);
+      frame = requestAnimationFrame(tick);
+    }, { threshold: 0.4 });
+    observer.observe(element);
+    return () => { observer.disconnect(); cancelAnimationFrame(frame); };
+  }, [value]);
+
+  return <strong ref={ref}>{display}</strong>;
+}
+
+function PageHero({ eyebrow, title, description, image = "/assets/hero-team.webp", imageAlt = "Professionisti Delex Capital al lavoro", cta = true }) {
   return (
     <section className="hero page-hero" aria-labelledby="page-title">
       <div className="hero-copy">
@@ -72,7 +105,7 @@ export function HomePage() {
           <div className="button-row"><Link className="button button-primary" href={navigation.cta?.href || "/prenota/"}>{navigation.cta?.label || "Parla con il team"} <ArrowRight aria-hidden="true" /></Link><Link className="text-link" href="/services/">Scopri le practice <ArrowRight aria-hidden="true" /></Link></div>
           <Link className="scroll-cue" href="#pilastri"><ArrowDown aria-hidden="true" /> Scorri</Link>
         </div>
-        <figure className="hero-media"><img src="/assets/hero-team.png" alt="Un confronto tra i senior advisor Delex Capital" /><figcaption>Connecting opportunities.<br />Creating value.</figcaption></figure>
+        <figure className="hero-media"><img src="/assets/hero-team.webp" alt="Un confronto tra i senior advisor Delex Capital" /><figcaption>Connecting opportunities.<br />Creating value.</figcaption></figure>
       </section>
 
       <section className="proof-strip" aria-label="I principi del nostro lavoro">
@@ -91,11 +124,11 @@ export function HomePage() {
 
       <section className="stats-band" aria-label="Delex Capital in numeri">
         <div className="stats-grid">
-          <article><strong>33</strong><span>Mandati attivi</span></article>
-          <article><strong>50+</strong><span>Operazioni gestite</span></article>
-          <article><strong>100+</strong><span>Mandati e operazioni</span></article>
-          <article><strong>13+</strong><span>Aree di settore</span></article>
-          <article><strong>20+</strong><span>Anni di esperienza combinata</span></article>
+          <article><StatNumber value="33" /><span>Mandati attivi</span></article>
+          <article><StatNumber value="50+" /><span>Operazioni gestite</span></article>
+          <article><StatNumber value="100+" /><span>Mandati e operazioni</span></article>
+          <article><StatNumber value="13+" /><span>Aree di settore</span></article>
+          <article><StatNumber value="20+" /><span>Anni di esperienza combinata</span></article>
         </div>
         <p className="stats-note">Dati aggiornati al 30 giugno 2026</p>
       </section>
@@ -127,7 +160,14 @@ export function HomePage() {
 
       <section className="evidence-section light-section" aria-labelledby="awards-title">
         <div className="section-heading"><div><p className="eyebrow">Riconoscimenti</p><h2 id="awards-title">Ambizione. Crescita. Riconoscimento.</h2><p>Tre riconoscimenti consecutivi nel settore Corporate Finance.</p></div></div>
-        <div className="award-grid">{awards.map((award) => <article className="award-card" key={award.year}><img src={award.image} alt={`${award.title} ${award.year}`} /><p className="eyebrow">{award.year}</p><h3>{award.title}</h3><p>{award.description}</p></article>)}</div>
+        <div className="awards-strip">
+          <img src={awards[0].image} alt="Finance Monthly M&A Awards — Delex Capital" />
+          <div>
+            <h3>Finance Monthly M&A Awards</h3>
+            <p>Delex Capital Adviser of the Year per il settore Corporate Finance.</p>
+          </div>
+          <ul>{awards.map((award) => <li key={award.year}>{award.year}</li>)}</ul>
+        </div>
       </section>
 
       <section className="operations-preview light-section" aria-labelledby="operations-title">
@@ -137,7 +177,7 @@ export function HomePage() {
 
       <section className="team-section" id="chi-siamo">
         <div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Senior expertise. Esecuzione integrata.</h2><p>Senior advisor, analisti finanziari, relationship manager e specialisti di settore: un unico team, un unico standard, al fianco di ogni mandato.</p><Link className="button button-primary" href="/chi-siamo/">Conosci il team <ArrowRight aria-hidden="true" /></Link></div>
-        <img src="/assets/team-collaboration.png" alt="Il team Delex Capital durante una sessione di lavoro" />
+        <img src="/assets/team-collaboration.webp" alt="Il team Delex Capital durante una sessione di lavoro" />
         <p className="team-values">Indipendenza<br />Intelligence<br />Relazioni<br />Risultati</p>
       </section>
       <ClosingCta />
@@ -148,7 +188,7 @@ export function HomePage() {
 export function HubPage({ hub }) {
   return (
     <>
-      <PageHero eyebrow={hub.eyebrow} title={hub.title} description={hub.description} />
+      <PageHero eyebrow={hub.eyebrow} title={hub.title} description={hub.description} image={hub.image} />
       <section className="competencies-section light-section" id="page-content">
         <div className="section-heading"><div><p className="eyebrow">Le aree di intervento</p><h2>{hub.label}</h2><p>Attività coordinate in un unico percorso, con responsabilità chiare e presidio senior.</p></div><aside><strong>Approccio Delex</strong><span>Indipendente, senior-led, orientato all’execution.</span></aside></div>
         <div className={hub.services.length > 4 ? "competency-list grid-three" : "competency-list grid-two"}>
@@ -189,8 +229,8 @@ export function DetailPage({ page }) {
 export function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="Chi siamo" title="Competenze senior. Esecuzione integrata." description="Delex Capital è una boutique indipendente di advisory che affianca imprenditori, aziende, investitori e sviluppatori in operazioni straordinarie, capitale ed esecuzione strategica, con focus sul lower-mid e mid-market italiano." image="/assets/team-collaboration.png" />
-      <section className="team-section" id="page-content"><div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Esperienza che entra nel merito.</h2><p>Senior advisor, analisti finanziari, relationship manager, specialisti real estate e industry expert lavorano insieme in un modello di esecuzione integrata: un unico team, un unico standard.</p><Link className="button button-primary" href="/prenota/">Parla con noi <ArrowRight aria-hidden="true" /></Link></div><img src="/assets/hero-team.png" alt="Professionisti Delex Capital riuniti al tavolo" /><p className="team-values">Indipendenza<br />Rigore<br />Riservatezza<br />Risultati</p></section>
+      <PageHero eyebrow="Chi siamo" title="Competenze senior. Esecuzione integrata." description="Delex Capital è una boutique indipendente di advisory che affianca imprenditori, aziende, investitori e sviluppatori in operazioni straordinarie, capitale ed esecuzione strategica, con focus sul lower-mid e mid-market italiano." image="/assets/team-collaboration.webp" />
+      <section className="team-section" id="page-content"><div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Esperienza che entra nel merito.</h2><p>Senior advisor, analisti finanziari, relationship manager, specialisti real estate e industry expert lavorano insieme in un modello di esecuzione integrata: un unico team, un unico standard.</p><Link className="button button-primary" href="/prenota/">Parla con noi <ArrowRight aria-hidden="true" /></Link></div><img src="/assets/hero-team.webp" alt="Professionisti Delex Capital riuniti al tavolo" /><p className="team-values">Indipendenza<br />Rigore<br />Riservatezza<br />Risultati</p></section>
       <section className="people-section light-section" aria-labelledby="clients-title"><div className="section-heading"><div><p className="eyebrow">Con chi lavoriamo</p><h2 id="clients-title">Partner di fiducia per imprenditori, investitori e operatori.</h2><p>Affianchiamo una clientela diversificata con esigenze specifiche, offrendo soluzioni su misura e massima riservatezza.</p></div></div><div className="clients-grid">{clientTypes.map(([title, description]) => <article className="competency" key={title}><UsersThree size={32} weight="light" aria-hidden="true" /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
       <section className="people-section light-section" aria-labelledby="team-title"><div className="section-heading"><div><p className="eyebrow">Persone</p><h2 id="team-title">Il team Delex Capital.</h2><p>Professionalità complementari per seguire strategia, finanza, compliance e sviluppo delle opportunità.</p></div></div><div className="people-grid">{teamMembers.map((member) => <article className="person-card" key={member.name}><img src={member.image} alt={member.name} /><div><p className="eyebrow">{member.role}</p><h3>{member.name}</h3><p>{member.description}</p></div></article>)}</div></section>
       <section className="values-section light-section" aria-labelledby="values-title"><div className="section-heading"><div><p className="eyebrow">Principi cardine</p><h2 id="values-title">I valori che guidano il lavoro.</h2><p>Indipendenza, riservatezza e orientamento ai risultati nelle relazioni con clienti e partner.</p></div></div><div className="values-grid">{values.map(([title, description], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{description}</p></article>)}</div></section>
@@ -203,14 +243,25 @@ function TransactionCard({ transaction }) {
   return <Link className="transaction-card" href={`/track-record/${transaction.slug}/`}><div className="transaction-logo"><img src={transaction.image} alt={transaction.client} /></div><p className="eyebrow">{transaction.type}</p><h3>{transaction.client}</h3>{transaction.detail && <p>{transaction.detail}</p>}<strong>{transaction.amount}</strong><span>Approfondisci <ArrowRight aria-hidden="true" /></span></Link>;
 }
 
+function transactionCategory(transaction) {
+  if (/equity/i.test(transaction.type)) return "Equity";
+  if (/ipo/i.test(transaction.type)) return "IPO";
+  if (/minibond/i.test(transaction.type)) return "Minibond";
+  return "Altro";
+}
+
 export function TrackRecordPage({ slug }) {
+  const [filter, setFilter] = useState("Tutte");
+  const categories = ["Tutte", "Equity", "IPO", "Minibond"];
+  const visible = filter === "Tutte" ? transactions : transactions.filter((t) => transactionCategory(t) === filter);
+
   if (slug) {
     const transaction = transactions.find((item) => item.slug === slug);
     if (!transaction) return <NotFoundPage />;
     return <><PageHero eyebrow="Track Record" title={transaction.client} description={`${transaction.type}${transaction.detail ? ` · ${transaction.detail}` : ""}.`} cta={false} /><section className="transaction-detail light-section" id="page-content"><div className="transaction-detail-logo"><img src={transaction.image} alt={transaction.client} /></div><div><p className="eyebrow">Valore dell’operazione</p><h2>{transaction.amount}</h2><p>Un incarico seguito con presidio specialistico nelle fasi decisive dell’operazione.</p><Link className="text-link dark-link" href="/track-record/">Torna al Track Record <ArrowRight aria-hidden="true" /></Link></div></section><ClosingCta /></>;
   }
 
-  return <><PageHero eyebrow="Track Record" title="Proven expertise. Diverse transactions." description="Una selezione di operazioni di equity, IPO e minibond seguite dal team: operazioni diverse, un unico standard di esecuzione." /><section className="operations-archive light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Operazioni</p><h2>Risultati costruiti insieme.</h2><p>Una selezione di operazioni perfezionate con il supporto del team.</p></div></div><div className="transaction-grid">{transactions.map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div></section><ClosingCta /></>;
+  return <><PageHero eyebrow="Track Record" title="Proven expertise. Diverse transactions." description="Una selezione di operazioni di equity, IPO e minibond seguite dal team: operazioni diverse, un unico standard di esecuzione." /><section className="operations-archive light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Operazioni</p><h2>Risultati costruiti insieme.</h2><p>Una selezione di operazioni perfezionate con il supporto del team.</p></div><div className="filter-row" role="group" aria-label="Filtra per tipo di operazione">{categories.map((category) => <button key={category} type="button" className={category === filter ? "filter-chip is-active" : "filter-chip"} onClick={() => setFilter(category)}>{category}</button>)}</div></div><div className="transaction-grid">{visible.map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div></section><ClosingCta /></>;
 }
 
 export function InsightPage({ active }) {
@@ -223,7 +274,7 @@ export function InsightPage({ active }) {
 export function ArticlePage({ slug }) {
   const article = articles.find((item) => item.slug === slug);
   if (!article) return <NotFoundPage />;
-  const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${window.location.origin}/insight/${article.slug}/`)}`;
+  const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${globalThis.location?.origin ?? ""}/insight/${article.slug}/`)}`;
   return (
     <>
       <section className="article-hero" aria-labelledby="article-title">
@@ -246,14 +297,32 @@ export function ArticlePage({ slug }) {
 }
 
 export function ContactPage({ booking = false }) {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus("sending");
+    const form = event.currentTarget;
+    const payload = Object.fromEntries(new FormData(form).entries());
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      setStatus(response.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <>
-      <PageHero eyebrow={booking ? "Prenota una call" : "Contatti"} title={booking ? "Iniziamo da una conversazione." : "Parliamo del tuo progetto."} description="Il modulo è una demo frontend: mostra il flusso e gli stati dell’esperienza, ma non invia dati a un backend." cta={false} />
+      <PageHero eyebrow={booking ? "Prenota una call" : "Contatti"} title={booking ? "Iniziamo da una conversazione." : "Parliamo del tuo progetto."} description="Raccontaci il contesto e l’obiettivo su cui desideri confrontarti: ti risponderà il referente più adatto." cta={false} />
       <section className="competencies-section light-section" id="page-content">
-        <div className="section-heading"><div><p className="eyebrow">Demo senza invio esterno</p><h2>{sent ? "Richiesta simulata." : "Raccontaci il tuo obiettivo."}</h2><p>{sent ? "Nessun dato è stato trasmesso o archiviato." : "Nel sito definitivo il form dovrà essere collegato a un endpoint approvato, con gestione privacy, sicurezza e consenso."}</p></div></div>
+        <div className="section-heading"><div><p className="eyebrow">Primo contatto</p><h2>{status === "sent" ? "Richiesta inviata." : "Raccontaci il tuo obiettivo."}</h2><p>{status === "sent" ? "Grazie: ti ricontatteremo al più presto." : "Compila il modulo o scrivici direttamente: ogni richiesta viene letta dal team."}</p></div></div>
         <address className="contact-details"><div><span>Sedi</span><strong>{companyDetails.offices}</strong><small>{companyDetails.address}</small></div><a href={companyDetails.phoneHref}><span>Telefono</span><strong>{companyDetails.phone}</strong></a><a href={companyDetails.emailHref}><span>Email</span><strong>{companyDetails.email}</strong></a></address>
-        {sent ? <div className="dialog-success" role="status"><CheckCircle size={48} weight="light" aria-hidden="true" /><h2>Grazie.</h2><p>La simulazione si è conclusa correttamente.</p><button className="button button-primary" type="button" onClick={() => setSent(false)}>Nuova richiesta</button></div> : <form className="contact-dialog" style={{ display: "block", position: "static", margin: 0, maxHeight: "none", boxShadow: "none", border: "1px solid var(--line)" }} onSubmit={(event) => { event.preventDefault(); setSent(true); }}><label>Nome e cognome<input name="name" autoComplete="name" required /></label><label>Email professionale<input name="email" type="email" autoComplete="email" required /></label><label>Azienda<input name="company" autoComplete="organization" /></label><label>Messaggio<textarea name="message" rows="5" required /></label><label className="consent"><input type="checkbox" required /><span>Confermo di aver compreso che questo form è una demo e non invia dati.</span></label><button className="button button-primary" type="submit">Simula invio <ArrowRight aria-hidden="true" /></button></form>}
+        {status === "sent" ? <div className="dialog-success" role="status"><CheckCircle size={48} weight="light" aria-hidden="true" /><h2>Grazie.</h2><p>La tua richiesta è stata inviata al team Delex Capital.</p><button className="button button-primary" type="button" onClick={() => setStatus("idle")}>Nuova richiesta</button></div> : <form className="contact-dialog" style={{ display: "block", position: "static", margin: 0, maxHeight: "none", boxShadow: "none", border: "1px solid var(--line)" }} onSubmit={handleSubmit}><label>Nome e cognome<input name="name" autoComplete="name" required /></label><label>Email professionale<input name="email" type="email" autoComplete="email" required /></label><label>Azienda<input name="company" autoComplete="organization" /></label><label>Messaggio<textarea name="message" rows="5" required /></label><div className="hp-field" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div><label className="consent"><input type="checkbox" required /><span>Ho letto l’<Link href="/privacy-policy/">informativa privacy</Link> e acconsento al trattamento dei dati per essere ricontattato.</span></label>{status === "error" && <p className="form-error" role="alert">L’invio non è riuscito. Scrivici direttamente a <a href={companyDetails.emailHref}>{companyDetails.email}</a>.</p>}<button className="button button-primary" type="submit" disabled={status === "sending"}>{status === "sending" ? "Invio in corso…" : "Invia la richiesta"} <ArrowRight aria-hidden="true" /></button></form>}
       </section>
     </>
   );
