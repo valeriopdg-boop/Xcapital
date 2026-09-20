@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
@@ -16,49 +16,6 @@ function useMobileNavigation() {
   }, []);
 
   return mobile;
-}
-
-function ContactDialog({ open, onClose }) {
-  const dialogRef = useRef(null);
-  const [sent, setSent] = useState(false);
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
-    if (!open && dialog.open) dialog.close();
-  }, [open]);
-
-  const close = () => {
-    setSent(false);
-    onClose();
-  };
-
-  return (
-    <dialog className="contact-dialog" ref={dialogRef} onClose={close}>
-      <button className="dialog-close" type="button" onClick={close} aria-label="Chiudi finestra"><X size={24} aria-hidden="true" /></button>
-      {sent ? (
-        <div className="dialog-success" role="status">
-          <p className="eyebrow">Demo completata</p>
-          <h2>Grazie per averci scritto.</h2>
-          <p>Questa è una demo frontend: nessun dato è stato inviato o salvato.</p>
-          <button className="button button-primary" type="button" onClick={close}>Chiudi</button>
-        </div>
-      ) : (
-        <form onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
-          <p className="eyebrow">Modulo dimostrativo</p>
-          <h2>Parliamo del tuo progetto.</h2>
-          <p>I dati restano nel browser e non vengono trasmessi a Delex Capital.</p>
-          <label>Nome e cognome<input name="name" autoComplete="name" required /></label>
-          <label>Email professionale<input name="email" type="email" autoComplete="email" required /></label>
-          <label>Azienda<input name="company" autoComplete="organization" /></label>
-          <label>Di cosa vuoi parlare?<textarea name="message" rows="4" required /></label>
-          <label className="consent"><input type="checkbox" required /> <span>Confermo di aver compreso che questo form è una demo e non invia dati.</span></label>
-          <button className="button button-primary" type="submit">Simula invio <ArrowRight aria-hidden="true" /></button>
-        </form>
-      )}
-    </dialog>
-  );
 }
 
 function DesktopNavigation() {
@@ -136,7 +93,6 @@ function MobileNavigation({ open, onNavigate }) {
 
 export function SiteLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dialogOpen, setDialogOpen] = useState(false);
   const mobile = useMobileNavigation();
   const footer = approvedContent.footer ?? { brand: "DELEX CAPITAL", links: [], legalLinks: [], locales: [], copyright: "© 2026 Delex Capital S.r.l." };
 
@@ -176,8 +132,6 @@ export function SiteLayout({ children }) {
           <span>© 2026 {companyDetails.legalName}</span>
         </div>
       </footer>
-
-      <ContactDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
     </>
   );
 }
