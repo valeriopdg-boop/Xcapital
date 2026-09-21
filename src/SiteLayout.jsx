@@ -49,7 +49,7 @@ function DesktopNavigation() {
       <Link href="/track-record/">Track Record</Link>
       <Link href="/insight/">Risorse</Link>
       <a href={companyDetails.communityHref} target="_blank" rel="noreferrer">Community</a>
-      <Link className="button button-primary nav-cta" href="/prenota/">Parla con il team <ArrowRight aria-hidden="true" /></Link>
+      <Link className="button button-primary nav-cta" href="/prenota/">Prenota una call <ArrowRight aria-hidden="true" /></Link>
 
       {megaOpen && (
         <div
@@ -86,7 +86,7 @@ function MobileNavigation({ open, onNavigate }) {
         </div>
       </details>
       <a href={companyDetails.communityHref} target="_blank" rel="noreferrer" onClick={onNavigate}>Community</a>
-      <Link className="button button-primary nav-cta" href="/prenota/" onClick={onNavigate}>Parla con il team <ArrowRight aria-hidden="true" /></Link>
+      <Link className="button button-primary nav-cta" href="/prenota/" onClick={onNavigate}>Prenota una call <ArrowRight aria-hidden="true" /></Link>
     </nav>
   );
 }

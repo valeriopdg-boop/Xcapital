@@ -27,5 +27,6 @@ export function routes() {
     "/prenota/",
     "/privacy-policy/",
     "/cookie-policy/",
+    "/xcapital-point/",
   ];
 }

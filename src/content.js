@@ -48,7 +48,7 @@ export const navigation = {
     { id: 'track-record', label: 'Track Record', href: '/track-record/' },
     { id: 'resources', label: 'Risorse', href: '/insight/' },
   ],
-  cta: { label: 'Parla con il team', href: '/prenota/' },
+  cta: { label: 'Prenota una call', href: '/prenota/' },
 };
 
 /** @type {ProofPoint[]} */

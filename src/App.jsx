@@ -11,6 +11,7 @@ import {
   NotFoundPage,
   ServicesPage,
   TrackRecordPage,
+  XCapitalPointPage,
 } from "./PageTemplates.jsx";
 import { SiteLayout } from "./SiteLayout.jsx";
 import { useClientLocation } from "./router.jsx";
@@ -45,6 +46,7 @@ function resolvePage(pathname) {
   if (path === "/prenota/") return { key: path, element: <ContactPage booking /> };
   if (path === "/privacy-policy/") return { key: path, element: <LegalPage type="privacy" /> };
   if (path === "/cookie-policy/") return { key: path, element: <LegalPage type="cookie" /> };
+  if (path === "/xcapital-point/") return { key: path, element: <XCapitalPointPage /> };
 
   return { key: "404", element: <NotFoundPage />, notFound: true };
 }

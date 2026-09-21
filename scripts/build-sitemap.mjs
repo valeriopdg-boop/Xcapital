@@ -30,6 +30,7 @@ const staticRoutes = [
   "/prenota/",
   "/privacy-policy/",
   "/cookie-policy/",
+  "/xcapital-point/",
 ];
 
 const today = new Date().toISOString().slice(0, 10);

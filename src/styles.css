@@ -268,6 +268,86 @@ main section.reveal.is-visible { opacity: 1; transform: none; }
 /* Eyebrow contrast su fondi navy */
 .hero .eyebrow, .closing-cta .eyebrow, .article-hero .eyebrow { color: #7cc4f5; }
 
+/* Breadcrumb */
+.breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 26px; color: #8fa5b8; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+.breadcrumb a { color: #b6c7d5; text-decoration: none; }
+.breadcrumb a:hover { color: white; }
+.breadcrumb i { font-style: normal; color: #4b6478; }
+.breadcrumb span[aria-current="page"] { color: #e7edf2; }
+
+/* Sezione editoriale Chi è Delex Capital */
+.intro-section { padding-top: clamp(75px, 8vw, 120px); padding-bottom: clamp(75px, 8vw, 120px); }
+.intro-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(40px, 6vw, 90px); align-items: center; }
+.intro-grid h2 { margin-bottom: 20px; font-size: clamp(38px, 4.4vw, 60px); line-height: 1.02; letter-spacing: -.03em; }
+.intro-grid p:not(.eyebrow) { max-width: 620px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.intro-grid .text-link { margin-top: 18px; }
+.intro-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid var(--line); }
+
+/* Slider track record */
+.slider-wrap { max-width: 1320px; margin: 0 auto; }
+.transaction-slider { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; }
+.transaction-slider::-webkit-scrollbar { display: none; }
+.transaction-slider .transaction-card { flex: 0 0 min(400px, 82vw); scroll-snap-align: start; }
+.slider-nav { display: flex; gap: 10px; margin-top: 26px; }
+.slider-nav button { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: white; color: var(--ink); cursor: pointer; transition: background-color .25s ease, border-color .25s ease, color .25s ease; }
+.slider-nav button:hover { background: var(--navy); border-color: var(--navy); color: white; }
+
+/* Education & Newsletter */
+.newsletter-section { padding-top: clamp(75px, 8vw, 120px); padding-bottom: clamp(75px, 8vw, 120px); border-top: 1px solid var(--line); }
+.newsletter-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: clamp(40px, 6vw, 90px); align-items: start; }
+.newsletter-articles h2 { margin-bottom: 30px; font-size: clamp(38px, 4.4vw, 60px); line-height: 1.02; letter-spacing: -.03em; }
+.newsletter-article { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px 18px; padding: 20px 0; border-bottom: 1px solid var(--line); color: var(--ink); text-decoration: none; }
+.newsletter-article span { grid-column: 1; color: var(--blue); font-size: 12px; text-transform: uppercase; letter-spacing: .14em; }
+.newsletter-article strong { grid-column: 1; font-family: "Cormorant Garamond", Georgia, serif; font-size: 23px; font-weight: 700; line-height: 1.15; }
+.newsletter-article svg { grid-column: 2; grid-row: 1 / span 2; align-self: center; color: var(--blue); }
+.newsletter-articles .text-link { margin-top: 26px; }
+.newsletter-box { padding: clamp(28px, 3.4vw, 44px); background: var(--navy); color: white; }
+.newsletter-box h3 { margin-bottom: 10px; font-size: 27px; }
+.newsletter-box p { color: #c4d0d9; font-size: 14.5px; line-height: 1.6; }
+.newsletter-box input[type="email"] { width: 100%; margin-top: 14px; padding: 14px 15px; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.07); color: white; }
+.newsletter-box input[type="email"]::placeholder { color: #8fa5b8; }
+.newsletter-box .consent { color: #afc1ce; }
+.newsletter-box .button { margin-top: 10px; }
+
+/* Hub pages: layout 2 colonne + sidebar */
+.hub-body { max-width: 1320px; margin: 0 auto; padding-top: clamp(70px, 8vw, 120px); padding-bottom: clamp(70px, 8vw, 120px); display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); gap: clamp(44px, 5vw, 80px); align-items: start; }
+.hub-subtitle { margin: 10px 0 30px; font-size: clamp(34px, 3.6vw, 52px); line-height: 1.04; letter-spacing: -.03em; }
+.accordion details { border-top: 1px solid var(--line); }
+.accordion details:last-child { border-bottom: 1px solid var(--line); }
+.accordion summary { min-height: 60px; padding: 20px 6px; display: flex; align-items: center; justify-content: space-between; gap: 18px; cursor: pointer; list-style: none; font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 700; color: var(--ink); }
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary svg { color: var(--blue); flex: 0 0 auto; transition: transform .25s ease; }
+.accordion details[open] summary svg { transform: rotate(180deg); }
+.accordion details p { margin: 0; padding: 0 6px 22px; max-width: 640px; color: var(--muted); font-size: 14.5px; line-height: 1.65; }
+.hub-track-record { margin-top: clamp(48px, 5vw, 70px); }
+.hub-tr-grid { margin-top: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.hub-tr-grid .transaction-card { min-height: 340px; }
+.testimonial { margin: clamp(48px, 5vw, 70px) 0 0; padding: 10px 0 10px 30px; border-left: 3px solid var(--gold); }
+.testimonial p { margin: 0 0 14px; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.3; color: var(--ink); }
+.testimonial cite { color: var(--muted); font-size: 13px; font-style: normal; text-transform: uppercase; letter-spacing: .12em; }
+.hub-sidebar { display: grid; gap: 26px; position: sticky; top: 110px; }
+.metric-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.metric-card { padding: 22px 18px; border: 1px solid var(--line); background: white; }
+.metric-card strong { display: block; margin-bottom: 6px; font-family: "Cormorant Garamond", Georgia, serif; font-size: 40px; line-height: 1; }
+.metric-card span { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; line-height: 1.4; }
+.sidebar-cta { padding: 26px; background: var(--navy); color: white; }
+.sidebar-cta h3 { margin-bottom: 10px; font-size: 25px; }
+.sidebar-cta p { color: #c4d0d9; font-size: 14px; line-height: 1.6; }
+.sidebar-team { padding: 24px 26px; border: 1px solid var(--line); background: white; }
+.sidebar-person { display: flex; align-items: center; gap: 14px; padding: 12px 0; }
+.sidebar-person + .sidebar-person { border-top: 1px solid var(--line); }
+.sidebar-person .avatar { width: 46px; height: 46px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: white; font-size: 14px; font-weight: 600; }
+.sidebar-person strong { display: block; font-size: 14.5px; }
+.sidebar-person span:not(.avatar) { color: var(--muted); font-size: 12px; }
+.sidebar-related { padding: 24px 26px; border: 1px solid var(--line); background: white; }
+.sidebar-related a { display: block; padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 14px; text-decoration: none; }
+.sidebar-related a:last-child { border-bottom: 0; }
+.sidebar-related a:hover { color: var(--blue); }
+
+/* XCapital Point teaser (Chi siamo) */
+.xpoint-section { padding-top: clamp(60px, 7vw, 100px); padding-bottom: clamp(60px, 7vw, 100px); border-top: 1px solid var(--line); }
+.xpoint-section .section-heading { margin-bottom: 0; }
+
 /* Awards strip compatta */
 .awards-strip { max-width: 1320px; margin: 0 auto; padding: 30px clamp(24px, 3vw, 40px); display: flex; align-items: center; gap: clamp(24px, 3vw, 44px); border: 1px solid var(--line); background: var(--paper); }
 .awards-strip img { width: clamp(180px, 22vw, 300px); object-fit: contain; }
@@ -367,6 +447,9 @@ main section.reveal.is-visible { opacity: 1; transform: none; }
   .challenge-card:last-child { border-bottom: 0; }
   .award-grid, .transaction-grid, .people-grid, .values-grid, .publication-list, .contact-details, .transaction-detail { grid-template-columns: 1fr; }
   .pillars-grid, .di-benefits { grid-template-columns: 1fr; }
+  .intro-grid, .newsletter-grid, .hub-body { grid-template-columns: 1fr; }
+  .hub-sidebar { position: static; }
+  .hub-tr-grid { grid-template-columns: 1fr; }
   .awards-strip { flex-direction: column; align-items: flex-start; }
   .awards-strip ul { margin-left: 0; }
   .pillar-card { min-height: 0; margin: -1px 0 0; }

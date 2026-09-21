@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowRight, Buildings, ChartLineUp, CheckCircle, Compass, Database, Handshake, Leaf, LinkedinLogo, MagnifyingGlass, Rocket, ShareNetwork, ShieldCheck, Target, UsersThree } from "@phosphor-icons/react";
+import { ArrowDown, ArrowLeft, ArrowRight, Buildings, CaretDown, ChartLineUp, CheckCircle, Compass, Database, Handshake, Leaf, LinkedinLogo, MagnifyingGlass, Rocket, ShareNetwork, ShieldCheck, Target, UsersThree } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
 import articles from "./generated/articles.json";
@@ -48,10 +48,13 @@ function StatNumber({ value }) {
   return <strong ref={ref}>{display}</strong>;
 }
 
-function PageHero({ eyebrow, title, description, image = "/assets/hero-team.webp", imageAlt = "Professionisti Delex Capital al lavoro", cta = true }) {
+function PageHero({ eyebrow, title, description, image = "/assets/hero-team.webp", imageAlt = "Professionisti Delex Capital al lavoro", cta = true, crumbs }) {
   return (
     <section className="hero page-hero" aria-labelledby="page-title">
       <div className="hero-copy">
+        {crumbs && <nav className="breadcrumb" aria-label="Percorso">{crumbs.map((crumb, index) => index < crumbs.length - 1
+          ? <span key={crumb.href}><Link href={crumb.href}>{crumb.label}</Link><i aria-hidden="true">/</i></span>
+          : <span key={crumb.label} aria-current="page">{crumb.label}</span>)}</nav>}
         <p className="eyebrow">{eyebrow}</p>
         <h1 id="page-title">{title}</h1>
         <p className="hero-lead">{description}</p>
@@ -62,6 +65,73 @@ function PageHero({ eyebrow, title, description, image = "/assets/hero-team.webp
         <img src={image} alt={imageAlt} />
         <figcaption>Advisory.<br />Intelligence.<br />Distribution.</figcaption>
       </figure>
+    </section>
+  );
+}
+
+function TransactionSlider({ items }) {
+  const trackRef = useRef(null);
+  const scrollByCard = (direction) => {
+    const track = trackRef.current;
+    if (track) track.scrollBy({ left: direction * track.clientWidth * 0.7, behavior: "smooth" });
+  };
+  return (
+    <div className="slider-wrap">
+      <div className="transaction-slider" ref={trackRef}>{items.map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div>
+      <div className="slider-nav">
+        <button type="button" aria-label="Operazioni precedenti" onClick={() => scrollByCard(-1)}><ArrowLeft aria-hidden="true" /></button>
+        <button type="button" aria-label="Operazioni successive" onClick={() => scrollByCard(1)}><ArrowRight aria-hidden="true" /></button>
+      </div>
+    </div>
+  );
+}
+
+function NewsletterSection() {
+  const [status, setStatus] = useState("idle");
+  const latest = articles.slice(0, 2);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus("sending");
+    const payload = Object.fromEntries(new FormData(event.currentTarget).entries());
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      setStatus(response.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <section className="newsletter-section light-section" aria-labelledby="newsletter-title">
+      <div className="newsletter-grid">
+        <div className="newsletter-articles">
+          <p className="eyebrow">Education</p>
+          <h2 id="newsletter-title">Rimani aggiornato.</h2>
+          {latest.map((article) => <Link className="newsletter-article" href={`/insight/${article.slug}/`} key={article.slug}><span>{article.date}</span><strong>{article.title}</strong><ArrowRight aria-hidden="true" /></Link>)}
+          <Link className="text-link dark-link" href="/insight/">Tutti gli insight <ArrowRight aria-hidden="true" /></Link>
+        </div>
+        <div className="newsletter-box">
+          {status === "sent" ? (
+            <div role="status"><h3>Iscrizione registrata.</h3><p>Riceverai i prossimi insight di Delex Capital via email.</p></div>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <h3>La newsletter di Delex Capital</h3>
+              <p>Analisi e operazioni selezionate, direttamente nella tua inbox.</p>
+              <label htmlFor="newsletter-email" className="sr-only">Email professionale</label>
+              <input id="newsletter-email" name="email" type="email" autoComplete="email" placeholder="Email professionale" required />
+              <div className="hp-field" aria-hidden="true"><label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
+              <label className="consent"><input type="checkbox" required /><span>Ho letto l’<Link href="/privacy-policy/">informativa privacy</Link> e acconsento a ricevere la newsletter.</span></label>
+              {status === "error" && <p className="form-error" role="alert">Il servizio non è ancora attivo. Scrivici a <a href={companyDetails.emailHref}>{companyDetails.email}</a>.</p>}
+              <button className="button button-primary" type="submit" disabled={status === "sending"}>{status === "sending" ? "Iscrizione…" : "Iscriviti"} <ArrowRight aria-hidden="true" /></button>
+            </form>
+          )}
+        </div>
+      </div>
     </section>
   );
 }
@@ -112,6 +182,18 @@ export function HomePage() {
         {proofPoints.map((point) => { const Icon = proofIcons[point.id] || CheckCircle; return <article key={point.id || point.title}><Icon size={38} weight="light" aria-hidden="true" /><div><h2>{point.title}</h2><p>{point.description}</p></div></article>; })}
       </section>
 
+      <section className="intro-section light-section" aria-labelledby="intro-title">
+        <div className="intro-grid">
+          <div>
+            <p className="eyebrow">Chi è Delex Capital</p>
+            <h2 id="intro-title">Un ecosistema di competenze al servizio della crescita.</h2>
+            <p>Una boutique indipendente di advisory, focalizzata sul lower-mid e mid-market italiano: competenze finanziarie, origination proprietaria e conoscenza trasversale del mercato, con un approccio senior-led e orientato all’execution in ogni incarico.</p>
+            <Link className="text-link dark-link" href="/chi-siamo/">Scopri il team <ArrowRight aria-hidden="true" /></Link>
+          </div>
+          <img src="/assets/heroes/strategic-advisory.webp" alt="Un tavolo di lavoro Delex Capital con vista sul lago" />
+        </div>
+      </section>
+
       <section className="pillars-section light-section" id="pilastri" aria-labelledby="pillars-title">
         <div className="section-heading"><div><p className="eyebrow">Il nostro posizionamento</p><h2 id="pillars-title">Beyond Traditional Advisory.</h2><p>Un ecosistema integrato che unisce competenze, accesso e intelligenza proprietaria per creare valore e generare risultati.</p></div><aside><strong>Quattro pilastri</strong><span>Un unico obiettivo: il successo dei nostri clienti.</span></aside></div>
         <div className="pillars-grid">{pillars.map((pillar) => { const Icon = pillarIcons[pillar.id] || Compass; return <article className="pillar-card" key={pillar.id}><Icon size={36} weight="light" aria-hidden="true" /><h3>{pillar.title}</h3><p>{pillar.description}</p></article>; })}</div>
@@ -120,6 +202,18 @@ export function HomePage() {
       <section className="competencies-section light-section" id="competenze">
         <div className="section-heading"><div><p className="eyebrow">{competenciesSection.eyebrow}</p><h2>{competenciesSection.title}</h2><p>{competenciesSection.description}</p></div><aside><strong>{competenciesSection.note?.title}</strong><span>{competenciesSection.note?.description}</span></aside></div>
         <div className="competency-list grid-three">{competencies.map((competency) => { const Icon = competencyIcons[competency.id] || Compass; return <Link className="competency" href={competency.href} key={competency.id || competency.title}><Icon size={32} weight="light" aria-hidden="true" /><h3>{competency.title}</h3><p>{competency.description}</p></Link>; })}</div>
+      </section>
+
+      <section className="challenge-section light-section" aria-labelledby="challenge-title">
+        <div className="section-heading">
+          <div><p className="eyebrow">La tua sfida</p><h2 id="challenge-title">Qual è la tua sfida oggi?</h2><p>Quattro percorsi per raggiungere subito la practice più vicina al tuo obiettivo.</p></div>
+        </div>
+        <div className="challenge-grid">
+          <Link href="/ma-advisory/" className="challenge-card"><span>01</span><h3>Voglio fare un’acquisizione o cedere la mia impresa</h3><ArrowRight aria-hidden="true" /></Link>
+          <Link href="/energy-infrastructure/" className="challenge-card"><span>02</span><h3>Voglio finanziare un progetto di energia rinnovabile</h3><ArrowRight aria-hidden="true" /></Link>
+          <Link href="/real-estate/" className="challenge-card"><span>03</span><h3>Cerco opportunità di investimento immobiliare</h3><ArrowRight aria-hidden="true" /></Link>
+          <Link href="/strategic-advisory/" className="challenge-card"><span>04</span><h3>Ho bisogno di consulenza strategica per la mia azienda</h3><ArrowRight aria-hidden="true" /></Link>
+        </div>
       </section>
 
       <section className="stats-band" aria-label="Delex Capital in numeri">
@@ -172,8 +266,10 @@ export function HomePage() {
 
       <section className="operations-preview light-section" aria-labelledby="operations-title">
         <div className="section-heading"><div><p className="eyebrow">Track Record</p><h2 id="operations-title">Proven expertise. Diverse transactions.</h2><p>Una selezione delle operazioni seguite dal team Delex Capital.</p></div><Link className="button button-primary" href="/track-record/">Vedi tutte le operazioni <ArrowRight aria-hidden="true" /></Link></div>
-        <div className="transaction-grid">{transactions.slice(0, 3).map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div>
+        <TransactionSlider items={transactions} />
       </section>
+
+      <NewsletterSection />
 
       <section className="team-section" id="chi-siamo">
         <div className="team-copy"><p className="eyebrow">Il nostro team</p><h2>Senior expertise. Esecuzione integrata.</h2><p>Senior advisor, analisti finanziari, relationship manager e specialisti di settore: un unico team, un unico standard, al fianco di ogni mandato.</p><Link className="button button-primary" href="/chi-siamo/">Conosci il team <ArrowRight aria-hidden="true" /></Link></div>
@@ -186,14 +282,58 @@ export function HomePage() {
 }
 
 export function HubPage({ hub }) {
+  const related = transactions.slice(0, 2);
+  const otherHubs = serviceHubs.filter((item) => item.path !== hub.path);
   return (
     <>
-      <PageHero eyebrow={hub.eyebrow} title={hub.title} description={hub.description} image={hub.image} />
-      <section className="competencies-section light-section" id="page-content">
-        <div className="section-heading"><div><p className="eyebrow">Le aree di intervento</p><h2>{hub.label}</h2><p>Attività coordinate in un unico percorso, con responsabilità chiare e presidio senior.</p></div><aside><strong>Approccio Delex</strong><span>Indipendente, senior-led, orientato all’execution.</span></aside></div>
-        <div className={hub.services.length > 4 ? "competency-list grid-three" : "competency-list grid-two"}>
-          {hub.services.map(([title, description, href]) => <Link className="competency" href={href || "/prenota/"} key={title}><Compass size={32} weight="light" aria-hidden="true" /><h3>{title}</h3><p>{description}</p></Link>)}
+      <PageHero eyebrow={hub.eyebrow} title={hub.title} description={hub.description} image={hub.image} crumbs={[{ label: "Home", href: "/" }, { label: "Practice", href: "/services/" }, { label: hub.label }]} />
+      <section className="hub-body light-section" id="page-content">
+        <div className="hub-main">
+          <p className="eyebrow">Le aree di intervento</p>
+          <h2 className="hub-subtitle">{hub.label}: come operiamo.</h2>
+          <div className="accordion">
+            {hub.services.map(([title, description]) => (
+              <details key={title}>
+                <summary><span>{title}</span><CaretDown size={18} aria-hidden="true" /></summary>
+                <p>{description}</p>
+              </details>
+            ))}
+          </div>
+
+          <div className="hub-track-record">
+            <p className="eyebrow">Track record</p>
+            <div className="hub-tr-grid">{related.map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div>
+          </div>
+
+          <blockquote className="testimonial">
+            <p>Non ci limitiamo a trovare opportunità. Costruiamo le condizioni per trasformarle in risultati.</p>
+            <cite>Il team Delex Capital</cite>
+          </blockquote>
         </div>
+        <aside className="hub-sidebar">
+          <div className="metric-cards">
+            <div className="metric-card"><strong>33</strong><span>Mandati attivi</span></div>
+            <div className="metric-card"><strong>50+</strong><span>Operazioni gestite</span></div>
+          </div>
+          <div className="sidebar-cta">
+            <h3>Prima sessione gratuita</h3>
+            <p>45 minuti senza impegno per capire come possiamo aiutarti.</p>
+            <Link className="button button-primary" href="/prenota/">Prenota una call gratuita <ArrowRight aria-hidden="true" /></Link>
+          </div>
+          <div className="sidebar-team">
+            <p className="eyebrow">Il team</p>
+            {teamMembers.slice(0, 2).map((member) => (
+              <div className="sidebar-person" key={member.name}>
+                <span className="avatar" aria-hidden="true">{member.name.split(" ").map((part) => part[0]).join("")}</span>
+                <div><strong>{member.name}</strong><span>{member.role}</span></div>
+              </div>
+            ))}
+          </div>
+          <nav className="sidebar-related" aria-label="Servizi correlati">
+            <p className="eyebrow">Servizi correlati</p>
+            {otherHubs.map((item) => <Link key={item.path} href={item.path}>{item.label}</Link>)}
+          </nav>
+        </aside>
       </section>
       <ProcessSection />
       <ClosingCta title={`Confrontiamoci su ${hub.label}.`} />
@@ -234,6 +374,7 @@ export function AboutPage() {
       <section className="people-section light-section" aria-labelledby="clients-title"><div className="section-heading"><div><p className="eyebrow">Con chi lavoriamo</p><h2 id="clients-title">Partner di fiducia per imprenditori, investitori e operatori.</h2><p>Affianchiamo una clientela diversificata con esigenze specifiche, offrendo soluzioni su misura e massima riservatezza.</p></div></div><div className="clients-grid">{clientTypes.map(([title, description]) => <article className="competency" key={title}><UsersThree size={32} weight="light" aria-hidden="true" /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
       <section className="people-section light-section" aria-labelledby="team-title"><div className="section-heading"><div><p className="eyebrow">Persone</p><h2 id="team-title">Il team Delex Capital.</h2><p>Professionalità complementari per seguire strategia, finanza, compliance e sviluppo delle opportunità.</p></div></div><div className="people-grid">{teamMembers.map((member) => <article className="person-card" key={member.name}><img src={member.image} alt={member.name} /><div><p className="eyebrow">{member.role}</p><h3>{member.name}</h3><p>{member.description}</p></div></article>)}</div></section>
       <section className="values-section light-section" aria-labelledby="values-title"><div className="section-heading"><div><p className="eyebrow">Principi cardine</p><h2 id="values-title">I valori che guidano il lavoro.</h2><p>Indipendenza, riservatezza e orientamento ai risultati nelle relazioni con clienti e partner.</p></div></div><div className="values-grid">{values.map(([title, description], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{description}</p></article>)}</div></section>
+      <section className="xpoint-section light-section" aria-labelledby="xpoint-title"><div className="section-heading"><div><p className="eyebrow">XCapital Point</p><h2 id="xpoint-title">Una rete vicina alle imprese.</h2><p>Il programma territoriale e di affiliazione di Delex Capital.</p></div><Link className="button button-primary" href="/xcapital-point/">Scopri XCapital Point <ArrowRight aria-hidden="true" /></Link></div></section>
       <ClosingCta />
     </>
   );
@@ -336,6 +477,10 @@ const legalCopy = {
 export function LegalPage({ type }) {
   const [title, description, items] = legalCopy[type];
   return <><PageHero eyebrow="Informazioni legali" title={title} description={description} cta={false} /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Struttura del documento</p><h2>Contenuto da validare prima del rilascio.</h2><p>Le sezioni seguenti sono segnaposto redazionali, non un’informativa legale completa.</p></div></div><div className="competency-list grid-two">{items.map((item) => <article className="competency" key={item}><CheckCircle size={32} weight="light" aria-hidden="true" /><h3>{item}</h3><p>Testo definitivo da fornire e approvare.</p></article>)}</div></section></>;
+}
+
+export function XCapitalPointPage() {
+  return <><PageHero eyebrow="XCapital Point" title="Esperienza vicina alle imprese." description="Landing dedicata al programma territoriale e di affiliazione di Delex Capital." crumbs={[{ label: "Home", href: "/" }, { label: "XCapital Point" }]} /><section className="competencies-section light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Il programma</p><h2>Una rete con una direzione comune.</h2><p>Modello, requisiti e condizioni del programma di affiliazione saranno pubblicati a breve.</p></div></div></section><ClosingCta /></>;
 }
 
 export function NotFoundPage() {
