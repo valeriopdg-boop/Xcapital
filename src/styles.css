@@ -362,6 +362,11 @@ main section.reveal.is-visible { opacity: 1; transform: none; }
 .filter-chip:hover { border-color: var(--blue); color: var(--ink); }
 .filter-chip.is-active { background: var(--navy); border-color: var(--navy); color: white; }
 
+/* Case study anonimizzati */
+.blind-mark { width: 76px; height: 76px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); color: var(--muted); background: var(--paper); }
+.transaction-card.is-blind { border-style: dashed; }
+.transaction-card.is-blind:hover { border-color: var(--blue); }
+
 /* Articoli (Insight) */
 .article-hero { padding: clamp(80px, 9vw, 140px) clamp(28px, 5vw, 80px) clamp(55px, 6vw, 90px); background: var(--navy); color: white; }
 .article-hero-inner { max-width: 920px; margin: 0 auto; }

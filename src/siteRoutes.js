@@ -9,6 +9,7 @@ export const serviceHubs = [
     services: [
       ["Sell-side advisory", "Preparazione dell’azienda, equity story, identificazione dei buyer e processo competitivo fino al closing e post-closing."],
       ["Buy-side advisory", "Strategia di acquisizione, screening di mercato, origination proprietaria e gestione del processo di esecuzione."],
+      ["Valuation & Enterprise Assessment", "Valutazioni d’impresa indipendenti e tecnicamente rigorose, a supporto di operazioni, negoziazioni e decisioni strategiche."],
       ["Negoziazione e strutturazione", "LOI, termini e struttura dell’operazione, con supporto alla negoziazione in ogni fase."],
       ["Coordinamento due diligence", "Coordinamento della due diligence e dei workstream specialistici verso il closing."],
     ],
@@ -74,6 +75,8 @@ export const serviceHubs = [
       ["Growth Strategy", "Definizione di strategie di sviluppo organico e per linee esterne e creazione di valore."],
       ["Financial & Organizational Readiness", "Rafforzamento della struttura finanziaria, dei processi e della governance in ottica di scalabilità e operazioni."],
       ["Fractional Executive Support", "Manager esperti on-demand per guidare funzioni chiave e progetti strategici."],
+      ["Internazionalizzazione", "Selezione dei mercati e costruzione del percorso di ingresso, con il supporto della rete cross-border Delex."],
+      ["Business Development & Go-to-Market", "Architettura dell’offerta, scelte di canale e pipeline: dalla strategia commerciale alla presenza sul mercato."],
       ["M&A / Capital Raising Preparation", "Prepariamo l’azienda a operazioni di M&A o a raccogliere capitali nelle migliori condizioni."],
     ],
   },
@@ -91,6 +94,7 @@ export const serviceHubs = [
       ["Investor Readiness", "Posizionamento, pitch deck, reporting e processi per aumentare l’appeal verso gli investitori."],
       ["Capital Raising", "Supporto in round di equity e strumenti alternativi di capitale per finanziare la crescita."],
       ["Public Incentives & Funding", "Individuazione e gestione di bandi e agevolazioni per massimizzare le risorse disponibili."],
+      ["Marketing strategico & Brand", "Posizionamento, identità e contenuti a supporto della crescita e della raccolta capitale."],
       ["Work for Equity & Strategic Support", "Piani di work for equity e affiancamento continuo a team e founder."],
     ],
   },
@@ -308,16 +312,24 @@ export const awards = [
 ];
 
 export const transactions = [
-  { slug: "iride-acque-secondo-round", client: "Iride Acque S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 700.000,00", image: "/assets/clients/iride-acque.png" },
-  { slug: "socopet-terzo-round", client: "Socopet S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Terzo round", amount: "€ 500.000,00", image: "/assets/clients/socopet.png" },
-  { slug: "amicorp-ipo", client: "Amicorp Limited", type: "Advisor nella IPO in collaborazione con Bowsprit Partners Ltd", detail: "", amount: "€ 16.000.000,00", image: "/assets/clients/amicorp.png" },
-  { slug: "ellemme-minibond-uno", client: "Ellemme S.p.A.", type: "Advisory nell’emissione di minibond", detail: "", amount: "€ 1.000.000,00", image: "/assets/clients/ellemme.png" },
-  { slug: "wearena-secondo-round", client: "WeArena S.p.A.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 500.000,00", image: "/assets/clients/wearena.png" },
-  { slug: "ellemme-minibond-cinque", client: "Ellemme S.p.A.", type: "Advisory nell’emissione di minibond", detail: "", amount: "€ 5.000.000,00", image: "/assets/clients/ellemme.png" },
-  { slug: "iride-acque-primo-round", client: "Iride Acque S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Primo round", amount: "€ 700.000,00", image: "/assets/clients/iride-acque.png" },
-  { slug: "royal-primo-round", client: "Royal S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Primo round", amount: "€ 300.000,00", image: "/assets/clients/royal.png" },
-  { slug: "socopet-secondo-round", client: "Socopet S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 1.000.000,00", image: "/assets/clients/socopet.png" },
+  { slug: "iride-acque-secondo-round", client: "Iride Acque S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 700.000,00", image: "/assets/clients/iride-acque.png", category: "Growth & Venture" },
+  { slug: "socopet-terzo-round", client: "Socopet S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Terzo round", amount: "€ 500.000,00", image: "/assets/clients/socopet.png", category: "Growth & Venture" },
+  { slug: "amicorp-ipo", client: "Amicorp Limited", type: "Advisor nella IPO in collaborazione con Bowsprit Partners Ltd", detail: "", amount: "€ 16.000.000,00", image: "/assets/clients/amicorp.png", category: "Corporate Finance" },
+  { slug: "ellemme-minibond-uno", client: "Ellemme S.p.A.", type: "Advisory nell’emissione di minibond", detail: "", amount: "€ 1.000.000,00", image: "/assets/clients/ellemme.png", category: "Corporate Finance" },
+  { slug: "wearena-secondo-round", client: "WeArena S.p.A.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 500.000,00", image: "/assets/clients/wearena.png", category: "Growth & Venture" },
+  { slug: "ellemme-minibond-cinque", client: "Ellemme S.p.A.", type: "Advisory nell’emissione di minibond", detail: "", amount: "€ 5.000.000,00", image: "/assets/clients/ellemme.png", category: "Corporate Finance" },
+  { slug: "iride-acque-primo-round", client: "Iride Acque S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Primo round", amount: "€ 700.000,00", image: "/assets/clients/iride-acque.png", category: "Growth & Venture" },
+  { slug: "royal-primo-round", client: "Royal S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Primo round", amount: "€ 300.000,00", image: "/assets/clients/royal.png", category: "Growth & Venture" },
+  { slug: "socopet-secondo-round", client: "Socopet S.r.l.", type: "Advisory nella raccolta di Equity", detail: "Secondo round", amount: "€ 1.000.000,00", image: "/assets/clients/socopet.png", category: "Growth & Venture" },
+  // Case study anonimizzati: la riservatezza impedisce di mostrare il cliente.
+  { slug: "industrial-sell-side", client: "Azienda industriale", type: "Sell-side M&A", detail: "Nome riservato", amount: "Riservato", category: "M&A", blind: true },
+  { slug: "strategic-buy-side", client: "Gruppo industriale", type: "Buy-side M&A", detail: "Nome riservato", amount: "Riservato", category: "M&A", blind: true },
+  { slug: "hospitality-asset-sale", client: "Asset alberghiero", type: "Vendita di asset immobiliare", detail: "Nome riservato", amount: "Riservato", category: "Real Estate", blind: true },
+  { slug: "energy-project-financing", client: "Progetto energetico", type: "Project financing & sale", detail: "Nome riservato", amount: "Riservato", category: "Energy & Infrastructure", blind: true },
+  { slug: "growth-capital-round", client: "Scale-up in crescita", type: "Raccolta di growth capital", detail: "Nome riservato", amount: "Riservato", category: "Growth & Venture", blind: true },
 ];
+
+export const transactionCategories = ["M&A", "Corporate Finance", "Real Estate", "Energy & Infrastructure", "Growth & Venture"];
 
 export function normalizePath(pathname) {
   if (pathname === "/") return pathname;

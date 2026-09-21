@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowLeft, ArrowRight, Buildings, CaretDown, ChartLineUp, CheckCircle, Compass, Database, Handshake, Leaf, LinkedinLogo, MagnifyingGlass, Rocket, ShareNetwork, ShieldCheck, Target, UsersThree } from "@phosphor-icons/react";
+import { ArrowDown, ArrowLeft, ArrowRight, Buildings, CaretDown, ChartLineUp, CheckCircle, Compass, Database, Handshake, Leaf, LinkedinLogo, LockKey, MagnifyingGlass, Rocket, ShareNetwork, ShieldCheck, Target, UsersThree } from "@phosphor-icons/react";
 import * as approvedContent from "./content.js";
 import { Link } from "./router.jsx";
 import articles from "./generated/articles.json";
-import { awards, capitalCommunity, companyDetails, coreServices, dealIntelligence, editorialCards, pillars, processes, sectors, serviceHubs, stats, teamMembers, transactions, clientTypes, values } from "./siteRoutes.js";
+import { awards, capitalCommunity, companyDetails, coreServices, dealIntelligence, editorialCards, pillars, processes, sectors, serviceHubs, stats, teamMembers, transactions, transactionCategories, clientTypes, values } from "./siteRoutes.js";
 
 const fallbackNavigation = { cta: { label: "Parla con il team", href: "/prenota/" } };
 const fallbackProofs = [
@@ -381,28 +381,21 @@ export function AboutPage() {
 }
 
 function TransactionCard({ transaction }) {
-  return <Link className="transaction-card" href={`/track-record/${transaction.slug}/`}><div className="transaction-logo"><img src={transaction.image} alt={transaction.client} /></div><p className="eyebrow">{transaction.type}</p><h3>{transaction.client}</h3>{transaction.detail && <p>{transaction.detail}</p>}<strong>{transaction.amount}</strong><span>Approfondisci <ArrowRight aria-hidden="true" /></span></Link>;
-}
-
-function transactionCategory(transaction) {
-  if (/equity/i.test(transaction.type)) return "Equity";
-  if (/ipo/i.test(transaction.type)) return "IPO";
-  if (/minibond/i.test(transaction.type)) return "Minibond";
-  return "Altro";
+  return <Link className={transaction.blind ? "transaction-card is-blind" : "transaction-card"} href={`/track-record/${transaction.slug}/`}><div className="transaction-logo">{transaction.blind ? <span className="blind-mark"><LockKey size={30} weight="light" aria-hidden="true" /></span> : <img src={transaction.image} alt={transaction.client} />}</div><p className="eyebrow">{transaction.category}</p><h3>{transaction.client}</h3><p>{transaction.type}{transaction.detail ? ` · ${transaction.detail}` : ""}</p><strong>{transaction.amount}</strong><span>Approfondisci <ArrowRight aria-hidden="true" /></span></Link>;
 }
 
 export function TrackRecordPage({ slug }) {
   const [filter, setFilter] = useState("Tutte");
-  const categories = ["Tutte", "Equity", "IPO", "Minibond"];
-  const visible = filter === "Tutte" ? transactions : transactions.filter((t) => transactionCategory(t) === filter);
+  const categories = ["Tutte", ...transactionCategories];
+  const visible = filter === "Tutte" ? transactions : transactions.filter((t) => t.category === filter);
 
   if (slug) {
     const transaction = transactions.find((item) => item.slug === slug);
     if (!transaction) return <NotFoundPage />;
-    return <><PageHero eyebrow="Track Record" title={transaction.client} description={`${transaction.type}${transaction.detail ? ` · ${transaction.detail}` : ""}.`} cta={false} /><section className="transaction-detail light-section" id="page-content"><div className="transaction-detail-logo"><img src={transaction.image} alt={transaction.client} /></div><div><p className="eyebrow">Valore dell’operazione</p><h2>{transaction.amount}</h2><p>Un incarico seguito con presidio specialistico nelle fasi decisive dell’operazione.</p><Link className="text-link dark-link" href="/track-record/">Torna al Track Record <ArrowRight aria-hidden="true" /></Link></div></section><ClosingCta /></>;
+    return <><PageHero eyebrow={`Track Record · ${transaction.category}`} title={transaction.blind ? `${transaction.type} — ${transaction.client}` : transaction.client} description={`${transaction.type}${transaction.detail ? ` · ${transaction.detail}` : ""}.`} cta={false} /><section className="transaction-detail light-section" id="page-content"><div className="transaction-detail-logo">{transaction.blind ? <span className="blind-mark"><LockKey size={64} weight="light" aria-hidden="true" /></span> : <img src={transaction.image} alt={transaction.client} />}</div><div><p className="eyebrow">{transaction.blind ? "Valore dell’operazione riservato" : "Valore dell’operazione"}</p><h2>{transaction.amount}</h2><p>{transaction.blind ? "Case study anonimizzato: la riservatezza dell’incarico non consente di pubblicare cliente e dettagli. L’operazione è stata seguita con presidio specialistico nelle fasi decisive." : "Un incarico seguito con presidio specialistico nelle fasi decisive dell’operazione."}</p><Link className="text-link dark-link" href="/track-record/">Torna al Track Record <ArrowRight aria-hidden="true" /></Link></div></section><ClosingCta /></>;
   }
 
-  return <><PageHero eyebrow="Track Record" title="Proven expertise. Diverse transactions." description="Una selezione di operazioni di equity, IPO e minibond seguite dal team: operazioni diverse, un unico standard di esecuzione." /><section className="operations-archive light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Operazioni</p><h2>Risultati costruiti insieme.</h2><p>Una selezione di operazioni perfezionate con il supporto del team.</p></div><div className="filter-row" role="group" aria-label="Filtra per tipo di operazione">{categories.map((category) => <button key={category} type="button" className={category === filter ? "filter-chip is-active" : "filter-chip"} onClick={() => setFilter(category)}>{category}</button>)}</div></div><div className="transaction-grid">{visible.map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div></section><ClosingCta /></>;
+  return <><PageHero eyebrow="Track Record" title="Proven expertise. Diverse transactions." description="Un archivio unico di operazioni M&A, corporate finance, real estate, energy e growth — con case study anonimizzati quando la riservatezza non consente di mostrare il cliente." /><section className="operations-archive light-section" id="page-content"><div className="section-heading"><div><p className="eyebrow">Operazioni</p><h2>Risultati costruiti insieme.</h2><p>Una selezione di operazioni perfezionate con il supporto del team.</p></div><div className="filter-row" role="group" aria-label="Filtra per practice">{categories.map((category) => <button key={category} type="button" className={category === filter ? "filter-chip is-active" : "filter-chip"} onClick={() => setFilter(category)}>{category}</button>)}</div></div><div className="transaction-grid">{visible.map((transaction) => <TransactionCard transaction={transaction} key={transaction.slug} />)}</div></section><ClosingCta /></>;
 }
 
 export function InsightPage({ active }) {
