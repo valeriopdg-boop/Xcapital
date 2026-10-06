@@ -9,22 +9,22 @@ export function render(path) {
 }
 
 export { pageMeta };
+export { serviceHubs };
 
 export function routes() {
   return [
     "/",
     "/chi-siamo/",
-    "/services/",
+    "/servizi/",
     ...serviceHubs.map((hub) => hub.path),
     "/track-record/",
     ...transactions.map((t) => `/track-record/${t.slug}/`),
-    "/insight/",
-    ...articles.map((a) => `/insight/${a.slug}/`),
-    "/education/",
-    "/category/press/",
-    "/webinar/",
+    "/risorse/",
+    "/risorse/rassegna-stampa/",
+    ...articles.map((a) => `/risorse/approfondimenti/${a.slug}/`),
     "/contatti/",
     "/prenota/",
+    "/prenota/grazie/",
     "/privacy-policy/",
     "/cookie-policy/",
     "/xcapital-point/",

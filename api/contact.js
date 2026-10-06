@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     return;
   }
 
-  const { name, email, company, message, website } = req.body ?? {};
+  const { name, email, company, phone, area, message, website } = req.body ?? {};
 
   // Honeypot antispam: i bot compilano il campo invisibile "website".
   if (website) {
@@ -36,8 +36,8 @@ export default async function handler(req, res) {
       sender: { email: sender, name: "Sito Delex Capital" },
       to: [{ email: to }],
       replyTo: { email, name },
-      subject: `Richiesta dal sito — ${name}${company ? ` (${company})` : ""}`,
-      textContent: `Nome: ${name}\nEmail: ${email}\nAzienda: ${company || "-"}\n\n${message}`,
+      subject: `Richiesta dal sito — ${name}${company ? ` (${company})` : ""}${area ? ` · ${area}` : ""}`,
+      textContent: `Nome: ${name}\nEmail: ${email}\nAzienda: ${company || "-"}\nTelefono: ${phone || "-"}\nArea di interesse: ${area || "-"}\n\n${message}`,
     }),
   });
 

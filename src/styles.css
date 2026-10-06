@@ -348,6 +348,63 @@ main section.reveal.is-visible { opacity: 1; transform: none; }
 .xpoint-section { padding-top: clamp(60px, 7vw, 100px); padding-bottom: clamp(60px, 7vw, 100px); border-top: 1px solid var(--line); }
 .xpoint-section .section-heading { margin-bottom: 0; }
 
+/* Processo verticale (pagine di servizio) */
+.process-vertical { margin-top: 18px; }
+.process-vertical ol { margin: 0 0 26px; padding: 0; list-style: none; }
+.process-vertical li { display: flex; gap: 22px; align-items: flex-start; padding: 22px 0; border-top: 1px solid var(--line); }
+.process-vertical li:last-child { border-bottom: 1px solid var(--line); }
+.process-vertical li > span { width: 46px; height: 46px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; background: #076eb1; color: white; font-size: 12px; font-weight: 600; }
+.process-vertical h3 { margin: 0 0 6px; font-size: 22px; }
+.process-vertical p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
+.hub-intro { max-width: 680px; margin-bottom: clamp(40px, 4.5vw, 60px); color: var(--muted); font-size: 17px; line-height: 1.75; }
+.hub-process { margin-top: clamp(44px, 5vw, 64px); }
+.faq-section { margin-top: clamp(44px, 5vw, 64px); }
+
+/* Session form (Prima sessione gratuita) */
+.session-form { margin-top: clamp(48px, 5vw, 70px); display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.6fr); gap: clamp(28px, 4vw, 56px); padding: clamp(28px, 4vw, 44px); background: white; border: 1px solid var(--line); }
+.session-copy h2 { margin-bottom: 14px; font-size: clamp(28px, 2.8vw, 38px); line-height: 1.05; }
+.session-copy p { color: var(--muted); font-size: 15px; line-height: 1.65; }
+.session-fields label:not(.consent) { display: grid; gap: 6px; margin-bottom: 14px; font-size: 13px; font-weight: 600; }
+.session-fields input, .session-fields textarea, .session-fields select { width: 100%; border: 1px solid #aebdc8; background: white; padding: 11px 13px; color: var(--ink); font: inherit; }
+.optional { color: var(--muted); font-weight: 400; }
+
+/* Mandati in corso */
+.mandate-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.mandates-section { margin-top: clamp(60px, 7vw, 100px); }
+.mandate-card { padding: 26px; border: 1px dashed var(--line); background: white; }
+.mandate-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.mandate-id { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: white; font-size: 12px; font-weight: 600; }
+.mandate-status { padding: 6px 14px; border-radius: 999px; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 600; }
+.mandate-card h3 { margin-bottom: 16px; font-size: 24px; line-height: 1.15; }
+.mandate-card dl { margin: 0; display: grid; gap: 8px; }
+.mandate-card dl div { display: flex; gap: 8px; font-size: 13px; }
+.mandate-card dt { color: var(--muted); }
+.mandate-card dt::after { content: ":"; }
+.mandate-card dd { margin: 0; font-weight: 600; }
+.hub-tr-grid .mandate-card { min-height: 0; }
+
+/* Scheda operazione: tabella dati */
+.transaction-facts { margin: 22px 0 26px; display: grid; gap: 10px; }
+.transaction-facts div { display: flex; gap: 10px; font-size: 14.5px; }
+.transaction-facts dt { color: var(--muted); min-width: 170px; }
+.transaction-facts dd { margin: 0; font-weight: 600; }
+.transaction-facts a { color: var(--blue); }
+
+/* Advisory Board */
+.board-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+.board-card { border: 1px solid var(--line); background: white; }
+.board-card img, .board-photo-pending { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: center top; display: block; }
+.board-photo-pending { display: grid; place-items: center; background: var(--blue-light); color: var(--blue); }
+.board-photo-lg { aspect-ratio: .85; }
+.board-card > div { padding: 20px; }
+.board-card h3 { margin: 4px 0 0; font-size: 24px; }
+.roles-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.roles-grid .competency { min-height: 150px; }
+.quote-section { padding: clamp(40px, 5vw, 70px) clamp(28px, 5vw, 80px); }
+.quote-section .testimonial { max-width: 900px; margin: 0 auto; }
+.press-note { max-width: 1320px; margin: 34px auto 0; color: var(--muted); font-size: 14px; }
+.sidebar-person img { width: 46px; height: 46px; flex: 0 0 auto; border-radius: 50%; object-fit: cover; object-position: center top; }
+
 /* Awards strip compatta */
 .awards-strip { max-width: 1320px; margin: 0 auto; padding: 30px clamp(24px, 3vw, 40px); display: flex; align-items: center; gap: clamp(24px, 3vw, 44px); border: 1px solid var(--line); background: var(--paper); }
 .awards-strip img { width: clamp(180px, 22vw, 300px); object-fit: contain; }
@@ -410,6 +467,10 @@ main section.reveal.is-visible { opacity: 1; transform: none; }
   .cc-grid { grid-template-columns: 1fr; }
   .clients-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .clients-grid .competency:nth-child(n+4) { margin-top: -1px; }
+  .board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mandate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .roles-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .session-form { grid-template-columns: 1fr; }
   .site-footer { grid-template-columns: 1fr auto; }
   .site-footer nav { display: none; }
   .footer-meta { flex-wrap: wrap; justify-content: flex-end; }
@@ -463,6 +524,7 @@ main section.reveal.is-visible { opacity: 1; transform: none; }
   .method-steps.model-grid li { min-height: 0; padding: 0 0 26px 74px; }
   .clients-grid { grid-template-columns: 1fr; }
   .clients-grid .competency:nth-child(n+4) { margin-top: -1px; }
+  .board-grid, .mandate-grid, .roles-grid { grid-template-columns: 1fr; }
   .values-grid article:nth-child(odd), .contact-details > * { border-right: 0; }
   .contact-details > * { border-bottom: 1px solid var(--line); }
   .contact-details > *:last-child { border-bottom: 0; }
